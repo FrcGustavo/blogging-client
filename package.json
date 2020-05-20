@@ -4,7 +4,10 @@
   "description": "It is the blog",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server/index",
+    "build": "webpack-cli --config webpack.config.js",
+    "start:dev": "nodemon src/server/index",
+    "lint": "eslint --ext .jsx --ext .js ./"
   },
   "repository": {
     "type": "git",
