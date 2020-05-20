@@ -1,0 +1,19 @@
+{
+  "name": "bloging-client",
+  "version": "0.0.0",
+  "description": "It is the blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FranciscoGustavo/bloging-client.git"
+  },
+  "author": "Francisco Gustavo <hidalgofco520@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FranciscoGustavo/bloging-client/issues"
+  },
+  "homepage": "https://github.com/FranciscoGustavo/bloging-client#readme"
+}
