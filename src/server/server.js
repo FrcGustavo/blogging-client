@@ -9,7 +9,7 @@ import { info } from './utils/debug';
 const controller = new BlogController();
 const app = express();
 
-if (config.srv.env === 'development') {
+if (config.srv.nodeEnv === 'development') {
   info('Load development config');
   loadConfigDev(app);
 } else {

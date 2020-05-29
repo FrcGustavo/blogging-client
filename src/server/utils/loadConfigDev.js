@@ -9,7 +9,7 @@ const loadConfigDev = (app) => {
   const webpackHotMiddleware = require('webpack-hot-middleware');
   const compiler = webpack(webpackConfig);
   const webpackServerConfig = {
-    port: config.server.port,
+    port: config.srv.port,
     hot: true,
   };
   app.use(webpackDevMiddleware(compiler, webpackServerConfig));
