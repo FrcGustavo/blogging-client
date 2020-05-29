@@ -2,4 +2,6 @@ $font-size: 14px;
 $primary-gradient: #1C2237;
 $secondary-gradient: #4B5A8A;
 $secondary-dark: #C63F17;
+@import './App.scss';
+@import './components/Header.scss';
 @import './pages/Home.scss';
