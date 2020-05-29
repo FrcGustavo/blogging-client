@@ -1,4 +1,5 @@
 import express from 'express';
+import logger from 'morgan';
 
 import BlogController from './controllers/BlogController';
 import loadConfigDev from './utils/loadConfigDev';
@@ -16,6 +17,7 @@ if (config.srv.nodeEnv === 'development') {
   loadConfigProd(app);
 }
 
+app.use(logger('dev', { stream: { write: (msg) => info(msg) } }));
 app.get('/', controller.home);
 
 app.listen(config.srv.port, () => {
