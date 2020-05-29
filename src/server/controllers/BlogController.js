@@ -1,3 +1,5 @@
+import renderApp from '../utils/renderApp';
+
 class BlogController {
   constructor(service = {}) {
     this.service = service;
@@ -7,7 +9,8 @@ class BlogController {
 
   async home(req, res, next) {
     try {
-      res.send(this.msg);
+      const html = renderApp({}, req.url, req.hashManifest, {});
+      res.send(html);
     } catch (error) {
       next(error);
     }
