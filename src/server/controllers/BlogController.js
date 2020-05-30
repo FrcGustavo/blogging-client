@@ -1,3 +1,4 @@
+import initialState from '../initialState';
 import renderApp from '../utils/renderApp';
 
 class BlogController {
@@ -9,7 +10,8 @@ class BlogController {
 
   async home(req, res, next) {
     try {
-      const html = renderApp({}, req.url, req.hashManifest, {});
+      const state = { ...initialState };
+      const html = renderApp(state, req.url, req.hashManifest, {});
       res.send(html);
     } catch (error) {
       next(error);
