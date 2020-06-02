@@ -8,7 +8,7 @@ class PostsService {
     this.collection = 'posts';
   }
 
-  async find(query) {
+  async find(query = {}) {
     const limit = Number(query.limit) || 10;
     const sort = String(query.sort) || '-_id';
     const skip = (Number(query.page || 1) - 1) * 9;
