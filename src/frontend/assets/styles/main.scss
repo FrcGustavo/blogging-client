@@ -4,4 +4,8 @@ $secondary-gradient: #4B5A8A;
 $secondary-dark: #C63F17;
 @import './App.scss';
 @import './components/Header.scss';
+@import './components/Footer.scss';
+@import './components/Loading.scss';
 @import './pages/Home.scss';
+@import './pages/Blog.scss';
+@import './pages/Post.scss';

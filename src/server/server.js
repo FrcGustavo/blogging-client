@@ -19,6 +19,7 @@ if (config.srv.nodeEnv === 'development') {
 
 app.use(logger('dev', { stream: { write: (msg) => info(msg) } }));
 app.get('/', controller.home);
+app.get('/blog', controller.blog);
 
 app.listen(config.srv.port, () => {
   info(`srv is listening on http://localhost:${config.srv.port}`);
