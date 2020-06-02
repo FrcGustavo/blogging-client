@@ -8,3 +8,8 @@ export const loadBlog = (payload) => ({
   type: 'LOAD_BLOG',
   payload,
 });
+
+export const loadCurrentPost = (payload) => ({
+  type: 'LOAD_CURRENT_POST',
+  payload,
+});
