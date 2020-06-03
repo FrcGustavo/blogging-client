@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Layout from '../components/Layout';
 import Home from '../pages/Home';
 import Blog from '../pages/Blog';
+import Post from '../pages/Post';
 
 import '../assets/styles/main.scss';
 
@@ -13,6 +14,7 @@ const App = () => (
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/blog" component={Blog} />
+        <Route exact path="/:slug" component={Post} />
       </Switch>
     </Layout>
   </BrowserRouter>

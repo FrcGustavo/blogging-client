@@ -9,6 +9,7 @@ class BlogController {
 
     this.home = this.home.bind(this);
     this.blog = this.blog.bind(this);
+    this.post = this.post.bind(this);
   }
 
   async home(req, res, next) {
@@ -26,6 +27,18 @@ class BlogController {
     try {
       const posts = await this.service.find();
       const state = { ...initialState, blog: posts.length > 0 ? posts : false };
+      const html = renderApp(state, req.url, req.hashManifest, {});
+      res.send(html);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async post(req, res, next) {
+    const { slug } = req.params;
+    try {
+      const post = await this.service.show(slug);
+      const state = { ...initialState, currentPost: post };
       const html = renderApp(state, req.url, req.hashManifest, {});
       res.send(html);
     } catch (error) {
