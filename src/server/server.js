@@ -13,6 +13,7 @@ const app = express();
 const router = express.Router();
 router.get('/', controller.home);
 router.get('/blog', controller.blog);
+router.get('/components', controller.components);
 router.get('/:slug', controller.post);
 
 if (config.srv.nodeEnv === 'development') {
