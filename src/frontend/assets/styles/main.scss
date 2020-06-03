@@ -5,12 +5,14 @@ $secondary-dark: #C63F17;
 // Atoms
 @import './components/atoms/Button.scss';
 // Molecules
-@import './components//molecules/MyProfile.scss';
-@import './components//molecules/MainPost.scss';
+@import './components/molecules/MyProfile.scss';
+@import './components/molecules/MainPost.scss';
+@import './components/molecules/FirstPost.scss';
 @import './App.scss';
 @import './components/Header.scss';
 @import './components/Footer.scss';
 @import './components/Loading.scss';
+// Pages
 @import './pages/Home.scss';
 @import './pages/Blog.scss';
 @import './pages/Post.scss';
