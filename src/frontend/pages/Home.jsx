@@ -16,12 +16,16 @@ const Home = ({ mainPost }) => {
     <>
       <Header />
       <main className="home">
-        <section className="home-profile">
-          <MyProfile />
-        </section>
-        <section className="main-post">
-          <MainPost post={post} />
-        </section>
+        <div className="wrapper">
+          <section className="home-profile">
+            <MyProfile />
+          </section>
+        </div>
+        <div className="wrapper">
+          <section className="home-post">
+            <MainPost post={post} />
+          </section>
+        </div>
       </main>
     </>
   );
