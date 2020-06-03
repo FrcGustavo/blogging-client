@@ -27,6 +27,10 @@
 
 @media screen and (min-width: 680px) {
     .main-post {
+        .img-container {
+            border-radius: $font-size / 2;
+            overflow: hidden;
+        }
         max-width: unset;
         padding: $font-size;
         display: grid;

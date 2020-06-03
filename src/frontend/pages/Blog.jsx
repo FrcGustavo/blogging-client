@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -7,11 +7,23 @@ import LayoutBlog from '../components/LayoutBlog';
 import FirtsPost from '../components/mulecules/FirtsPost';
 import ListOfPosts from '../components/organisms/ListOfPosts';
 
-// import { loadBlog } from '../actions';
-// import config from '../config';
+import { loadBlog } from '../actions';
+import config from '../config';
 
-const Blog = ({ blog }) => {
-  const [posts] = useState(blog);
+const Blog = ({ blog, load }) => {
+  const [posts, setPosts] = useState(blog);
+
+  useEffect(() => {
+    if (!posts) {
+      fetch(`${config.api}/posts/`)
+        .then((res) => res.json())
+        .then((json) => {
+          setPosts(json.data.posts);
+          load(json.data.posts);
+        })
+        .catch(() => {});
+    }
+  });
 
   if (!posts) return <Loading />;
 
@@ -35,7 +47,7 @@ const Blog = ({ blog }) => {
 
 Blog.propTypes = {
   blog: PropTypes.objectOf().isRequired,
-// loadBlog: PropTypes.func.isRequired,
+  load: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => (
@@ -43,9 +55,9 @@ const mapStateToProps = (state) => (
     blog: state.blog,
   }
 );
-/*
-mapDispatchToProps = {
-  loadBlog
-}; */
 
-export default connect(mapStateToProps, null)(Blog);
+const mapDispatchToProps = {
+  load: loadBlog,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Blog);
