@@ -8,6 +8,8 @@ $secondary-dark: #C63F17;
 @import './components/molecules/MyProfile.scss';
 @import './components/molecules/MainPost.scss';
 @import './components/molecules/FirstPost.scss';
+// Organisms
+@import './components/organisms/ListOfPosts.scss';
 @import './App.scss';
 @import './components/Header.scss';
 @import './components/Footer.scss';
