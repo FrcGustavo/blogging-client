@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const Button = ({
-  children, to, primary, secondary,
+  children, to, primary, secondary, onClick,
 }) => {
   let styles = 'btn';
   if (primary) {
@@ -20,7 +20,7 @@ const Button = ({
     );
   }
   return (
-    <button type="button" className={styles}>
+    <button type="button" className={styles} onClick={onClick}>
       { children }
     </button>
   );
@@ -30,6 +30,7 @@ Button.defaultProps = {
   to: null,
   primary: true,
   secondary: false,
+  onClick: null,
 };
 
 Button.propTypes = {
@@ -37,6 +38,7 @@ Button.propTypes = {
   to: PropTypes.string,
   primary: PropTypes.bool,
   secondary: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 export default Button;

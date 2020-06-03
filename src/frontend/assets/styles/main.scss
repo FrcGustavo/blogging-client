@@ -4,6 +4,8 @@ $secondary-gradient: #4B5A8A;
 $secondary-dark: #C63F17;
 // Atoms
 @import './components/atoms/Button.scss';
+// Molecules
+@import './components//molecules/MyProfile.scss';
 @import './App.scss';
 @import './components/Header.scss';
 @import './components/Footer.scss';

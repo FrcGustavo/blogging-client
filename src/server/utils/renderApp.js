@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import { createStore } from 'redux';
 
-import Layout from '../../frontend/components/Layout';
 import reducer from '../../frontend/reducers/index';
 import serverRoutes from '../../frontend/routes/serverRoutes';
 
@@ -17,9 +16,7 @@ const renderApp = (initialState, url, manifest, metaTags) => {
   const html = renderToString(
     <Provider store={store}>
       <StaticRouter location={url} context={{}}>
-        <Layout>
-          { renderRoutes(serverRoutes) }
-        </Layout>
+        { renderRoutes(serverRoutes) }
       </StaticRouter>
     </Provider>,
   );
