@@ -38,7 +38,7 @@ const Blog = (props) => {
             <div className="card-info">
               <h1>{headPost.title}</h1>
               <p>{headPost.description}</p>
-              <Link className="btn btn-primary" to={`/blog/${headPost.slug}`}>Leer más</Link>
+              <Link className="btn btn-primary" to={`/${headPost.slug}`}>Leer más</Link>
             </div>
           </div>
         </div>
