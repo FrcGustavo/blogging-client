@@ -17,8 +17,8 @@ const Post = ({ currentPost, match, load }) => {
       fetch(`${config.api}/posts/${match.params.slug}`)
         .then((res) => res.json())
         .then((json) => {
-          setPost(json.data);
-          load(json.data);
+          setPost(json.body);
+          load(json.body);
         })
         .catch(() => {});
     }

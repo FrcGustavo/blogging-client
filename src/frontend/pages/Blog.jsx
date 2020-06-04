@@ -18,8 +18,8 @@ const Blog = ({ blog, load }) => {
       fetch(`${config.api}/posts/`)
         .then((res) => res.json())
         .then((json) => {
-          setPosts(json.data.posts);
-          load(json.data.posts);
+          setPosts(json.body.posts);
+          load(json.body.posts);
         })
         .catch(() => {});
     }

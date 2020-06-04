@@ -18,8 +18,8 @@ const Home = ({ mainPost, loadPost }) => {
       fetch(`${config.api}/posts?limit=1`)
         .then((res) => res.json())
         .then((json) => {
-          setPost(json.data.posts[0]);
-          loadPost(json.data.posts[0]);
+          setPost(json.body.posts[0]);
+          loadPost(json.body.posts[0]);
         }).catch(() => {});
     }
   });
