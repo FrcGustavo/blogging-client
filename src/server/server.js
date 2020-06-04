@@ -15,6 +15,7 @@ router.get('/', controller.home);
 router.get('/login', controller.login);
 router.get('/blog', controller.blog);
 router.get('/components', controller.components);
+router.get('/board', controller.board);
 router.get('/:slug', controller.post);
 
 if (config.srv.nodeEnv === 'development') {

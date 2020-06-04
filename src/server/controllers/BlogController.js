@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import initialState from '../initialState';
 import renderApp from '../utils/renderApp';
 import PostService from '../services/PostService';
@@ -60,6 +61,16 @@ class BlogController {
 
   // eslint-disable-next-line class-methods-use-this
   async login(req, res, next) {
+    try {
+      const state = { ...initialState };
+      const html = renderApp(state, req.url, req.hashManifest, {});
+      res.send(html);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async board(req, res, next) {
     try {
       const state = { ...initialState };
       const html = renderApp(state, req.url, req.hashManifest, {});
