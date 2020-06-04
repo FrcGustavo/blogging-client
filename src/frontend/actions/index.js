@@ -13,3 +13,8 @@ export const loadCurrentPost = (payload) => ({
   type: 'LOAD_CURRENT_POST',
   payload,
 });
+
+export const login = (payload) => ({
+  type: 'LOGIN',
+  payload,
+});
