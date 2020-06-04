@@ -29,7 +29,7 @@ const Post = ({ currentPost, match, load }) => {
 
   return (
     <LayoutBlog>
-      <main className="p">
+      <main className="post">
         <div className="wrapper">
           <TemplatePost post={post} />
         </div>

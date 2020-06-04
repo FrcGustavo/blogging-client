@@ -57,6 +57,17 @@ class BlogController {
       next(error);
     }
   }
+
+  // eslint-disable-next-line class-methods-use-this
+  async login(req, res, next) {
+    try {
+      const state = { ...initialState };
+      const html = renderApp(state, req.url, req.hashManifest, {});
+      res.send(html);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = BlogController;
