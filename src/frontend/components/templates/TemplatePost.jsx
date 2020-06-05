@@ -10,7 +10,7 @@ const TemplatePost = ({ post }) => (
     <section className="post-title">
       <h1>{post.title}</h1>
     </section>
-    <section className="post-content" dangerouslySetInnerHTML={{ __html: post.post }} />
+    <section className="post-content" dangerouslySetInnerHTML={{ __html: post.body }} />
   </div>
 );
 
