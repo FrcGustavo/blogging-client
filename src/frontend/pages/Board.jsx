@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import config from '../config';
@@ -32,26 +33,32 @@ const Board = () => {
       <div>
         <header>Home</header>
       </div>
-      <main>
+      <main className="new-post">
         <form action="" onSubmit={handleSubmit}>
-          <div>
+          <div className="input-form">
             <label htmlFor="title">Titulo:</label>
             <input type="text" name="title" id="title" onChange={handleChange} />
           </div>
-          <div>
+          <div className="input-form">
             <label htmlFor="slug">slug:</label>
             <input type="text" name="slug" id="slug" onChange={handleChange} />
           </div>
-          <div>
+          <div className="input-form">
             <label htmlFor="keywords">Keyword:</label>
             <input type="text" name="keywords" id="keywords" onChange={handleChange} />
           </div>
-          <div>
+          <div className="input-form">
             <label htmlFor="description">Description:</label>
             <input type="text" name="description" id="description" onChange={handleChange} />
           </div>
-          <div>
-            <textarea name="body" onChange={handleChange} />
+          <div className="editor">
+            <h2>Editor</h2>
+            <div>
+              <textarea name="body" onChange={handleChange} />
+            </div>
+            <div>
+              <section className="post-content" dangerouslySetInnerHTML={{ __html: post.body }} />
+            </div>
           </div>
           <input type="submit" value="Guardar" />
         </form>
