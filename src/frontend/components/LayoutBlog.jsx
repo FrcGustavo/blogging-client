@@ -2,18 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Header from './Header';
+import Footer from './Footer';
 
-const Layout = ({ children }) => (
+const LayoutBlog = ({ children }) => (
   <>
     <Header />
-    <main>
-      {children}
-    </main>
+    { children }
+    <Footer />
   </>
 );
 
-Layout.propTypes = {
+LayoutBlog.propTypes = {
   children: PropTypes.element.isRequired,
 };
 
-export default Layout;
+export default LayoutBlog;

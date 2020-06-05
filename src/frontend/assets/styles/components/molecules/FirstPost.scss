@@ -1,0 +1,24 @@
+.first-post {
+    .img-container {
+        width: 100%;
+        border-radius: $font-size;
+        overflow: hidden;
+    }
+    &-info {
+        h1,
+        p {
+            margin-bottom: $font-size;
+        }
+        h1 {
+            font-size: $font-size * 2;
+        }
+    }
+}
+
+@media screen and (min-width: 680px) {
+    .first-post {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+    }
+}

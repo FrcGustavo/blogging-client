@@ -1,0 +1,32 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.1);
+    .login-form {
+        @include shadow;
+        width: 100%;
+        max-width: 400px;
+        border-radius: $font-size / 2;
+        padding: $font-size * 2;
+        background-color: white;
+        h1 {
+            font-size: $font-size * 2;
+            text-align: center;
+            padding-bottom: $font-size * 2;
+        }
+        .input-form {
+            padding-bottom: $font-size * 2;
+            input {
+                display: block;
+                width: 100%;
+                padding: $font-size / 2;
+            }
+        }
+        input[type=submit] {
+            cursor: pointer;
+        }
+    }
+}

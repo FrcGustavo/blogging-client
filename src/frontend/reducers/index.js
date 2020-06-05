@@ -5,6 +5,21 @@ const reducer = (state, action) => {
         ...state,
         mainPost: action.payload,
       };
+    case 'LOAD_BLOG':
+      return {
+        ...state,
+        blog: action.payload,
+      };
+    case 'LOAD_CURRENT_POST':
+      return {
+        ...state,
+        currentPost: action.payload,
+      };
+    case 'LOGIN':
+      return {
+        ...state,
+        user: action.payload,
+      };
     default: return state;
   }
 };

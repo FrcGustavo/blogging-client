@@ -1,61 +1,59 @@
-/* eslint-disable react/forbid-prop-types */
-/* eslint-disable react/no-danger */
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import Footer from '../components/Footer';
+import TemplatePost from '../components/templates/TemplatePost';
+import LayoutBlog from '../components/LayoutBlog';
 import Loading from '../components/Loading';
 
 import { loadCurrentPost } from '../actions';
 import config from '../config';
 
-const { api } = config;
-
-const Post = ({ currentPost, match, dispatch }) => {
+const Post = ({ currentPost, match, load }) => {
   const [post, setPost] = useState(currentPost);
-  const [error, setError] = useState(false);
   useEffect(() => {
     if (post.slug !== match.params.slug) {
       setPost(false);
-      fetch(`${api}/posts/${match.params.slug}`)
+      fetch(`${config.api}/posts/${match.params.slug}`)
         .then((res) => res.json())
         .then((json) => {
-          setPost(json.data);
-          dispatch(loadCurrentPost(json.data));
+          setPost(json.body);
+          load(json.body);
         })
-        .catch(() => setError(true));
+        .catch(() => {});
     }
   });
-  if (error) return <div>Upps algo salio mal</div>;
+
+
   if (!post) return <Loading />;
+
   return (
-    <>
-      <div className="post">
-        <div className="container">
-          <section className="post-header">
-            <img src={post.cover} alt="" />
-          </section>
-          <section className="post-title">
-            <h1>{post.title}</h1>
-          </section>
-          <section className="post-conent" dangerouslySetInnerHTML={{ __html: post.post }} />
+    <LayoutBlog>
+      <main className="post">
+        <div className="wrapper">
+          <TemplatePost post={post} />
         </div>
-      </div>
-      <Footer />
-    </>
+      </main>
+    </LayoutBlog>
   );
 };
+
 Post.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       slug: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-  currentPost: PropTypes.any.isRequired,
-  dispatch: PropTypes.any.isRequired,
+  currentPost: PropTypes.objectOf().isRequired,
+  load: PropTypes.func.isRequired,
 };
+
 const mapStateToProps = (state) => ({
   currentPost: state.currentPost,
 });
-export default connect(mapStateToProps, null)(Post);
+
+const mapDispatchToProps = {
+  load: loadCurrentPost,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Post);
