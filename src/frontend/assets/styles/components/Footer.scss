@@ -11,6 +11,12 @@
             text-align: center;
             color: white;
         }
+        p {
+            padding-bottom: $font-size / 2;
+            a {
+                color: white;
+            }
+        }
     }
 }
 
