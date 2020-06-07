@@ -4,7 +4,7 @@
   "description": "It is the blog",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && node src/server/index",
+    "start": "DEBUG=app:* node src/server/index",
     "build": "webpack-cli --config webpack.config.js",
     "start:dev": "DEBUG=app:* nodemon src/server/index",
     "lint": "eslint --ext .jsx --ext .js ./"

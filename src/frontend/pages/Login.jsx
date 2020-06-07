@@ -30,7 +30,7 @@ const Login = ({ logIn, history }) => {
       .then((res) => res.json())
       .then((data) => {
         logIn(data);
-        history.push('/');
+        history.push('/board');
       })
       .catch(() => {});
   };

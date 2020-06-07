@@ -29,7 +29,7 @@ class PostsService {
 
   async show(slug) {
     const post = await this.posts.findBySlug(this.collection, slug);
-    post.post = this.converter.makeHtml(post.post);
+    post.body = this.converter.makeHtml(post.body);
     return post;
   }
 }
