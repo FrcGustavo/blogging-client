@@ -8,7 +8,7 @@ const Board = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(post);
+    // console.log(post);
     fetch(`${config.api}/posts`, {
       method: 'POST',
       body: JSON.stringify(post),
@@ -17,7 +17,7 @@ const Board = () => {
       },
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => // console.log(data))
       .catch();
   };
 
