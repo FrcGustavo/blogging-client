@@ -24,5 +24,4 @@ class UserModel {
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
   }
-
 }

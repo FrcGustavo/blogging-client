@@ -7,12 +7,13 @@ import Header from '../components/Header';
 import MyProfile from '../components/mulecules/MyProfile';
 import MainPost from '../components/mulecules/MainPost';
 
+import PostModel from '../models/PostModel';
+
 import { loadHome } from '../actions';
 import config from '../config';
 
 const Home = ({ mainPost, loadPost }) => {
-  const [post, setPost] = useState(mainPost);
-  console.log(config);
+  const [post, setPost] = useState(!mainPost ? mainPost : new PostModel(mainPost));
 
   useEffect(() => {
     if (!post) {
@@ -49,7 +50,25 @@ const Home = ({ mainPost, loadPost }) => {
 Home.defaultProps = {};
 
 Home.propTypes = {
-  mainPost: PropTypes.objectOf().isRequired,
+  mainPost: PropTypes.objectOf({
+    id: PropTypes.string,
+    user: PropTypes.string,
+    userCover: PropTypes.string,
+    username: PropTypes.string,
+    title: PropTypes.string,
+    cover: PropTypes.string,
+    body: PropTypes.string,
+    description: PropTypes.string,
+    slug: PropTypes.string,
+    keywords: PropTypes.string,
+    views: PropTypes.number,
+    timeShared: PropTypes.number,
+    likes: PropTypes.number,
+    isPublic: PropTypes.bool,
+    isDisabled: PropTypes.bool,
+    createdAt: PropTypes.string,
+    updatedAt: PropTypes.string,
+  }).isRequired,
   loadPost: PropTypes.func.isRequired,
 };
 

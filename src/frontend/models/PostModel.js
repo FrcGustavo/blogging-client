@@ -1,5 +1,5 @@
 class PostModel {
-  constructor({ 
+  constructor({
     _id,
     user,
     userCover,
@@ -16,25 +16,25 @@ class PostModel {
     isPublic,
     isDisabled,
     createdAt,
-    updatedAt, 
+    updatedAt,
   }) {
     this.id = _id;
     this.user = user;
     this.userCover = userCover;
     this.username = username;
-	  this.title = title;
+    this.title = title;
     this.cover = cover;
     this.body = body;
     this.description = description;
     this.slug = slug;
     this.keywords = keywords;
-    this.views = views;   
+    this.views = views;
     this.timeShared = timeShared;
     this.likes = likes;
     this.isPublic = isPublic;
-    this.isDisabled = isDisabled;    
+    this.isDisabled = isDisabled;
     this.createdAt = createdAt;
-    this.updatedAt = updatedAt;  
+    this.updatedAt = updatedAt;
   }
 }
 
