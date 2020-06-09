@@ -7,6 +7,8 @@ const config = {
     nodeEnv: process.env.NODE_ENV || 'development',
     port: process.env.PORT || 3000,
     logPrefix: process.env.LOG_PREFIX || 'app',
+    api: process.env.API,
+    profileImg: process.env.PROFILE_IMG,
   },
   db: {
     user: process.env.DB_USER,

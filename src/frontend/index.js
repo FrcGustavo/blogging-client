@@ -6,6 +6,7 @@ import { Router } from 'react-router';
 import { Provider } from 'react-redux';
 import { createStore, compose } from 'redux';
 import { createBrowserHistory } from 'history';
+import config from './config';
 
 import reducer from './reducers/index';
 import App from './routes/App';
@@ -14,6 +15,8 @@ const history = createBrowserHistory();
 const preloadedState = window.__PRELOADED_STATE__ || {};
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducer, preloadedState, composeEnhancers());
+config.api = window.__PRELOADED_API__;
+config.profileImg = window.__PROFILE_IMG__;
 
 ReactDOM.render(
   <Provider store={store}>

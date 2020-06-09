@@ -12,6 +12,7 @@ import config from '../config';
 
 const Home = ({ mainPost, loadPost }) => {
   const [post, setPost] = useState(mainPost);
+  console.log(config);
 
   useEffect(() => {
     if (!post) {
