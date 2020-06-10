@@ -3,6 +3,9 @@
 import React, { useState } from 'react';
 import config from '../config';
 
+import HeaderBoard from '../components/organisms/HeaderBoard';
+import NavbarBoard from '../components/organisms/NavbarBoard';
+
 const Board = () => {
   const [post, setPost] = useState({ cover: 'Jajajatl' });
 
@@ -29,10 +32,9 @@ const Board = () => {
   };
 
   return (
-    <>
-      <div>
-        <header>Home</header>
-      </div>
+    <div className="board">
+      <HeaderBoard />
+      <NavbarBoard />
       <main className="new-post">
         <form action="" onSubmit={handleSubmit}>
           <div className="input-form">
@@ -63,10 +65,7 @@ const Board = () => {
           <input type="submit" value="Guardar" />
         </form>
       </main>
-      <footer>
-        this is the footer
-      </footer>
-    </>
+    </div>
   );
 };
 
