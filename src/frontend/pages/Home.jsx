@@ -12,7 +12,7 @@ import PostModel from '../models/PostModel';
 import { loadHome } from '../actions';
 import config from '../config';
 
-const Home = ({ mainPost, loadPost }) => {
+const Home = ({ mainPost, profileImg, loadPost }) => {
   const [post, setPost] = useState(!mainPost ? mainPost : new PostModel(mainPost));
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const Home = ({ mainPost, loadPost }) => {
       <main className="home">
         <div className="wrapper">
           <section className="home-profile">
-            <MyProfile />
+            <MyProfile profileImg={profileImg} />
           </section>
         </div>
         <div className="wrapper">
@@ -50,30 +50,19 @@ const Home = ({ mainPost, loadPost }) => {
 Home.defaultProps = {};
 
 Home.propTypes = {
-  mainPost: PropTypes.objectOf({
-    id: PropTypes.string,
-    user: PropTypes.string,
-    userCover: PropTypes.string,
-    username: PropTypes.string,
-    title: PropTypes.string,
-    cover: PropTypes.string,
-    body: PropTypes.string,
-    description: PropTypes.string,
-    slug: PropTypes.string,
-    keywords: PropTypes.string,
-    views: PropTypes.number,
-    timeShared: PropTypes.number,
-    likes: PropTypes.number,
-    isPublic: PropTypes.bool,
-    isDisabled: PropTypes.bool,
-    createdAt: PropTypes.string,
-    updatedAt: PropTypes.string,
+  mainPost: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
   }).isRequired,
+  profileImg: PropTypes.string.isRequired,
   loadPost: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   mainPost: state.mainPost,
+  profileImg: state.profileImg,
 });
 
 const mapDispatchToProps = {

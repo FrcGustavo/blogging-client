@@ -16,9 +16,8 @@ const preloadedState = window.__PRELOADED_STATE__ || {};
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducer, preloadedState, composeEnhancers());
 config.api = window.__PRELOADED_API__;
-config.profileImg = window.__PROFILE_IMG__;
 
-ReactDOM.render(
+ReactDOM.hydrate(
   <Provider store={store}>
     <Router history={history}>
       <App />

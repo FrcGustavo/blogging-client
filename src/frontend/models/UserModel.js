@@ -12,7 +12,7 @@ class UserModel {
     createdAt,
     updatedAt,
   }) {
-    this.id = id;
+    this.id = _id;
     this.firstName = firstName;
     this.lastName = lastName;
     this.username = username;
@@ -25,3 +25,5 @@ class UserModel {
     this.updatedAt = updatedAt;
   }
 }
+
+export default UserModel;

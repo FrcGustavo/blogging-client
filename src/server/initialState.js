@@ -3,6 +3,7 @@ const initialState = {
   blog: false,
   currentPost: false,
   user: false,
+  profileImg: false,
 };
 
 export default initialState;
