@@ -1,10 +1,12 @@
 /* eslint-disable react/no-danger */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
-import config from '../config';
+import config from '../../config';
 
-import HeaderBoard from '../components/organisms/HeaderBoard';
-import NavbarBoard from '../components/organisms/NavbarBoard';
+import HeaderBoard from '../../components/organisms/HeaderBoard';
+import NavbarBoard from '../../components/organisms/NavbarBoard';
+
+import './styles.scss';
 
 const Board = () => {
   const [post, setPost] = useState({ cover: 'Jajajatl' });

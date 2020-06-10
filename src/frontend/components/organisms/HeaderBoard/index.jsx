@@ -11,7 +11,7 @@ const HeaderBoard = () => (
         <IconMenu />
       </button>
       <div>
-        Perfil
+        Salir
       </div>
     </div>
   </header>
