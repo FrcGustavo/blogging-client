@@ -50,12 +50,15 @@ const Home = ({ mainPost, profileImg, loadPost }) => {
 Home.defaultProps = {};
 
 Home.propTypes = {
-  mainPost: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    cover: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    slug: PropTypes.string.isRequired,
-  }).isRequired,
+  mainPost: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      cover: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
+    }),
+  ]).isRequired,
   profileImg: PropTypes.string.isRequired,
   loadPost: PropTypes.func.isRequired,
 };

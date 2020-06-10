@@ -53,7 +53,10 @@ const Post = PropTypes.shape({
 }).isRequired;
 
 Blog.propTypes = {
-  blog: PropTypes.arrayOf(Post).isRequired,
+  blog: PropTypes.PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.arrayOf(Post),
+  ]).isRequired,
   load: PropTypes.func.isRequired,
 };
 

@@ -20,7 +20,6 @@ class BlogController {
       const state = {
         ...initialState,
         mainPost: posts[0],
-        profileImg: process.env.PROFILE_IMG,
       };
       const html = renderApp(state, req.url, req.hashManifest, {});
       res.send(html);
