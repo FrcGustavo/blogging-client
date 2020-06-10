@@ -57,7 +57,9 @@ const Login = ({ logIn, history }) => {
 
 Login.propTypes = {
   logIn: PropTypes.func.isRequired,
-  history: PropTypes.objectOf().isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 const mapDispatchToProps = {

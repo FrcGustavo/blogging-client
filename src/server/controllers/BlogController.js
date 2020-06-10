@@ -17,7 +17,10 @@ class BlogController {
   async home(req, res, next) {
     try {
       const posts = await this.service.find({ limit: 1 });
-      const state = { ...initialState, mainPost: posts[0] };
+      const state = {
+        ...initialState,
+        mainPost: posts[0],
+      };
       const html = renderApp(state, req.url, req.hashManifest, {});
       res.send(html);
     } catch (error) {

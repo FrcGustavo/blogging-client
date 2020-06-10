@@ -1,3 +1,5 @@
+import config from '../config';
+
 const setResponse = (html, state, manifest, metaTags) => {
   const mainStyles = manifest ? manifest['main.css'] : '/assets/app.css';
   const mainBuild = manifest ? manifest['main.js'] : '/assets/app.js';
@@ -21,6 +23,8 @@ const setResponse = (html, state, manifest, metaTags) => {
         <div id="app">${html}</div>
         <script>
           window.__PRELOADED_STATE__ = ${JSON.stringify(state)/* .replace(/</g, '\\u003c') */}
+          window.__PRELOADED_API__ = '${config.srv.api}'
+          window.__PROFILE_IMG__ = '${config.srv.profileImg}'
         </script>
         <script src="${mainBuild}"></script>
     </body>

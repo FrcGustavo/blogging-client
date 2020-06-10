@@ -1,0 +1,18 @@
+.navbar-board {
+  width: 100%;
+  height: 100%;
+  background-color: #fdfdfd;
+  box-shadow: 0 0 6px rgba(#000000, 0.16);
+
+  a {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    color: #1C2237;
+    transition: background-color 0.2;
+
+    &:hover {
+      background-color: #EDEDED;
+    }
+  }
+}

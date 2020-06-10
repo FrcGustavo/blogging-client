@@ -17,7 +17,12 @@ const MainPost = ({ post }) => (
 );
 
 MainPost.propTypes = {
-  post: PropTypes.objectOf().isRequired,
+  post: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default MainPost;

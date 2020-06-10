@@ -1,0 +1,21 @@
+.header-board {
+  // background-color: #1C2237;
+  height: 100%;
+  padding: 0 14px;
+  background-color: #4B5A8A;
+  color: #1C2237;
+  box-shadow: 0 0 6px rgba(#000000, 0.16);
+
+  .header-board-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+
+  button {
+    width: 28px;
+    height: 28px;
+    background-color: transparent;
+  }
+}

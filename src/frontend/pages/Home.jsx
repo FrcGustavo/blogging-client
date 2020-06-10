@@ -7,11 +7,13 @@ import Header from '../components/Header';
 import MyProfile from '../components/mulecules/MyProfile';
 import MainPost from '../components/mulecules/MainPost';
 
+import PostModel from '../models/PostModel';
+
 import { loadHome } from '../actions';
 import config from '../config';
 
-const Home = ({ mainPost, loadPost }) => {
-  const [post, setPost] = useState(mainPost);
+const Home = ({ mainPost, profileImg, loadPost }) => {
+  const [post, setPost] = useState(!mainPost ? mainPost : new PostModel(mainPost));
 
   useEffect(() => {
     if (!post) {
@@ -32,7 +34,7 @@ const Home = ({ mainPost, loadPost }) => {
       <main className="home">
         <div className="wrapper">
           <section className="home-profile">
-            <MyProfile />
+            <MyProfile profileImg={profileImg} />
           </section>
         </div>
         <div className="wrapper">
@@ -48,12 +50,22 @@ const Home = ({ mainPost, loadPost }) => {
 Home.defaultProps = {};
 
 Home.propTypes = {
-  mainPost: PropTypes.objectOf().isRequired,
+  mainPost: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      cover: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
+    }),
+  ]).isRequired,
+  profileImg: PropTypes.string.isRequired,
   loadPost: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   mainPost: state.mainPost,
+  profileImg: state.profileImg,
 });
 
 const mapDispatchToProps = {

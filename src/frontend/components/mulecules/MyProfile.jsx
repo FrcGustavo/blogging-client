@@ -1,15 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import GithubIcon from '../icons/GithubIcon';
 import TwitterIcon from '../icons/TwitterIcon';
 import LinkedinIcon from '../icons/LinkedinIcon';
 
-import config from '../../config';
-
-const MyProfile = () => (
+const MyProfile = ({ profileImg }) => (
   <div className="my-profile">
     <div className="my-profile-img">
-      <img src={config.profileImg} alt="FrcGustavo" />
+      <img src={profileImg} alt="FrcGustavo" />
     </div>
     <div className="my-profile-info">
       <h1>Francisco Gustavo</h1>
@@ -32,5 +31,9 @@ const MyProfile = () => (
     </div>
   </div>
 );
+
+MyProfile.propTypes = {
+  profileImg: PropTypes.string.isRequired,
+};
 
 export default MyProfile;
