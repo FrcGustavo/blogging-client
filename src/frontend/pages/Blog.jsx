@@ -45,8 +45,15 @@ const Blog = ({ blog, load }) => {
   );
 };
 
+const Post = PropTypes.shape({
+  title: PropTypes.string.isRequired,
+  cover: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
+}).isRequired;
+
 Blog.propTypes = {
-  blog: PropTypes.objectOf().isRequired,
+  blog: PropTypes.arrayOf(Post).isRequired,
   load: PropTypes.func.isRequired,
 };
 

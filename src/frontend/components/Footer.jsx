@@ -36,7 +36,7 @@ const Footer = () => {
         <div className="posts">
           <h4>Blog</h4>
           {
-            !blog ? false : blog.map((p) => <p><Link to={p.slug}>{p.title}</Link></p>)
+            !blog ? false : blog.map((p) => <p key={p.slug}><Link to={p.slug}>{p.title}</Link></p>)
           }
         </div>
       </div>

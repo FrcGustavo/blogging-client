@@ -14,8 +14,15 @@ const ListOfPosts = ({ posts }) => (
   </div>
 );
 
+const Post = PropTypes.shape({
+  title: PropTypes.string.isRequired,
+  cover: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
+}).isRequired;
+
 ListOfPosts.propTypes = {
-  posts: PropTypes.objectOf().isRequired,
+  posts: PropTypes.arrayOf(Post).isRequired,
 };
 
 export default ListOfPosts;
