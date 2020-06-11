@@ -10,6 +10,8 @@ const routes = [
   { exact: true, path: '/blog', component: Blog },
   { exact: true, path: '/board', component: TempleteBoard },
   { exact: true, path: '/board/posts', component: TempleteBoard },
+  { exact: true, path: '/board/posts/new', component: TempleteBoard },
+  { exact: true, path: '/board/posts/edit/:slug', component: TempleteBoard },
   { exact: true, path: '/board/users', component: TempleteBoard },
   { exact: true, path: '/:slug', component: Post },
 ];

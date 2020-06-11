@@ -22,6 +22,8 @@ router.get('/blog', controller.blog);
 router.get('/components', controller.components);
 router.get('/board', controller.board);
 router.get('/board/posts', controller.board);
+router.get('/board/posts/new', controller.board);
+router.get('/board/posts/edit/:slug', controller.board);
 router.get('/board/users', controller.board);
 router.get('/:slug', controller.post);
 
