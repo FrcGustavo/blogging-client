@@ -26,6 +26,7 @@
     "@babel/preset-react": "^7.10.1",
     "@babel/register": "^7.10.1",
     "@babel/runtime": "^7.10.2",
+    "axios": "^0.19.2",
     "base-64": "^0.1.0",
     "debug": "^4.1.1",
     "dotenv": "^8.2.0",
