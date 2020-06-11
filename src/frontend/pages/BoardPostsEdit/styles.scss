@@ -1,0 +1,22 @@
+.board-posts-form {
+  .editor {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .input {
+      padding-right: 14px;
+      border-right: solid 1px #ddd;
+    }
+
+    .output {
+      padding-left: 14px;
+    }
+    
+    textarea {
+      width: 100%;
+      resize: none;
+      background-color: #ddd;
+    }
+  }
+  
+}
