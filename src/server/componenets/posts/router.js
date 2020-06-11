@@ -5,7 +5,7 @@ class PostsRouter {
     this.route = route;
     this.controller = controller;
     this.middlewares = middlewares;
-    
+
     this.loadRoutes = this.loadRoutes.bind(this);
   }
 
@@ -16,4 +16,4 @@ class PostsRouter {
   }
 }
 
-export default PostsRouter
+export default PostsRouter;

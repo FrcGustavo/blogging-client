@@ -9,7 +9,7 @@ class PostsController {
 
   async index(req, res) {
     try {
-      const posts = await axios.get(`${this.url}/posts`);      
+      const posts = await axios.get(`${this.url}/posts`);
       res.json({ ...posts.data.body });
     } catch (error) {
       res.json({ error });

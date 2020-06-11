@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import TemplateTable from '../../components/templates/TemplateTable';
 import Button from '../../components/atoms/Button';
 
 import config from '../../config';
@@ -16,13 +17,17 @@ const BoardPosts = () => {
         .then((res) => setPosts(res.data.posts));
     }
   });
-  console.log(posts);
 
   return (
     <div className="board-posts">
       <header className="board-posts-header">
         <Button to="/board/posts/new">Nuevo Post</Button>
       </header>
+      <section className="board-posts-table">
+        {
+          !posts ? <div>Cargando</div> : <TemplateTable posts={posts} />
+        }
+      </section>
     </div>
   );
 };
