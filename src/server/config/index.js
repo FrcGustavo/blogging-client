@@ -8,6 +8,7 @@ const config = {
     port: process.env.PORT || 3000,
     logPrefix: process.env.LOG_PREFIX || 'app',
     api: process.env.API,
+    domain: process.env.DOMAIN,
     profileImg: process.env.PROFILE_IMG,
   },
   db: {

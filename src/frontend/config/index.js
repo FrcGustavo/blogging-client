@@ -1,4 +1,5 @@
 const config = {
+  domain: '',
   api: '',
   profileImg: '',
 };

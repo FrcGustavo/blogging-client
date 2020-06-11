@@ -24,7 +24,7 @@ const setResponse = (html, state, manifest, metaTags) => {
         <script>
           window.__PRELOADED_STATE__ = ${JSON.stringify(state)/* .replace(/</g, '\\u003c') */}
           window.__PRELOADED_API__ = '${config.srv.api}'
-          window.__PROFILE_IMG__ = '${config.srv.profileImg}'
+          window.__DOMAIN__ = '${config.srv.domain}'
         </script>
         <script src="${mainBuild}"></script>
     </body>
