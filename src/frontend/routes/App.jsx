@@ -19,6 +19,8 @@ const App = () => (
       <Route exact path="/blog" component={Blog} />
       <ProtectedRoute exact path="/board" component={TempleteBoard} />
       <ProtectedRoute exact path="/board/posts" component={TempleteBoard} />
+      <ProtectedRoute exact path="/board/posts/new" component={TempleteBoard} />
+      <ProtectedRoute exact path="/board/posts/edit/:slug" component={TempleteBoard} />
       <ProtectedRoute exact path="/board/users" component={TempleteBoard} />
       <Route exact path="/components" component={Components} />
       <Route exact path="/:slug" component={Post} />
