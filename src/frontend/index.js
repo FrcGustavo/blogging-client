@@ -16,6 +16,7 @@ const preloadedState = window.__PRELOADED_STATE__ || {};
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducer, preloadedState, composeEnhancers());
 config.api = window.__PRELOADED_API__;
+config.domain = window.__DOMAIN__;
 
 ReactDOM.hydrate(
   <Provider store={store}>

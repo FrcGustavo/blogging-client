@@ -8,14 +8,23 @@ import loadConfigProd from './utils/loadConfigProd';
 import config from './config';
 import { info } from './utils/debug';
 
+import RouterPosts from './componenets/posts';
+
 const controller = new BlogController();
 const app = express();
 const router = express.Router();
+
+RouterPosts(app);
+
 router.get('/', controller.home);
 router.get('/login', controller.login);
 router.get('/blog', controller.blog);
 router.get('/components', controller.components);
 router.get('/board', controller.board);
+router.get('/board/posts', controller.board);
+router.get('/board/posts/new', controller.board);
+router.get('/board/posts/edit/:slug', controller.board);
+router.get('/board/users', controller.board);
 router.get('/:slug', controller.post);
 
 if (config.srv.nodeEnv === 'development') {

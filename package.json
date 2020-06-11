@@ -26,6 +26,7 @@
     "@babel/preset-react": "^7.10.1",
     "@babel/register": "^7.10.1",
     "@babel/runtime": "^7.10.2",
+    "axios": "^0.19.2",
     "base-64": "^0.1.0",
     "debug": "^4.1.1",
     "dotenv": "^8.2.0",
@@ -43,6 +44,7 @@
     "react-router": "^5.2.0",
     "react-router-config": "^5.1.1",
     "react-router-dom": "^5.2.0",
+    "react-table": "^7.2.0",
     "redux": "^4.0.5",
     "showdown": "^1.9.1",
     "webpack": "^4.43.0"

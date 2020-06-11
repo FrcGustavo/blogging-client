@@ -32,7 +32,9 @@ class BlogController {
     try {
       const posts = await this.service.find();
       const state = { ...initialState, blog: posts.length > 0 ? posts : false };
-      const html = renderApp(state, req.url, req.hashManifest, {});
+      const html = renderApp(state, req.url, req.hashManifest, {
+        title: 'Blog',
+      });
       res.send(html);
     } catch (error) {
       next(error);
@@ -44,7 +46,9 @@ class BlogController {
     try {
       const post = await this.service.show(slug);
       const state = { ...initialState, currentPost: post };
-      const html = renderApp(state, req.url, req.hashManifest, {});
+      const html = renderApp(state, req.url, req.hashManifest, {
+        title: post.title,
+      });
       res.send(html);
     } catch (error) {
       next(error);
