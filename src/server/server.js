@@ -8,9 +8,14 @@ import loadConfigProd from './utils/loadConfigProd';
 import config from './config';
 import { info } from './utils/debug';
 
+import RouterPosts from './componenets/posts';
+
 const controller = new BlogController();
 const app = express();
 const router = express.Router();
+
+RouterPosts(app);
+
 router.get('/', controller.home);
 router.get('/login', controller.login);
 router.get('/blog', controller.blog);
