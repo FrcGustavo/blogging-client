@@ -5,8 +5,9 @@ import './styles.scss';
 
 const NavbarBoard = () => (
   <nav className="navbar-board">
-    <Link to="board/posts">Publicaciones</Link>
-    <Link to="board/posts">Usuarios</Link>
+    <Link to="/board">Home</Link>
+    <Link to="/board/posts">Publicaciones</Link>
+    <Link to="/board/users">Usuarios</Link>
   </nav>
 );
 
