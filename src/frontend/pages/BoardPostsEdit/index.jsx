@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import showdown from 'showdown';
@@ -12,28 +13,33 @@ import './styles.scss';
 const converter = new showdown.Converter();
 
 const BoardPostsEdit = ({ match }) => {
-  console.log(match);
-
   const [post, setPost] = useState(false);
   const [preview, setPreview] = useState();
   useEffect(() => {
     if (!post) {
       axios.get(`${config.api}/posts/${match.params.slug}`)
-        .then((res) => setPost(new PostModel(res.data.body)));
+        .then((res) => {
+          setPost(new PostModel(res.data.body));
+          setPreview(converter.makeHtml(post.body));
+        });
     }
   });
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
 
   const handleChange = (e) => {
     post.body = e.target.value;
     setPreview(converter.makeHtml(post.body));
   };
 
-  console.log('POST', post);
   if (!post) return <div>Cargando...</div>;
   return (
     <div className="board-posts">
       <div className="board-posts-form">
-        <form action="">
+        <form onSubmit={handleSubmit}>
+          <input type="submit" value="Guardar" />
           <div className="input-form">
             <input type="text" placeholder="Titulo" value={post.title} />
           </div>

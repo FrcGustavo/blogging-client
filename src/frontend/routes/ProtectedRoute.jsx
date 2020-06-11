@@ -10,7 +10,7 @@ const ProtectedRoute = (
   <Route
     {...rest}
     render={(props) => {
-      if (!user) {
+      if (user) {
         return <Component {...props} />;
       }
       return (
@@ -32,26 +32,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, null)(ProtectedRoute);
-/*
-export const ProtectedRoute = (
-  { component: Component, ...rest },
-) => (
-  <Route
-    {...rest}
-    render={(props) => {
-      if (auth.isAuthenticated()) {
-        return <Component {...props} />;
-      }
-      return (
-        <Redirect
-          to={{
-            pathname: '/',
-            state: {
-              from: props.location,
-            },
-          }}
-        />
-      );
-    }}
-  />
-); */
