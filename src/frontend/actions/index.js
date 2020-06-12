@@ -32,9 +32,8 @@ export const loginUser = ({ email, password }, redirectUrl) => (dispatch) => {
   })
     .then(({ data }) => {
       document.cookie = `email=${data.user.email}`;
-      document.cookie = `name=${data.user.name}`;
+      document.cookie = `username=${data.user.username}`;
       document.cookie = `id=${data.user.id}`;
-      document.cookie = `token=${data.user.token}`;
       dispatch(login(data.user));
     })
     .then(() => {

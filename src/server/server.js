@@ -38,8 +38,8 @@ app.post('/auth/login', async (req, res, next) => {
         const { token, ...user } = data;
 
         res.cookie('token', token, {
-          httpOnly: !(config.nodeEnv === 'development'),
-          secure: !(config.nodeEnv === 'development'),
+          httpOnly: !(config.srv.nodeEnv === 'development'),
+          secure: !(config.srv.nodeEnv === 'development'),
         });
 
         res.status(200).json(user);

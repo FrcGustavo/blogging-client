@@ -19,20 +19,6 @@ const Login = ({ logIn }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     logIn(form, '/board');
-    /* const encode = base64.encode(`${form.email}:${form.password}`);
-
-    const headers = new Headers();
-    headers.set('Authorization', `Basic ${encode}`);
-
-    fetch(`${config.domain}/auth/login`, {
-      method: 'POST',
-      headers,
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        logIn(data, '/board');
-      })
-      .catch(() => {}); */
   };
 
   return (

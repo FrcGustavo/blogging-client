@@ -72,22 +72,32 @@ class BlogController {
 
   // eslint-disable-next-line class-methods-use-this
   async login(req, res, next) {
+    const {
+      token, email, username, id,
+    } = req.cookies;
+    if (email || username || id || token) return res.redirect('/board');
+
     try {
       const state = { ...initialState };
       const html = renderApp(state, req.url, req.hashManifest, {});
-      res.send(html);
+      return res.send(html);
     } catch (error) {
-      next(error);
+      return next(error);
     }
   }
 
   async board(req, res, next) {
+    const {
+      token, email, username, id,
+    } = req.cookies;
+    if (!email || !username || !id || !token) return res.redirect('/login');
+
     try {
-      const state = { ...initialState };
+      const state = { ...initialState, user: { email, username, id } };
       const html = renderApp(state, req.url, req.hashManifest, {});
-      res.send(html);
+      return res.send(html);
     } catch (error) {
-      next(error);
+      return next(error);
     }
   }
 }
