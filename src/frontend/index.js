@@ -4,8 +4,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router } from 'react-router';
 import { Provider } from 'react-redux';
-import { createStore, compose } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 import { createBrowserHistory } from 'history';
+import thunk from 'redux-thunk';
 import config from './config';
 
 import reducer from './reducers/index';
@@ -14,7 +15,7 @@ import App from './routes/App';
 const history = createBrowserHistory();
 const preloadedState = window.__PRELOADED_STATE__ || {};
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducer, preloadedState, composeEnhancers());
+const store = createStore(reducer, preloadedState, composeEnhancers(applyMiddleware(thunk)));
 config.api = window.__PRELOADED_API__;
 config.domain = window.__DOMAIN__;
 

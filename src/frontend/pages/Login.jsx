@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import base64 from 'base-64';
+// import base64 from 'base-64';
 
-import { login } from '../actions/index';
-import config from '../config';
+import { loginUser } from '../actions/index';
+// import config from '../config';
 
-const Login = ({ logIn, history }) => {
+const Login = ({ logIn }) => {
   const [form, setForm] = useState({});
 
   const handleInput = (event) => {
@@ -18,21 +18,7 @@ const Login = ({ logIn, history }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const encode = base64.encode(`${form.email}:${form.password}`);
-
-    const headers = new Headers();
-    headers.set('Authorization', `Basic ${encode}`);
-
-    fetch(`${config.api}/auth/login`, {
-      method: 'POST',
-      headers,
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        logIn(data);
-        history.push('/board');
-      })
-      .catch(() => {});
+    logIn(form, '/board');
   };
 
   return (
@@ -63,7 +49,7 @@ Login.propTypes = {
 };
 
 const mapDispatchToProps = {
-  logIn: login,
+  logIn: loginUser,
 };
 
 export default connect(null, mapDispatchToProps)(Login);

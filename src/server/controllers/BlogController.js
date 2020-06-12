@@ -34,6 +34,8 @@ class BlogController {
       const state = { ...initialState, blog: posts.length > 0 ? posts : false };
       const html = renderApp(state, req.url, req.hashManifest, {
         title: 'Blog',
+        description: '',
+        keywords: '',
       });
       res.send(html);
     } catch (error) {
@@ -48,6 +50,8 @@ class BlogController {
       const state = { ...initialState, currentPost: post };
       const html = renderApp(state, req.url, req.hashManifest, {
         title: post.title,
+        description: post.description,
+        keywords: post.keywords,
       });
       res.send(html);
     } catch (error) {
@@ -68,22 +72,32 @@ class BlogController {
 
   // eslint-disable-next-line class-methods-use-this
   async login(req, res, next) {
+    const {
+      token, email, username, id,
+    } = req.cookies;
+    if (email || username || id || token) return res.redirect('/board');
+
     try {
       const state = { ...initialState };
       const html = renderApp(state, req.url, req.hashManifest, {});
-      res.send(html);
+      return res.send(html);
     } catch (error) {
-      next(error);
+      return next(error);
     }
   }
 
   async board(req, res, next) {
+    const {
+      token, email, username, id,
+    } = req.cookies;
+    if (!email || !username || !id || !token) return res.redirect('/login');
+
     try {
-      const state = { ...initialState };
+      const state = { ...initialState, user: { email, username, id } };
       const html = renderApp(state, req.url, req.hashManifest, {});
-      res.send(html);
+      return res.send(html);
     } catch (error) {
-      next(error);
+      return next(error);
     }
   }
 }
