@@ -12,6 +12,8 @@ import { info } from './utils/debug';
 
 import RouterPosts from './componenets/posts';
 
+import './utils/auth/strategies/basic';
+
 const controller = new BlogController();
 const app = express();
 const router = express.Router();
@@ -19,28 +21,25 @@ const router = express.Router();
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
-
-import './utils/auth/strategies/basic';
 RouterPosts(app);
 
-app.post("/auth/login", async function (req, res, next) {
-  passport.authenticate("basic", function (error, data) {
+app.post('/auth/login', async (req, res, next) => {
+  passport.authenticate('basic', (error, data) => {
     try {
       if (error || !data) {
         next(error);
       }
 
-      req.login(data, { session: false }, async function (err) {
+      req.login(data, { session: false }, async (err) => {
         if (err) {
           next(err);
         }
-        console.log(data);
-        
+
         const { token, ...user } = data;
 
-        res.cookie("token", token, {
+        res.cookie('token', token, {
           httpOnly: !(config.nodeEnv === 'development'),
-          secure: !(config.nodeEnv === 'development')
+          secure: !(config.nodeEnv === 'development'),
         });
 
         res.status(200).json(user);
