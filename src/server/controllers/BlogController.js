@@ -34,6 +34,8 @@ class BlogController {
       const state = { ...initialState, blog: posts.length > 0 ? posts : false };
       const html = renderApp(state, req.url, req.hashManifest, {
         title: 'Blog',
+        description: '',
+        keywords: '',
       });
       res.send(html);
     } catch (error) {
@@ -48,6 +50,8 @@ class BlogController {
       const state = { ...initialState, currentPost: post };
       const html = renderApp(state, req.url, req.hashManifest, {
         title: post.title,
+        description: post.description,
+        keywords: post.keywords,
       });
       res.send(html);
     } catch (error) {
