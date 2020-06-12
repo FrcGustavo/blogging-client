@@ -1,6 +1,8 @@
 import express from 'express';
 import logger from 'morgan';
 import path from 'path';
+import passport from 'passport';
+import cookieParser from 'cookie-parser';
 
 import BlogController from './controllers/BlogController';
 import loadConfigDev from './utils/loadConfigDev';
@@ -14,7 +16,40 @@ const controller = new BlogController();
 const app = express();
 const router = express.Router();
 
+app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
+
+import './utils/auth/strategies/basic';
 RouterPosts(app);
+
+app.post("/auth/login", async function (req, res, next) {
+  passport.authenticate("basic", function (error, data) {
+    try {
+      if (error || !data) {
+        next(error);
+      }
+
+      req.login(data, { session: false }, async function (err) {
+        if (err) {
+          next(err);
+        }
+        console.log(data);
+        
+        const { token, ...user } = data;
+
+        res.cookie("token", token, {
+          httpOnly: !(config.nodeEnv === 'development'),
+          secure: !(config.nodeEnv === 'development')
+        });
+
+        res.status(200).json(user);
+      });
+    } catch (err) {
+      next(err);
+    }
+  })(req, res, next);
+});
 
 router.get('/', controller.home);
 router.get('/login', controller.login);

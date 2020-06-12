@@ -23,7 +23,7 @@ const Login = ({ logIn, history }) => {
     const headers = new Headers();
     headers.set('Authorization', `Basic ${encode}`);
 
-    fetch(`${config.api}/auth/login`, {
+    fetch(`${config.domain}/auth/login`, {
       method: 'POST',
       headers,
     })
