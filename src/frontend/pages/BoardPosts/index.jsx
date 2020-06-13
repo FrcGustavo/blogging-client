@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import TemplateTable from '../../components/templates/TemplateTable';
 import Button from '../../components/atoms/Button';
+import LoadingRing from '../../components/atoms/LoadingRing';
 
 import config from '../../config';
 
@@ -25,7 +26,7 @@ const BoardPosts = () => {
       </header>
       <section className="board-posts-table">
         {
-          !posts ? <div>Cargando</div> : <TemplateTable posts={posts} />
+          !posts ? <LoadingRing /> : <TemplateTable posts={posts} />
         }
       </section>
     </div>
