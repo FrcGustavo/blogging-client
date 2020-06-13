@@ -6,7 +6,7 @@
   "scripts": {
     "start": "DEBUG=app:* node src/server/index",
     "build": "webpack-cli --config webpack.config.js",
-    "start:dev": "DEBUG=app:* nodemon src/server/index",
+    "dev": "DEBUG=app:* nodemon src/server/index",
     "lint": "eslint --ext .jsx --ext .js ./"
   },
   "repository": {
