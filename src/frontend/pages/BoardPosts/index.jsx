@@ -39,11 +39,9 @@ const BoardPosts = () => {
   ];
 
   useEffect(() => {
-    if (!posts) {
-      axios.get(`${config.domain}/api/posts`)
-        .then((res) => setPosts(res.data.posts));
-    }
-  });
+    axios.get(`${config.domain}/api/posts`)
+      .then((res) => setPosts(res.data.posts));
+  }, []);
 
   return (
     <WrapperBoard>
