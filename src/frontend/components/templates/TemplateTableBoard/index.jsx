@@ -42,31 +42,3 @@ export default TemplateTable;
 const TableHead = () => {
 
 };
-
-const TableBody = ({ getTableBodyProps, rows }) => {
-  <tbody {...getTableBodyProps()}>
-    <Tr rows />
-  </tbody>
-};
-
-const Tr = ({ rows }) => {
-  const renderCells = (row) => {
-    row.cells.map((cell) => (
-        <td {...cell.getCellProps()}>
-          {cell.render('Cell')}
-        </td>
-      )
-    );
-  };
-
-  const renderRows = () => {
-    return rows.map((row) => {
-      prepareRow(row);
-      <tr {...row.getRowProps()}>
-        {renderCells(row)}
-      </tr>
-    });
-  };
-
-  return renderRows();
-}
