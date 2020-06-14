@@ -1,5 +1,6 @@
 import React from 'react';
 
+import TemplateTableBoard from '../../components/templates/TemplateTableBoard';
 import HeaderOfWrapperBoard from '../../components/mulecules/HeaderOfWrapperBoard';
 import { Conatiner } from './styles';
 
@@ -9,7 +10,7 @@ const BoardUsers = () => (
       label="Nuevo Usuario"
       url="/board/users/new"
     />
-    <h1>Usuarios</h1>
+    <TemplateTableBoard data={[]} columns={[]} />
   </Conatiner>
 );
 
