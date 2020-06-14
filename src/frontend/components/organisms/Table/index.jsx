@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import THead from '../../mulecules/THead';
 import TBody from '../../mulecules/TBody';
 
+import { STable } from './styles';
+
 const Table = ({
   getTableProps,
   getTableBodyProps,
@@ -11,7 +13,7 @@ const Table = ({
   rows,
   prepareRow,
 }) => (
-  <table {...getTableProps()}>
+  <STable {...getTableProps()}>
     <THead
       headerGroups={headerGroups}
     />
@@ -20,7 +22,7 @@ const Table = ({
       rows={rows}
       prepareRow={prepareRow}
     />
-  </table>
+  </STable>
 );
 
 Table.propTypes = {

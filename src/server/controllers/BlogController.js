@@ -93,7 +93,12 @@ class BlogController {
     if (!email || !username || !id || !token) return res.redirect('/login');
 
     try {
-      const state = { ...initialState, user: { email, username, id } };
+      const state = {
+        ...initialState,
+        user: {
+          email, username, id, token,
+        },
+      };
       const html = renderApp(state, req.url, req.hashManifest, {});
       return res.send(html);
     } catch (error) {

@@ -1,19 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { STr, Td } from './styles';
+
 const Tr = ({ rows, prepareRow }) => {
   const renderCells = (row) => row.cells.map((cell) => (
-    <td {...cell.getCellProps()}>
+    <Td {...cell.getCellProps()}>
       {cell.render('Cell')}
-    </td>
+    </Td>
   ));
 
   const renderRows = () => rows.map((row) => {
     prepareRow(row);
     return (
-      <tr {...row.getRowProps()}>
+      <STr {...row.getRowProps()}>
         {renderCells(row)}
-      </tr>
+      </STr>
     );
   });
 

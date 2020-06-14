@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 import WrapperBoard from '../../components/mulecules/WrapperBoard';
 import HeaderOfWrapperBoard from '../../components/mulecules/HeaderOfWrapperBoard';
 import TemplateTableBoard from '../../components/templates/TemplateTableBoard';
 import LoadingRing from '../../components/atoms/LoadingRing';
-import Button from '../../components/atoms/Button';
+// import Button from '../../components/atoms/Button';
+
+import IconDelete from '../../components/atoms/IconDelete';
+import IconEdit from '../../components/atoms/IconEdit';
 
 import config from '../../config';
 
 import './styles.scss';
 
-const BoardPosts = () => {
+const BoardPosts = ({ token }) => {
   const [posts, setPosts] = useState(false);
   const columns = [
     {
@@ -34,13 +39,21 @@ const BoardPosts = () => {
     {
       Header: 'aa',
       accessor: 'slug',
-      Cell: (cell) => <Button to={`/board/posts/edit/${cell.value}`}>Editar</Button>,
+      Cell: () => (<>
+        <IconDelete />
+        <IconEdit />
+      </>),
     },
   ];
 
   useEffect(() => {
-    axios.get(`${config.domain}/api/posts`)
-      .then((res) => setPosts(res.data.posts));
+    axios({
+      url: `${config.api}/posts/author`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => setPosts(res.data.body.posts));
   }, []);
 
   return (
@@ -50,10 +63,18 @@ const BoardPosts = () => {
         url="/board/posts/new"
       />
       {
-        !posts ? <LoadingRing /> : <TemplateTableBoard data={posts} columns={columns} />
+        !posts ? <LoadingRing /> : <div className="scroll"><TemplateTableBoard data={posts} columns={columns} /></div>
       }
     </WrapperBoard>
   );
 };
 
-export default BoardPosts;
+BoardPosts.propTypes = {
+  token: PropTypes.string.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  token: state.user.token,
+});
+
+export default connect(mapStateToProps, null)(BoardPosts);
