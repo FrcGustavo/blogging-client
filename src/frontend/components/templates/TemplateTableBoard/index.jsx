@@ -2,12 +2,12 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useTable } from 'react-table';
 
-const useFunctionMemo = (object) => {
-  return useMemo(
-    () => object,
-    [],
-  );
-};
+import Table from '../../organisms/Table';
+
+const useFunctionMemo = (object) => useMemo(
+  () => object,
+  [],
+);
 
 const TemplateTableBoard = ({ data, columns }) => {
   const tableData = useFunctionMemo(data);
@@ -22,7 +22,7 @@ const TemplateTableBoard = ({ data, columns }) => {
   } = useTable({ tableColumns, tableData });
 
   return (
-    <Table 
+    <Table
       getTableProps
       getTableBodyProps
       headerGroups

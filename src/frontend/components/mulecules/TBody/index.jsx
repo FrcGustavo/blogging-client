@@ -2,13 +2,17 @@ import React from 'react';
 
 import Tr from '../../atoms/Tr';
 
-const TBody = ({ getTableBodyProps, rows, prepareRow }) => {
+const TBody = ({
+  getTableBodyProps,
+  rows,
+  prepareRow,
+}) => {
   <tbody {...getTableBodyProps()}>
-    <Tr 
+    <Tr
       rows
       prepareRow
     />
-  </tbody>
+  </tbody>;
 };
 
 export default TBody;
