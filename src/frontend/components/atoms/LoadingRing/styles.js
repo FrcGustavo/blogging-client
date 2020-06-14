@@ -14,6 +14,7 @@ export const Ring = styled.div`
   position: relative;
   width: 80px;
   height: 80px;
+  margin: auto;
 
   & div {
     box-sizing: border-box;

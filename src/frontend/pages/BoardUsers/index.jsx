@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import TemplateTableBoard from '../../components/templates/TemplateTableBoard';
+import WrapperBoard from '../../components/mulecules/WrapperBoard';
 import HeaderOfWrapperBoard from '../../components/mulecules/HeaderOfWrapperBoard';
-import { Conatiner } from './styles';
+import TemplateTableBoard from '../../components/templates/TemplateTableBoard';
+import LoadingRing from '../../components/atoms/LoadingRing';
 
 const BoardUsers = () => {
+  const [users] = useState(false);
   const data = [
     {
       name: 'Hola',
@@ -22,13 +24,15 @@ const BoardUsers = () => {
   ];
 
   return (
-    <Conatiner>
+    <WrapperBoard>
       <HeaderOfWrapperBoard
         label="Nuevo Usuario"
         url="/board/users/new"
       />
-      <TemplateTableBoard data={data} columns={columns} />
-    </Conatiner>
+      {
+        !users ? <LoadingRing /> : <TemplateTableBoard data={data} columns={columns} />
+      }
+    </WrapperBoard>
   );
 };
 
