@@ -23,11 +23,11 @@ const TemplateTableBoard = ({ data, columns }) => {
 
   return (
     <Table
-      getTableProps
-      getTableBodyProps
-      headerGroups
-      rows
-      prepareRow
+      getTableProps={getTableProps}
+      getTableBodyProps={getTableBodyProps}
+      headerGroups={headerGroups}
+      rows={rows}
+      prepareRow={prepareRow}
     />
   );
 };
@@ -37,8 +37,4 @@ TemplateTableBoard.propTypes = {
   columns: PropTypes.objectOf().isRequired,
 };
 
-export default TemplateTable;
-
-const TableHead = () => {
-
-};
+export default TemplateTableBoard;

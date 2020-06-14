@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
+import THead from '../../mulecules/THead';
 import TBody from '../../mulecules/TBody';
 
 const Table = ({
@@ -11,14 +13,22 @@ const Table = ({
 }) => (
   <table {...getTableProps()}>
     <THead
-      headerGroups
+      headerGroups={headerGroups}
     />
     <TBody
-      getTableBodyProps
-      rows
-      prepareRow
+      getTableBodyProps={getTableBodyProps}
+      rows={rows}
+      prepareRow={prepareRow}
     />
   </table>
 );
+
+Table.propTypes = {
+  getTableProps: PropTypes.objectOf().isRequired,
+  getTableBodyProps: PropTypes.objectOf().isRequired,
+  headerGroups: PropTypes.objectOf().isRequired,
+  rows: PropTypes.objectOf().isRequired,
+  prepareRow: PropTypes.objectOf().isRequired,
+};
 
 export default Table;

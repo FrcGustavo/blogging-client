@@ -10,9 +10,11 @@ const Tr = ({ rows, prepareRow }) => {
 
   const renderRows = () => rows.map((row) => {
     prepareRow(row);
+    return (
       <tr {...row.getRowProps()}>
         {renderCells(row)}
-      </tr>;
+      </tr>
+    );
   });
 
   return renderRows();
