@@ -21,8 +21,9 @@ const Tr = ({ rows, prepareRow }) => {
 };
 
 Tr.propTypes = {
-  rows: PropTypes.objectOf().isRequired,
-  prepareRow: PropTypes.objectOf().isRequired,
+  /* eslint-disable react/forbid-prop-types */
+  rows: PropTypes.any.isRequired,
+  prepareRow: PropTypes.func.isRequired,
 };
 
 export default Tr;

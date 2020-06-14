@@ -19,7 +19,7 @@ const TemplateTableBoard = ({ data, columns }) => {
     headerGroups,
     rows,
     prepareRow,
-  } = useTable({ tableColumns, tableData });
+  } = useTable({ columns: tableColumns, data: tableData });
 
   return (
     <Table

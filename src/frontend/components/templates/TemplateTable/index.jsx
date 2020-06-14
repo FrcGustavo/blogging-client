@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTable } from 'react-table';
 
+import Table from '../../organisms/Table';
 import Button from '../../atoms/Button';
 
 const TemplateTable = ({ posts }) => {
@@ -47,27 +48,13 @@ const TemplateTable = ({ posts }) => {
     prepareRow,
   } = useTable({ columns, data });
   return (
-    <table {...getTableProps()}>
-      <thead>
-        {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row) => {
-          prepareRow(row);
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => <td {...cell.getCellProps()}>{cell.render('Cell')}</td>)}
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+    <Table
+      getTableProps={getTableProps}
+      getTableBodyProps={getTableBodyProps}
+      headerGroups={headerGroups}
+      rows={rows}
+      prepareRow={prepareRow}
+    />
   );
 };
 
