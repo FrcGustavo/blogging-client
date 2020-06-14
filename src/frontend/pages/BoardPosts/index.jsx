@@ -8,15 +8,13 @@ import HeaderOfWrapperBoard from '../../components/mulecules/HeaderOfWrapperBoar
 import TemplateTableBoard from '../../components/templates/TemplateTableBoard';
 import LoadingRing from '../../components/atoms/LoadingRing';
 // import Button from '../../components/atoms/Button';
-
-import IconDelete from '../../components/atoms/IconDelete';
-import IconEdit from '../../components/atoms/IconEdit';
+import TableActions from '../../components/mulecules/TableActions';
 
 import config from '../../config';
 
 import './styles.scss';
 
-const BoardPosts = ({ token }) => {
+const BoardPosts = ({ token, history }) => {
   const [posts, setPosts] = useState(false);
   const columns = [
     {
@@ -37,12 +35,9 @@ const BoardPosts = ({ token }) => {
       Cell: ({ value }) => (value ? 'Publicado' : 'Borrador'),
     },
     {
-      Header: 'aa',
+      Header: '',
       accessor: 'slug',
-      Cell: () => (<>
-        <IconDelete />
-        <IconEdit />
-      </>),
+      Cell: (cell) => (<TableActions handleEdit={() => history.push(`/board/posts/edit/${cell.value}`)} handleDelete={() => {}} />),
     },
   ];
 
@@ -71,6 +66,9 @@ const BoardPosts = ({ token }) => {
 
 BoardPosts.propTypes = {
   token: PropTypes.string.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
 };
 
 const mapStateToProps = (state) => ({
