@@ -1,73 +1,124 @@
 /* eslint-disable react/no-danger */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import showdown from 'showdown';
-import axios from 'axios';
+import { connect } from 'react-redux';
 
-import PostModel from '../../models/PostModel';
-
-import config from '../../config';
+import WrapperBoard from '../../components/mulecules/WrapperBoard';
 
 import './styles.scss';
 
 const converter = new showdown.Converter();
 
-const BoardPostsEdit = ({ match }) => {
-  const [post, setPost] = useState(false);
-  const [preview, setPreview] = useState();
-  useEffect(() => {
-    if (!post) {
-      axios.get(`${config.api}/posts/${match.params.slug}`)
-        .then((res) => {
-          setPost(new PostModel(res.data.body));
-          setPreview(converter.makeHtml(post.body));
-        });
-    }
-  });
+const InputForm = ({
+  label, type, id, name, placeholder, value, onChange,
+}) => (
+  <div className="input-form">
+    <label htmlFor={id}>
+      {label}
+      <input
+        type={type}
+        id={id}
+        name={name}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+      />
+    </label>
+  </div>
+);
+
+InputForm.propTypes = {
+  label: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
+
+const BoardPostsEdit = ({ editPost }) => {
+  const [post, setPost] = useState(editPost);
+  const [preview, setPreview] = useState(converter.makeHtml(post.body));
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(post);
   };
 
   const handleChange = (e) => {
-    post.body = e.target.value;
-    setPreview(converter.makeHtml(post.body));
+    setPost({
+      ...post,
+      [e.target.name]: e.target.value,
+    });
+    if (e.target.name === 'body') {
+      setPreview(converter.makeHtml(post.body));
+    }
   };
 
   if (!post) return <div>Cargando...</div>;
   return (
-    <div className="board-posts">
-      <div className="board-posts-form">
-        <form onSubmit={handleSubmit}>
+    <WrapperBoard display="block">
+      <form onSubmit={handleSubmit}>
+        <header className="edit-post">
           <input type="submit" value="Guardar" />
-          <div className="input-form">
-            <input type="text" placeholder="Titulo" value={post.title} />
+          <InputForm
+            label="Titulo*"
+            type="text"
+            id="title"
+            name="title"
+            placeholder="Escribe un titulo"
+            value={post.title}
+            onChange={handleChange}
+          />
+          <InputForm
+            label="Url*"
+            type="text"
+            id="slug"
+            name="slug"
+            placeholder="Escribe una url personalizada"
+            value={post.slug}
+            onChange={handleChange}
+          />
+          <InputForm
+            label="Descripción*"
+            type="text"
+            id="description"
+            name="description"
+            placeholder="Escribe una description"
+            value={post.description}
+            onChange={handleChange}
+          />
+          <InputForm
+            label="Keywords*"
+            type="text"
+            id="keywords"
+            name="keywords"
+            placeholder="Escribe un las palabras clave"
+            value={post.keywords}
+            onChange={handleChange}
+          />
+        </header>
+        <section className="editor">
+          <div className="input">
+            <textarea name="body" onChange={handleChange}>
+              {post.body}
+            </textarea>
           </div>
-          <div className="input-form">
-            <input type="text" placeholder="Slug" value={post.slug} />
-          </div>
-          <div className="input-form">
-            <input type="text" placeholder="Description" value={post.description} />
-          </div>
-          <div className="input-form">
-            <input type="text" placeholder="KeyWords" value={post.keywords} />
-          </div>
-          <div className="editor">
-            <div className="input">
-              <textarea name="body" onChange={handleChange}>
-                {post.body}
-              </textarea>
-            </div>
-            <div className="output post-content" dangerouslySetInnerHTML={{ __html: preview }} />
-          </div>
-        </form>
-      </div>
-    </div>
+          <div className="output post-content" dangerouslySetInnerHTML={{ __html: preview }} />
+        </section>
+      </form>
+    </WrapperBoard>
   );
 };
 
 BoardPostsEdit.propTypes = {
-  match: PropTypes.objectOf().isRequired,
+  editPost: PropTypes.objectOf(PropTypes.string).isRequired,
 };
 
-export default BoardPostsEdit;
+const mapStateToProps = (state) => ({
+  editPost: state.editPost,
+});
+
+export default connect(mapStateToProps, null)(BoardPostsEdit);

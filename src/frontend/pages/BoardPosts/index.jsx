@@ -7,28 +7,32 @@ import WrapperBoard from '../../components/mulecules/WrapperBoard';
 import HeaderOfWrapperBoard from '../../components/mulecules/HeaderOfWrapperBoard';
 import TemplateTableBoard from '../../components/templates/TemplateTableBoard';
 import LoadingRing from '../../components/atoms/LoadingRing';
-// import Button from '../../components/atoms/Button';
 import TableActions from '../../components/mulecules/TableActions';
+
+import { loadEditPost } from '../../actions';
 
 import config from '../../config';
 
 import './styles.scss';
 
-const BoardPosts = ({ token, history }) => {
+const BoardPosts = ({ token, history, loadPost }) => {
   const [posts, setPosts] = useState(false);
+
+  const handleEdit = (slug) => {
+    console.log(slug);
+    console.log(posts);
+    const post = posts.filter((current) => current.slug === slug && slug)[0];
+    console.log(post);
+
+    loadPost(post);
+    history.push(`/board/posts/edit/${slug}`);
+  };
+  const handleDelete = () => {};
+
   const columns = [
-    {
-      Header: 'Titulo',
-      accessor: 'title',
-    },
-    {
-      Header: 'Me gusta',
-      accessor: 'likes',
-    },
-    {
-      Header: 'Compartido',
-      accessor: 'timeShared',
-    },
+    { Header: 'Titulo', accessor: 'title' },
+    { Header: 'Me gusta', accessor: 'likes' },
+    { Header: 'Compartido', accessor: 'timeShared' },
     {
       Header: 'Estado',
       accessor: 'isPublic',
@@ -37,7 +41,12 @@ const BoardPosts = ({ token, history }) => {
     {
       Header: '',
       accessor: 'slug',
-      Cell: (cell) => (<TableActions handleEdit={() => history.push(`/board/posts/edit/${cell.value}`)} handleDelete={() => {}} />),
+      Cell: (cell) => (
+        <TableActions
+          handleEdit={() => handleEdit(cell.value)}
+          handleDelete={handleDelete}
+        />
+      ),
     },
   ];
 
@@ -69,10 +78,15 @@ BoardPosts.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }).isRequired,
+  loadPost: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   token: state.user.token,
 });
 
-export default connect(mapStateToProps, null)(BoardPosts);
+const mapDispatchToProps = {
+  loadPost: loadEditPost,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BoardPosts);

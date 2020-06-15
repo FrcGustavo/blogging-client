@@ -20,6 +20,11 @@ const reducer = (state, action) => {
         ...state,
         user: action.payload,
       };
+    case 'LOAD_EDIT_POST':
+      return {
+        ...state,
+        editPost: action.payload,
+      };
     default: return state;
   }
 };
