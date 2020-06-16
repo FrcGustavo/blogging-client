@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  display: ${(props) => (props.display ? 'block' : 'grid')};
+  display: ${(props) => (props.display === 'block' ? 'block' : 'grid')};
   grid-template-rows: 45px 1fr;
   gap: 28px;
   width: 100%;

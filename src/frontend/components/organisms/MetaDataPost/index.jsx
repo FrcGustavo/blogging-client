@@ -7,7 +7,7 @@ import { Header } from './styles';
 
 const MetaDataPost = ({ post, handleChange }) => (
   <Header>
-    <PostFormActions />
+    <PostFormActions handleChange={handleChange} />
     <InputForm
       label="Titulo*"
       type="text"

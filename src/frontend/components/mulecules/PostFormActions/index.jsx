@@ -1,13 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Wrapper, Input, Label } from './styles';
 
-const PostFormActions = () => (
+const PostFormActions = ({ handleChange }) => (
   <Wrapper>
     <div>
       <Label htmlFor="cover">
         Cargar imagen
-        <input type="file" name="cover" id="cover" />
+        <input type="file" name="cover" id="cover" onChange={handleChange} />
       </Label>
     </div>
     <div>
@@ -16,5 +17,9 @@ const PostFormActions = () => (
     </div>
   </Wrapper>
 );
+
+PostFormActions.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+};
 
 export default PostFormActions;
