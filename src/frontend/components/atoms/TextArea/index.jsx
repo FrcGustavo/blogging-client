@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Textarea, InputText } from './styles';
+
 const TextArea = ({ name, value, handleChange }) => (
-  <div>
-    <textarea
+  <InputText>
+    <Textarea
       name={name}
       defaultValue={value}
       onChange={handleChange}
     />
-  </div>
+  </InputText>
 );
 
 TextArea.propTypes = {

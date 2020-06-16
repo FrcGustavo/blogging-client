@@ -3,15 +3,17 @@ import PropTypes from 'prop-types';
 
 import TextArea from '../../atoms/TextArea';
 
+import { EditorWrapper, OutputText } from './styles';
+
 const Editor = ({ body, preview, handleChange }) => (
-  <section>
+  <EditorWrapper>
     <TextArea
       name="body"
       value={body}
       handleChange={handleChange}
     />
-    <div className="output post-content" dangerouslySetInnerHTML={{ __html: preview }} />
-  </section>
+    <OutputText className="output post-content" dangerouslySetInnerHTML={{ __html: preview }} />
+  </EditorWrapper>
 );
 
 Editor.propTypes = {
