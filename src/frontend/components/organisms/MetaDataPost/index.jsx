@@ -2,10 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import InputForm from '../../mulecules/InputForm';
+import PostFormActions from '../../mulecules/PostFormActions';
 import { Header } from './styles';
 
 const MetaDataPost = ({ post, handleChange }) => (
   <Header>
+    <PostFormActions />
     <InputForm
       label="Titulo*"
       type="text"
