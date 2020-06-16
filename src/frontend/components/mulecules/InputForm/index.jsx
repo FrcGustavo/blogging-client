@@ -5,10 +5,12 @@ import Input from '../../atoms/Input';
 
 import InputFormPropTypes from '../../../props/InputFormPropTypes';
 
+import { Inputform } from './styles';
+
 const InputForm = ({
   label, type, id, name, placeholder, value, onChange,
 }) => (
-  <div>
+  <Inputform>
     <Label id={id} label={label}>
       <Input
         type={type}
@@ -19,7 +21,7 @@ const InputForm = ({
         onChange={onChange}
       />
     </Label>
-  </div>
+  </Inputform>
 );
 
 InputForm.propTypes = InputFormPropTypes;

@@ -19,10 +19,7 @@ const BoardPosts = ({ token, history, loadPost }) => {
   const [posts, setPosts] = useState(false);
 
   const handleEdit = (slug) => {
-    console.log(slug);
-    console.log(posts);
     const post = posts.filter((current) => current.slug === slug && slug)[0];
-    console.log(post);
 
     loadPost(post);
     history.push(`/board/posts/edit/${slug}`);

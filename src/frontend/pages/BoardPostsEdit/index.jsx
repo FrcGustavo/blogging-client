@@ -10,42 +10,13 @@ import InputForm from '../../components/mulecules/InputForm';
 import './styles.scss';
 
 const converter = new showdown.Converter();
-/*
-const InputForm = ({
-  label, type, id, name, placeholder, value, onChange,
-}) => (
-  <div className="input-form">
-    <label htmlFor={id}>
-      {label}
-      <input
-        type={type}
-        id={id}
-        name={name}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-      />
-    </label>
-  </div>
-);
 
-InputForm.propTypes = {
-  label: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
-*/
 const BoardPostsEdit = ({ editPost }) => {
   const [post, setPost] = useState(editPost);
   const [preview, setPreview] = useState(converter.makeHtml(post.body));
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(post);
   };
 
   const handleChange = (e) => {
