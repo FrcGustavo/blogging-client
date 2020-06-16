@@ -1,10 +1,10 @@
 import React from 'react';
 
-import InputPropTypes from '../../../props/InputPropTypes'
+import InputPropTypes from '../../../props/InputPropTypes';
 
 const Input = ({
-    type, ide, name, placeholder, value, onChange,
-  }) = (
+  type, id, name, placeholder, value, onChange,
+}) => (
   <input
     type={type}
     id={id}

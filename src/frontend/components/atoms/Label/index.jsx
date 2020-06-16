@@ -1,12 +1,12 @@
 import React from 'react';
 
-import LabelPropTypes from '../../../props/LabelPropTypes'
+import LabelPropTypes from '../../../props/LabelPropTypes';
 
 const Label = ({
-    id, label, children
-  }) = (
+  id, label, children,
+}) => (
   <label htmlFor={id}>
-    {lable}
+    {label}
     {children}
   </label>
 );

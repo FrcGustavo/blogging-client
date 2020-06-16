@@ -5,11 +5,12 @@ import showdown from 'showdown';
 import { connect } from 'react-redux';
 
 import WrapperBoard from '../../components/mulecules/WrapperBoard';
+import InputForm from '../../components/mulecules/InputForm';
 
 import './styles.scss';
 
 const converter = new showdown.Converter();
-
+/*
 const InputForm = ({
   label, type, id, name, placeholder, value, onChange,
 }) => (
@@ -37,7 +38,7 @@ InputForm.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };
-
+*/
 const BoardPostsEdit = ({ editPost }) => {
   const [post, setPost] = useState(editPost);
   const [preview, setPreview] = useState(converter.makeHtml(post.body));

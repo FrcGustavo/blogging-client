@@ -39,11 +39,11 @@ module.exports = {
           enforce: true,
           test(module, chunks) {
             const name = module.nameForCondition && module.nameForCondition();
-            return chunks.some(chunk => chunk.name !== 'vendors' && /[\\/]node_modules[\\/]/.test(name));
+            return chunks.some((chunk) => chunk.name !== 'vendors' && /[\\/]node_modules[\\/]/.test(name));
           },
-        }
-      }
-    }
+        },
+      },
+    },
   },
   module: {
     rules: [{
