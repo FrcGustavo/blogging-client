@@ -14,7 +14,7 @@ const Footer = () => {
         .then((res) => res.json())
         .then((data) => setBlog(data.body.posts));
     }
-  });
+  }, []);
 
   return (
     <footer className="footer">

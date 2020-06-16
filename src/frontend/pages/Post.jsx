@@ -22,7 +22,7 @@ const Post = ({ currentPost, match, load }) => {
         })
         .catch(() => {});
     }
-  });
+  }, []);
 
 
   if (!post) return <Loading />;
@@ -54,7 +54,6 @@ Post.propTypes = {
       cover: PropTypes.string.isRequired,
       body: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
-      slug: PropTypes.string.isRequired,
       views: PropTypes.number.isRequired,
       timeShared: PropTypes.number.isRequired,
       likes: PropTypes.number.isRequired,
