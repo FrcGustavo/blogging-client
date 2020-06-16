@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import InputForm from '../../mulecules/InputForm';
+import { Header } from './styles';
 
 const MetaDataPost = ({ post, handleChange }) => (
-  <header>
+  <Header>
     <InputForm
       label="Titulo*"
       type="text"
@@ -41,7 +42,7 @@ const MetaDataPost = ({ post, handleChange }) => (
       value={post.keywords}
       onChange={handleChange}
     />
-  </header>
+  </Header>
 );
 
 MetaDataPost.propTypes = {
