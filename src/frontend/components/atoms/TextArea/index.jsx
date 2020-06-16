@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const TextArea = ({ name, value, handleChange }) => (
-  <textarea
-    name={name}
-    defaultValue={value}
-    onChange={handleChange}
-  />
+  <div>
+    <textarea
+      name={name}
+      defaultValue={value}
+      onChange={handleChange}
+    />
+  </div>
 );
 
 TextArea.propTypes = {

@@ -5,7 +5,8 @@ import showdown from 'showdown';
 import { connect } from 'react-redux';
 
 import WrapperBoard from '../../components/mulecules/WrapperBoard';
-import InputForm from '../../components/mulecules/InputForm';
+import MetaDataPost from '../../components/organisms/MetaDataPost';
+import Editor from '../../components/organisms/Editor';
 
 import './styles.scss';
 
@@ -33,53 +34,8 @@ const BoardPostsEdit = ({ editPost }) => {
   return (
     <WrapperBoard display="block">
       <form onSubmit={handleSubmit}>
-        <header className="edit-post">
-          <input type="submit" value="Guardar" />
-          <InputForm
-            label="Titulo*"
-            type="text"
-            id="title"
-            name="title"
-            placeholder="Escribe un titulo"
-            value={post.title}
-            onChange={handleChange}
-          />
-          <InputForm
-            label="Url*"
-            type="text"
-            id="slug"
-            name="slug"
-            placeholder="Escribe una url personalizada"
-            value={post.slug}
-            onChange={handleChange}
-          />
-          <InputForm
-            label="Descripción*"
-            type="text"
-            id="description"
-            name="description"
-            placeholder="Escribe una description"
-            value={post.description}
-            onChange={handleChange}
-          />
-          <InputForm
-            label="Keywords*"
-            type="text"
-            id="keywords"
-            name="keywords"
-            placeholder="Escribe un las palabras clave"
-            value={post.keywords}
-            onChange={handleChange}
-          />
-        </header>
-        <section className="editor">
-          <div className="input">
-            <textarea name="body" onChange={handleChange}>
-              {post.body}
-            </textarea>
-          </div>
-          <div className="output post-content" dangerouslySetInnerHTML={{ __html: preview }} />
-        </section>
+        <MetaDataPost post={post} handleChange={handleChange} />
+        <Editor body={post.body} preview={preview} handleChange={handleChange} />
       </form>
     </WrapperBoard>
   );

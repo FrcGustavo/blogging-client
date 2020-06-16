@@ -3,6 +3,7 @@ import showdown from 'showdown';
 
 import WrapperBoard from '../../components/mulecules/WrapperBoard';
 import MetaDataPost from '../../components/organisms/MetaDataPost';
+import Editor from '../../components/organisms/Editor';
 
 const converter = new showdown.Converter();
 
@@ -12,6 +13,7 @@ const BoardPostsNew = () => {
     slug: '',
     description: '',
     keywords: '',
+    body: '',
   });
 
   const [preview, setPreview] = useState(converter.makeHtml(post.body));
@@ -32,6 +34,7 @@ const BoardPostsNew = () => {
     <WrapperBoard>
       <form>
         <MetaDataPost post={post} handleChange={handleChange} />
+        <Editor body={post.body} preview={preview} handleChange={handleChange} />
       </form>
     </WrapperBoard>
   );
