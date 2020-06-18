@@ -15,6 +15,7 @@ if (isDev) {
 module.exports = {
   entry,
   mode: process.env.NODE_ENV,
+  devtool: 'source-map',
   output: {
     path: path.resolve(__dirname, 'src/server/public'),
     filename: isDev ? 'assets/app.js' : 'assets/app-[hash].js',

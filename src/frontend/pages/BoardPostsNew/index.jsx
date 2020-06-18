@@ -1,9 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import WrapperBoard from '../../components/mulecules/WrapperBoard';
 import FormPost from '../../components/templates/FormPost';
 
-const BoardPostsNew = () => {
+const BoardPostsNew = ({ token }) => {
   const post = {
     title: '',
     slug: '',
@@ -14,9 +16,17 @@ const BoardPostsNew = () => {
 
   return (
     <WrapperBoard display="block">
-      <FormPost currentPost={post} />
+      <FormPost currentPost={post} token={token} />
     </WrapperBoard>
   );
 };
 
-export default BoardPostsNew;
+BoardPostsNew.propTypes = {
+  token: PropTypes.string.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  token: state.user.token,
+});
+
+export default connect(mapStateToProps, null)(BoardPostsNew);
