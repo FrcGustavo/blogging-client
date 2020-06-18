@@ -41,3 +41,8 @@ export const loginUser = ({ email, password }, redirectUrl) => (dispatch) => {
     })
     .catch(() => {});
 };
+
+export const loadEditPost = (payload) => ({
+  type: 'LOAD_EDIT_POST',
+  payload,
+});

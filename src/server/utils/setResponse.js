@@ -3,6 +3,7 @@ import config from '../config';
 const setResponse = (html, state, manifest, metaTags) => {
   const mainStyles = manifest ? manifest['main.css'] : '/assets/app.css';
   const mainBuild = manifest ? manifest['main.js'] : '/assets/app.js';
+  const mainVendor = manifest ? manifest['vendors.js'] : '/assets/vendor.js';
   return (`
     <!DOCTYPE html>
     <html lang="es">
@@ -27,6 +28,7 @@ const setResponse = (html, state, manifest, metaTags) => {
           window.__DOMAIN__ = '${config.srv.domain}'
         </script>
         <script src="${mainBuild}"></script>
+        <script src="${mainVendor}"></script>
     </body>
     </html>
   `);

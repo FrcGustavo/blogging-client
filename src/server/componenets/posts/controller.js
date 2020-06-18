@@ -9,8 +9,14 @@ class PostsController {
 
   async index(req, res) {
     try {
-      const posts = await axios.get(`${this.url}/posts`);
-      res.json({ ...posts.data.body });
+      const posts = await axios({
+        url: `${this.url}/posts/author`,
+        headers: {
+          Authorization: `Bearer ${req.cookies.token}`,
+        },
+      });
+
+      res.json({ posts: [...posts.data.body] });
     } catch (error) {
       res.json({ error });
     }

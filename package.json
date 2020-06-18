@@ -6,7 +6,7 @@
   "scripts": {
     "start": "DEBUG=app:* node src/server/index",
     "build": "webpack-cli --config webpack.config.js",
-    "start:dev": "DEBUG=app:* nodemon src/server/index",
+    "dev": "DEBUG=app:* nodemon src/server/index",
     "lint": "eslint --ext .jsx --ext .js ./"
   },
   "repository": {
@@ -52,6 +52,7 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "showdown": "^1.9.1",
+    "styled-components": "^5.1.1",
     "webpack": "^4.43.0"
   },
   "devDependencies": {

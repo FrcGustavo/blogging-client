@@ -35,7 +35,7 @@ class MongoLib {
   findAll(collection, query) {
     return this.connect().then((db) => db
       .collection(collection)
-      .find({ isPublic: true, isActive: true })
+      .find({ isPublic: true, isDisabled: false })
       .limit(query.limit)
       .sort({ _id: -1 })
       .skip(0)
@@ -45,7 +45,7 @@ class MongoLib {
   findBySlug(collection, slug) {
     return this.connect().then((db) => db
       .collection(collection)
-      .findOne({ slug, isPublic: true, isActive: true }));
+      .findOne({ slug, isPublic: true, isDisabled: false }));
   }
 }
 
