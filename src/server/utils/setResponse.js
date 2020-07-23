@@ -34,5 +34,4 @@ const setResponse = (html, state, manifest, metaTags) => {
   `);
 };
 
-
 export default setResponse;

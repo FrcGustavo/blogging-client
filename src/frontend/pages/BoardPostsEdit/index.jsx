@@ -7,7 +7,6 @@ import FormPost from '../../components/templates/FormPost';
 
 import './styles.scss';
 
-
 const BoardPostsEdit = ({ editPost, token }) => (
   <WrapperBoard display="block">
     <FormPost currentPost={editPost} token={token} />

@@ -24,7 +24,6 @@ const Post = ({ currentPost, match, load }) => {
     }
   }, []);
 
-
   if (!post) return <Loading />;
 
   return (
