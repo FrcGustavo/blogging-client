@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CardPost from '../mulecules/CardPost';
+import CardPost from '../../mulecules/CardPost';
 
 const ListOfPosts = ({ posts }) => (
   <div className="list-of-posts">

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-import WrapperBoard from '../../components/mulecules/WrapperBoard';
-import HeaderOfWrapperBoard from '../../components/mulecules/HeaderOfWrapperBoard';
-import TemplateTableBoard from '../../components/templates/TemplateTableBoard';
-import LoadingRing from '../../components/atoms/LoadingRing';
+import WrapperBoard from '../../mulecules/WrapperBoard';
+import HeaderOfWrapperBoard from '../../mulecules/HeaderOfWrapperBoard';
+import TemplateTableBoard from '../../templates/TemplateTableBoard';
+import LoadingRing from '../../atoms/LoadingRing';
 
 const BoardUsers = () => {
   const [users] = useState(false);

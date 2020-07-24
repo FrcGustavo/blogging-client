@@ -3,11 +3,11 @@ import { Switch, Route } from 'react-router-dom';
 
 import HeaderBoard from '../../organisms/HeaderBoard';
 import NavbarBoard from '../../organisms/NavbarBoard';
-import Board from '../../../pages/Board';
-import BoardPosts from '../../../pages/BoardPosts';
-import BoardUsers from '../../../pages/BoardUsers';
-import BoardPostsNew from '../../../pages/BoardPostsNew';
-import BoardPostsEdit from '../../../pages/BoardPostsEdit';
+import Board from '../../pages/Board';
+import BoardPosts from '../../pages/BoardPosts';
+import BoardUsers from '../../pages/BoardUsers';
+import BoardPostsNew from '../../pages/BoardPostsNew';
+import BoardPostsEdit from '../../pages/BoardPostsEdit';
 
 const TemplateBoard = () => (
   <div className="board">

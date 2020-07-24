@@ -23,6 +23,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx'],
+    alias: {
+      '@': path.resolve(__dirname, 'src/frontend/components'),
+      '&': path.resolve(__dirname, 'src/frontend'),
+    },
   },
   optimization: {
     minimize: true,

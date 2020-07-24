@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import WrapperBoard from '../../components/mulecules/WrapperBoard';
-import FormPost from '../../components/templates/FormPost';
+import WrapperBoard from '../../mulecules/WrapperBoard';
+import FormPost from '../../templates/FormPost';
 
 import './styles.scss';
 

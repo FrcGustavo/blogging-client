@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import GithubIcon from './icons/GithubIcon';
-import TwitterIcon from './icons/TwitterIcon';
-import LinkedinIcon from './icons/LinkedinIcon';
+import GithubIcon from '../../atoms/GithubIcon';
+import TwitterIcon from '../../atoms/TwitterIcon';
+import LinkedinIcon from '../../atoms/LinkedinIcon';
 
-import config from '../config';
+import config from '../../../config';
 
 const Footer = () => {
   const [blog, setBlog] = useState(false);

@@ -3,15 +3,15 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
-import WrapperBoard from '../../components/mulecules/WrapperBoard';
-import HeaderOfWrapperBoard from '../../components/mulecules/HeaderOfWrapperBoard';
-import TemplateTableBoard from '../../components/templates/TemplateTableBoard';
-import LoadingRing from '../../components/atoms/LoadingRing';
-import TableActions from '../../components/mulecules/TableActions';
+import WrapperBoard from '../../mulecules/WrapperBoard';
+import HeaderOfWrapperBoard from '../../mulecules/HeaderOfWrapperBoard';
+import TemplateTableBoard from '../../templates/TemplateTableBoard';
+import LoadingRing from '../../atoms/LoadingRing';
+import TableActions from '../../mulecules/TableActions';
 
-import { loadEditPost } from '../../actions';
+import { loadEditPost } from '../../../actions';
 
-import config from '../../config';
+import config from '../../../config';
 
 import './styles.scss';
 

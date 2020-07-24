@@ -1,8 +1,8 @@
-import Home from '../pages/Home';
-import Blog from '../pages/Blog';
-import Post from '../pages/Post';
+import Home from '../components/pages/Home';
+import Blog from '../components/pages/Blog';
+import Post from '../components/pages/Post';
 import TempleteBoard from '../components/templates/TempleteBoard';
-import Login from '../pages/Login';
+import Login from '../components/pages/Login';
 
 const routes = [
   { exact: true, path: '/', component: Home },
