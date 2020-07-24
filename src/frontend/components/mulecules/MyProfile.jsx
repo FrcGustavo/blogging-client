@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import GithubIcon from '../icons/GithubIcon';
-import TwitterIcon from '../icons/TwitterIcon';
-import LinkedinIcon from '../icons/LinkedinIcon';
+import GithubIcon from '../atoms/GithubIcon';
+import TwitterIcon from '../atoms/TwitterIcon';
+import LinkedinIcon from '../atoms/LinkedinIcon';
 
 const MyProfile = ({ profileImg }) => (
   <div className="my-profile">

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Loading from '../components/Loading';
-import Header from '../components/Header';
+import Loading from '../components/atoms/Loading';
+import Header from '../components/organisms/Header';
 import MyProfile from '../components/mulecules/MyProfile';
 import MainPost from '../components/mulecules/MainPost';
 

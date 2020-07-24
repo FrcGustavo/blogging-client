@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Loading from '../components/Loading';
-import LayoutBlog from '../components/LayoutBlog';
+import Loading from '../components/atoms/Loading';
+import LayoutBlog from '../components/templates/LayoutBlog';
 import FirtsPost from '../components/mulecules/FirtsPost';
 import ListOfPosts from '../components/organisms/ListOfPosts';
 

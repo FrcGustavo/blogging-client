@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import TemplatePost from '../components/templates/TemplatePost';
-import LayoutBlog from '../components/LayoutBlog';
-import Loading from '../components/Loading';
+import LayoutBlog from '../components/templates/LayoutBlog';
+import Loading from '../components/atoms/Loading';
 
 import { loadCurrentPost } from '../actions';
 import config from '../config';
