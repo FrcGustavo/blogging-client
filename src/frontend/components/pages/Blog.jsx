@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Loading from '../components/atoms/Loading';
-import LayoutBlog from '../components/templates/LayoutBlog';
-import FirtsPost from '../components/mulecules/FirtsPost';
-import ListOfPosts from '../components/organisms/ListOfPosts';
+import Loading from '../atoms/Loading';
+import LayoutBlog from '../templates/LayoutBlog';
+import FirtsPost from '../mulecules/FirtsPost';
+import ListOfPosts from '../organisms/ListOfPosts';
 
-import { loadBlog } from '../actions';
-import config from '../config';
+import { loadBlog } from '../../actions';
+import config from '../../config';
 
 const Blog = ({ blog, load }) => {
   const [posts, setPosts] = useState(blog);

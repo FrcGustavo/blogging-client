@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Loading from '../components/atoms/Loading';
-import Header from '../components/organisms/Header';
-import MyProfile from '../components/mulecules/MyProfile';
-import MainPost from '../components/mulecules/MainPost';
+import Loading from '../atoms/Loading';
+import Header from '../organisms/Header';
+import MyProfile from '../mulecules/MyProfile';
+import MainPost from '../mulecules/MainPost';
 
-import PostModel from '../models/PostModel';
+import PostModel from '../../models/PostModel';
 
-import { loadHome } from '../actions';
-import config from '../config';
+import { loadHome } from '../../actions';
+import config from '../../config';
 
 const Home = ({ mainPost, profileImg, loadPost }) => {
   const [post, setPost] = useState(!mainPost ? mainPost : new PostModel(mainPost));
