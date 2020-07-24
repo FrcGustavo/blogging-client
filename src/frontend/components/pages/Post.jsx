@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import TemplatePost from '../templates/TemplatePost';
-import LayoutBlog from '../templates/LayoutBlog';
 import Loading from '../atoms/Loading';
 
 import { loadCurrentPost } from '../../actions';
@@ -27,13 +26,11 @@ const Post = ({ currentPost, match, load }) => {
   if (!post) return <Loading />;
 
   return (
-    <LayoutBlog>
-      <main className="post">
-        <div className="wrapper">
-          <TemplatePost post={post} />
-        </div>
-      </main>
-    </LayoutBlog>
+    <main className="post">
+      <div className="wrapper">
+        <TemplatePost post={post} />
+      </div>
+    </main>
   );
 };
 

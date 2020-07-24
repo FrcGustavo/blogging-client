@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Loading from '../atoms/Loading';
-import LayoutBlog from '../templates/LayoutBlog';
 import FirtsPost from '../mulecules/FirtsPost';
 import ListOfPosts from '../organisms/ListOfPosts';
 
@@ -28,20 +27,18 @@ const Blog = ({ blog, load }) => {
   if (!posts) return <Loading />;
 
   return (
-    <LayoutBlog>
-      <main className="blog">
-        <section className="main-blog">
-          <div className="wrapper">
-            <FirtsPost post={posts[0]} />
-          </div>
-        </section>
-        <section className="grid-posts">
-          <div className="wrapper">
-            <ListOfPosts posts={posts} />
-          </div>
-        </section>
-      </main>
-    </LayoutBlog>
+    <main className="blog">
+      <section className="main-blog">
+        <div className="wrapper">
+          <FirtsPost post={posts[0]} />
+        </div>
+      </section>
+      <section className="grid-posts">
+        <div className="wrapper">
+          <ListOfPosts posts={posts} />
+        </div>
+      </section>
+    </main>
   );
 };
 
