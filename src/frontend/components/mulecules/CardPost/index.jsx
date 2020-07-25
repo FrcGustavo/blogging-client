@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '../atoms/Button';
+import Button from '../../atoms/Button';
 
 const CardPost = ({ post }) => (
   <article className="card-post">

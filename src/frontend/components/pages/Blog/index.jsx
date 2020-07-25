@@ -1,14 +1,15 @@
+/* eslint-disable import/no-unresolved */
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Loading from '../atoms/Loading';
-import FirtsPost from '../mulecules/FirtsPost';
-import ListOfPosts from '../organisms/ListOfPosts';
-import Footer from '../organisms/Footer';
+import Loading from '../../atoms/Loading';
+import FirstPost from '../../mulecules/FirstPost';
+import ListOfPosts from '../../organisms/ListOfPosts';
+import Footer from '../../organisms/Footer';
 
-import { loadBlog } from '../../actions';
-import config from '../../config';
+import { loadBlog } from '../../../actions';
+import config from '../../../config';
 
 const Blog = ({ blog, load }) => {
   const [posts, setPosts] = useState(blog);
@@ -32,7 +33,7 @@ const Blog = ({ blog, load }) => {
       <main className="blog">
         <section className="main-blog">
           <div className="wrapper">
-            <FirtsPost post={posts[0]} />
+            <FirstPost post={posts[0]} />
           </div>
         </section>
         <section className="grid-posts">

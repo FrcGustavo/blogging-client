@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '../atoms/Button';
+import Button from '../../atoms/Button';
 
-const FirtsPost = ({ post }) => (
+const FirstPost = ({ post }) => (
   <article className="first-post">
     <div className="img-container">
       <img src={post.cover} alt={post.title} />
@@ -15,7 +15,7 @@ const FirtsPost = ({ post }) => (
   </article>
 );
 
-FirtsPost.propTypes = {
+FirstPost.propTypes = {
   post: PropTypes.shape({
     title: PropTypes.string.isRequired,
     cover: PropTypes.string.isRequired,
@@ -24,4 +24,4 @@ FirtsPost.propTypes = {
   }).isRequired,
 };
 
-export default FirtsPost;
+export default FirstPost;

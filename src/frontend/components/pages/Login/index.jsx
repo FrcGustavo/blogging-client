@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 // import base64 from 'base-64';
 
-import { loginUser } from '../../actions/index';
+import { loginUser } from '../../../actions/index';
 // import config from '../config';
 
 const Login = ({ logIn }) => {

@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import TemplatePost from '../templates/TemplatePost';
-import Loading from '../atoms/Loading';
-import Footer from '../organisms/Footer';
+import TemplatePost from '../../templates/TemplatePost';
+import Loading from '../../atoms/Loading';
+import Footer from '../../organisms/Footer';
 
-import { loadCurrentPost } from '../../actions';
-import config from '../../config';
+import { loadCurrentPost } from '../../../actions';
+import config from '../../../config';
 
 const Post = ({ currentPost, match, load }) => {
   const [post, setPost] = useState(currentPost);
