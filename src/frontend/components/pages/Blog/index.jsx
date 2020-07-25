@@ -11,6 +11,8 @@ import Footer from '../../organisms/Footer';
 import { loadBlog } from '../../../actions';
 import config from '../../../config';
 
+import './styles.scss';
+
 const Blog = ({ blog, load }) => {
   const [posts, setPosts] = useState(blog);
 

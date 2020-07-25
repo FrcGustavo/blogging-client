@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FaGithub, FaTwitter, FaLinkedin } from 'react-icons/fa';
 
+import './styles.scss';
+
 const MyProfile = ({ profileImg }) => (
   <div className="my-profile">
     <div className="my-profile-img">

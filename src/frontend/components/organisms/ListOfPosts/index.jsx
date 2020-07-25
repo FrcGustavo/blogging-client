@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import CardPost from '../../mulecules/CardPost';
 
+import './styles.scss';
+
 const ListOfPosts = ({ posts }) => (
   <div className="list-of-posts">
     {

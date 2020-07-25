@@ -9,6 +9,8 @@ import Footer from '../../organisms/Footer';
 import { loadCurrentPost } from '../../../actions';
 import config from '../../../config';
 
+import './styles.scss';
+
 const Post = ({ currentPost, match, load }) => {
   const [post, setPost] = useState(currentPost);
   useEffect(() => {

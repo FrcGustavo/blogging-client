@@ -4,6 +4,8 @@ import { FaGithub, FaTwitter, FaLinkedin } from 'react-icons/fa';
 
 import config from '../../../config';
 
+import './styles.scss';
+
 const Footer = () => {
   const [blog, setBlog] = useState(false);
   useEffect(() => {

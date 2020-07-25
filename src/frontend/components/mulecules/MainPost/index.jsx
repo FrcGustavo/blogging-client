@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import Button from '../../atoms/Button';
 
+import './styles.scss';
+
 const MainPost = ({ post }) => (
   <article className="main-post">
     <div className="img-container">

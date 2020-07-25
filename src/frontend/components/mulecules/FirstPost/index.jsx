@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../atoms/Button';
 
+import './styles.scss';
+
 const FirstPost = ({ post }) => (
   <article className="first-post">
     <div className="img-container">

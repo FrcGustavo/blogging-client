@@ -1,10 +1,10 @@
 .post {
-    padding: $font-size * 2;
+    padding: 14px * 2;
     padding-top: 90px;
     overflow: hidden;
     .template-post {
-        @include shadow;
-        border-radius: $font-size / 2;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
+        border-radius: 14px / 2;
         overflow: hidden;
         .post-cover {
             display: flex;
@@ -13,14 +13,14 @@
             overflow: hidden;
         }
         .post-title {
-            padding: 0 $font-size * 2;
+            padding: 0 14px * 2;
         }
         .post-title {
             h1 {
-                font-size: $font-size * 2.5;
+                font-size: 14px * 2.5;
                 padding-bottom: 14px;
                 border-bottom: 1px solid #ddd;
-                margin: $font-size 0;
+                margin: 14px 0;
                 color: #000;
             }
         }
@@ -31,12 +31,12 @@
 }
 
 .post-content {
-    padding: $font-size * 2;
+    padding: 14px * 2;
     padding-top: 0;
     background-color: #FFF;
     color: #333;
     font-family: Roboto Helvetica, sans-serif, freesans, clean;
-    font-size: $font-size;
+    font-size: 14px;
     word-wrap: break-word;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
@@ -54,11 +54,11 @@
     dl,
     table,
     pre {
-        margin: $font-size 0;
+        margin: 14px 0;
     }
     pre {
         border-radius: 4.5px;
-        padding: $font-size;
+        padding: 14px;
         overflow: auto;
         background-color: #f6f8fa;
         line-height: 1.45;
@@ -107,7 +107,7 @@
     }
     h2+p,
     h3+p {
-        margin-top: $font-size;
+        margin-top: 14px;
     }
     code {
         background-color: #F8F8F8;

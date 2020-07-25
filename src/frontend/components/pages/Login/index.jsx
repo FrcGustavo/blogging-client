@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import { loginUser } from '../../../actions/index';
 // import config from '../config';
 
+import './styles.scss';
+
 const Login = ({ logIn }) => {
   const [form, setForm] = useState({});
 

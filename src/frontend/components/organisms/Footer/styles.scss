@@ -1,18 +1,18 @@
 .footer {
-    background: linear-gradient(90deg, $primary-gradient, $secondary-gradient);
-    padding: $font-size * 2;
+    background: linear-gradient(90deg, #1C2237, #4B5A8A);
+    padding: 14px * 2;
     .social-media,
     .posts {
         h4 {
-            padding-bottom: $font-size / 2;
-            margin-bottom: $font-size;
+            padding-bottom: 14px / 2;
+            margin-bottom: 14px;
             border-bottom: solid 1px white;
-            font-size: $font-size * 1.5;
+            font-size: 14px * 1.5;
             text-align: center;
             color: white;
         }
         p {
-            padding-bottom: $font-size / 2;
+            padding-bottom: 14px / 2;
             a {
                 color: white;
             }
@@ -25,7 +25,7 @@
         .container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: $font-size * 4;
+            gap: 14px * 4;
         }
         .social-media,
         .posts {

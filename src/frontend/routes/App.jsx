@@ -7,8 +7,6 @@ import Blog from '@/pages/Blog';
 import Post from '@/pages/Post';
 import TemplateBlogApp from '@/templates/TemplateBlogApp';
 
-import '&/assets/styles/main.scss';
-
 const App = () => (
   <BrowserRouter>
     <TemplateBlogApp>
