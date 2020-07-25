@@ -1,8 +1,14 @@
 .header {
-    position: fixed;
+    position: sticky;
+    top: 0;
+    left: 0;
     width: 100%;
-    padding: 0 $font-size * 2;
-    background: linear-gradient(90deg, $primary-gradient, $secondary-gradient);
+    height: 60px;
+    padding: 0 28px;
+    background: linear-gradient(90deg, #1C2237, #4B5A8A);
+}
+
+.header.sticky {
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
 }
 
@@ -11,16 +17,17 @@
     justify-content: space-between;
     align-items: center;
     max-width: 1000px;
+    height: 100%;
     margin: auto;
-    padding: $font-size / 2 0;
+    padding: 7px;
 }
 
 .logo {
-    font-size: $font-size * 1.5;
+    font-size: 21px;
     color: white;
 }
 
 .nav a {
     display: inline-block;
-    margin-left: $font-size;
+    margin-left: 14px;
 }

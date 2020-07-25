@@ -22,7 +22,6 @@ a {
 #app {
     width: 100vw;
     height: 100vh;
-    overflow-y: auto;
 }
 
 @mixin shadow {
@@ -52,4 +51,9 @@ a {
 
 a.btn {
     display: inline-block;
+}
+
+.fill-icon {
+    color: #6EC6FF;
+    font-size: 28px;
 }

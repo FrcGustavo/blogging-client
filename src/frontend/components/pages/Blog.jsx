@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Loading from '../atoms/Loading';
 import FirtsPost from '../mulecules/FirtsPost';
 import ListOfPosts from '../organisms/ListOfPosts';
+import Footer from '../organisms/Footer';
 
 import { loadBlog } from '../../actions';
 import config from '../../config';
@@ -27,18 +28,21 @@ const Blog = ({ blog, load }) => {
   if (!posts) return <Loading />;
 
   return (
-    <main className="blog">
-      <section className="main-blog">
-        <div className="wrapper">
-          <FirtsPost post={posts[0]} />
-        </div>
-      </section>
-      <section className="grid-posts">
-        <div className="wrapper">
-          <ListOfPosts posts={posts} />
-        </div>
-      </section>
-    </main>
+    <>
+      <main className="blog">
+        <section className="main-blog">
+          <div className="wrapper">
+            <FirtsPost post={posts[0]} />
+          </div>
+        </section>
+        <section className="grid-posts">
+          <div className="wrapper">
+            <ListOfPosts posts={posts} />
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
   );
 };
 

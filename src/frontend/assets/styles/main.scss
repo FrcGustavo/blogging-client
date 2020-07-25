@@ -11,11 +11,9 @@ $secondary-dark: #C63F17;
 // Organisms
 @import './components/organisms/ListOfPosts.scss';
 @import './App.scss';
-@import './components/Header.scss';
 @import './components/Footer.scss';
 @import './components/Loading.scss';
 // Pages
-@import './pages/Home.scss';
 @import './pages/Blog.scss';
 @import './pages/Post.scss';
 @import './pages/Login.scss';

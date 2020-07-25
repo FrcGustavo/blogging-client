@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import TemplatePost from '../templates/TemplatePost';
 import Loading from '../atoms/Loading';
+import Footer from '../organisms/Footer';
 
 import { loadCurrentPost } from '../../actions';
 import config from '../../config';
@@ -26,11 +27,14 @@ const Post = ({ currentPost, match, load }) => {
   if (!post) return <Loading />;
 
   return (
-    <main className="post">
-      <div className="wrapper">
-        <TemplatePost post={post} />
-      </div>
-    </main>
+    <>
+      <main className="post">
+        <div className="wrapper">
+          <TemplatePost post={post} />
+        </div>
+      </main>
+      <Footer />
+    </>
   );
 };
 

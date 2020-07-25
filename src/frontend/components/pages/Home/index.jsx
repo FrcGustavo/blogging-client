@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import Loading from '../../atoms/Loading';
 import MyProfile from '../../mulecules/MyProfile';
 import MainPost from '../../mulecules/MainPost';
 
@@ -9,6 +10,8 @@ import PostModel from '../../../models/PostModel';
 
 import { loadHome } from '../../../actions';
 import config from '../../../config';
+
+import './styles.scss';
 
 const Home = ({ mainPost, profileImg, loadPost }) => {
   const [post, setPost] = useState(!mainPost ? mainPost : new PostModel(mainPost));
@@ -24,7 +27,7 @@ const Home = ({ mainPost, profileImg, loadPost }) => {
     }
   }, []);
 
-  // if (!post) return <Loading />;
+  if (!post) return <Loading />;
 
   return (
     <>

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import GithubIcon from '../../atoms/GithubIcon';
-import TwitterIcon from '../../atoms/TwitterIcon';
-import LinkedinIcon from '../../atoms/LinkedinIcon';
+import { FaGithub, FaTwitter, FaLinkedin } from 'react-icons/fa';
 
 import config from '../../../config';
 
@@ -23,13 +21,13 @@ const Footer = () => {
           <h4>Redes Sociales</h4>
           <div className="icons my-profile-icons">
             <a href="https://github.com/FranciscoGustavo" target="_blank" rel="noopener noreferrer">
-              <GithubIcon />
+              <FaGithub className="fill-icon" />
             </a>
             <a href="https://twitter.com/frcgustavo" target="_blank" rel="noopener noreferrer">
-              <TwitterIcon />
+              <FaTwitter className="fill-icon" />
             </a>
             <a href="https://www.linkedin.com/in/frcgustavo/" target="_blank" rel="noopener noreferrer">
-              <LinkedinIcon />
+              <FaLinkedin className="fill-icon" />
             </a>
           </div>
         </div>

@@ -1,8 +1,8 @@
 .home {
     width: 100%;
-    min-height: 100vh;
-    background: linear-gradient(90deg, $primary-gradient, $secondary-gradient);
-    padding: $font-size * 2;
+    min-height: calc(100vh - 60px);
+    background: linear-gradient(90deg, #1C2237, #4B5A8A);
+    padding: 28px;
     padding-top: 90px;
     .wrapper {
         width: 100%;
