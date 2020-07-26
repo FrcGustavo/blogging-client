@@ -1,7 +1,7 @@
 .main-post {
     max-width: 296px;
     margin: auto;
-    border-radius: 14px / 2;
+    border-radius: 7px;
     background-color: white;
     overflow: hidden;
     .img-container {
@@ -28,7 +28,7 @@
 @media screen and (min-width: 680px) {
     .main-post {
         .img-container {
-            border-radius: 14px / 2;
+            border-radius: 7px;
             overflow: hidden;
         }
         max-width: unset;
