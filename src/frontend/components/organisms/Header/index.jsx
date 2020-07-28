@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import './styles.scss';
 
-const Header = () => (
-  <header className="header">
+const Header = ({ shadow }) => (
+  <header className={shadow ? 'header sticky' : 'header'}>
     <div className="header-container">
       <Link className="logo" to="/">FrcGustavo</Link>
       <nav className="nav">
@@ -14,5 +15,9 @@ const Header = () => (
     </div>
   </header>
 );
+
+Header.propTypes = {
+  shadow: PropTypes.bool.isRequired,
+};
 
 export default Header;
