@@ -27,7 +27,6 @@
     "@babel/register": "^7.10.5",
     "@babel/runtime": "^7.10.5",
     "axios": "^0.19.2",
-    "base-64": "^0.1.0",
     "cookie-parser": "^1.4.5",
     "debug": "^4.1.1",
     "dotenv": "^8.2.0",
@@ -49,11 +48,9 @@
     "react-router": "^5.2.0",
     "react-router-config": "^5.1.1",
     "react-router-dom": "^5.2.0",
-    "react-table": "^7.3.2",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "showdown": "^1.9.1",
-    "styled-components": "^5.1.1",
     "webpack": "^4.43.0"
   },
   "devDependencies": {
