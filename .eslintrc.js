@@ -21,9 +21,11 @@ module.exports = {
   },
   plugins: [
     'react',
+    'jest',
   ],
   rules: {
     'import/prefer-default-export': 'off',
     'react/jsx-props-no-spreading': 'off',
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }]
   },
 };
