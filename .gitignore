@@ -1,4 +1,5 @@
 /node_modules
 /src/server/public/assets
 /src/server/public/manifest.json
+/coverage
 .env

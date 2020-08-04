@@ -4,11 +4,12 @@
   "description": "It is the blog",
   "main": "index.js",
   "scripts": {
-    "start": "DEBUG=app:* node src/server/index",
     "build": "webpack-cli --config webpack.config.js",
     "dev": "DEBUG=app:* nodemon src/server/index",
+    "start": "DEBUG=app:* node src/server/index",
     "lint": "eslint --ext .jsx --ext .js ./",
-    "test": "jest"
+    "test": "jest",
+    "cover": "jest ----collectCoverage"
   },
   "repository": {
     "type": "git",

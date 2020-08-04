@@ -1,3 +1,5 @@
+![CI](https://github.com/FranciscoGustavo/bloging-client/workflows/CI/badge.svg)
+
 # Bloging
 
 It is the client to blog
@@ -31,21 +33,22 @@ npm install
 
 Run development mode
 ```bash
-npm run start:dev
+npm run dev
 ```
 
-Run build files
+Run build and production mode
 ```bash
 npm run build
-```
-
-Run production mode
-```bash
 npm run start
 ```
-
 Run linter and auto fix files
 ```bash
 npm run lint
 npm run lint -- --fix
+```
+
+Run test and coverage code
+```bash
+npm run test
+npm run cover
 ```
