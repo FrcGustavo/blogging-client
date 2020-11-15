@@ -1,4 +1,5 @@
-import { Header } from '../../../components/molecules';
+import { Header } from '../../mulecules';
+
 const LayoutBlog = ({ children }) => {
   return (
     <div>
