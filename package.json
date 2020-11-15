@@ -4,12 +4,9 @@
   "description": "It is the blog",
   "main": "index.js",
   "scripts": {
-    "build": "webpack-cli --config webpack.config.js",
-    "dev": "DEBUG=app:* nodemon src/server/index",
-    "start": "DEBUG=app:* node src/server/index",
-    "lint": "eslint --ext .jsx --ext .js ./",
-    "test": "jest",
-    "cover": "jest ----collectCoverage"
+    "dev": "next",
+    "start": "next start",
+    "build": "next build"
   },
   "repository": {
     "type": "git",
@@ -22,71 +19,13 @@
   },
   "homepage": "https://github.com/FranciscoGustavo/bloging-client#readme",
   "dependencies": {
-    "@babel/core": "^7.10.5",
-    "@babel/plugin-transform-runtime": "^7.10.5",
-    "@babel/preset-env": "^7.10.4",
-    "@babel/preset-react": "^7.10.4",
-    "@babel/register": "^7.10.5",
-    "@babel/runtime": "^7.10.5",
-    "axios": "^0.19.2",
-    "cookie-parser": "^1.4.5",
-    "debug": "^4.1.1",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "express-session": "^1.17.1",
-    "helmet": "^3.23.3",
-    "history": "^4.10.1",
-    "ignore-styles": "^5.0.1",
-    "mongodb": "^3.5.9",
-    "morgan": "^1.10.0",
-    "passport": "^0.4.1",
-    "passport-http": "^0.3.0",
-    "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-hot-loader": "^4.12.21",
-    "react-icons": "^3.10.0",
-    "react-redux": "^7.2.0",
-    "react-router": "^5.2.0",
-    "react-router-config": "^5.1.1",
-    "react-router-dom": "^5.2.0",
-    "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0",
-    "showdown": "^1.9.1",
-    "webpack": "^4.43.0"
+    "axios": "^0.21.0",
+    "next": "^10.0.1",
+    "next-cookies": "^2.0.3",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-icons": "^3.11.0",
+    "styled-components": "^5.2.1"
   },
-  "devDependencies": {
-    "babel-loader": "^8.1.0",
-    "compression-webpack-plugin": "^4.0.0",
-    "css-loader": "^3.6.0",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-loader": "^4.0.2",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jest": "^23.20.0",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-react": "^7.20.3",
-    "eslint-plugin-react-hooks": "^2.5.1",
-    "jest": "^26.2.2",
-    "mini-css-extract-plugin": "^0.9.0",
-    "node-sass": "^4.14.1",
-    "nodemon": "^2.0.4",
-    "sass-loader": "^8.0.2",
-    "terser-webpack-plugin": "^3.0.7",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-middleware": "^3.7.2",
-    "webpack-dev-server": "^3.11.0",
-    "webpack-hot-middleware": "^2.25.0",
-    "webpack-manifest-plugin": "^2.2.0"
-  },
-  "jest": {
-    "setupFilesAfterEnv": [
-      "<rootDir>/src/frontend/__test__/setupTest.js"  
-    ],
-    "moduleNameMapper": {
-      "\\.(scss)$": "<rootDir>/src/frontend/__mocks__/styleMock.js"
-    }
-  }
+  "devDependencies": {}
 }

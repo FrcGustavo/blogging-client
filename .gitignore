@@ -3,3 +3,5 @@
 /src/server/public/manifest.json
 /coverage
 .env
+.next
+package-lock.json
