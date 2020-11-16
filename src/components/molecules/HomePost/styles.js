@@ -2,6 +2,11 @@ import styled from 'styled-components';
 
 export const CSSCardContainer = styled.section`
 padding: 28px;
+
+@media screen and (min-width: 680px) {
+	display: flex;
+	justify-content: center;
+}
 `;
 
 export const CSSCard = styled.article`
@@ -31,13 +36,20 @@ p {
 	margin-bottom: 14px;
 }
 
-`;
+@media screen and (min-width: 680px) {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 21px;
+	width: 100%;
+	max-width: 1000px;
+	
+	div:first-child {
+		padding: 14px;
+	}
 
-export const CSSButton = styled.button`
-border-radius: 7px;
-padding: 7px 14px;
-box-shadow: 0 0 7px rgba(0, 0, 0, 0.14);
-background-color: ${props => props.theme.secondary};
-color: #FFF;
-text-transform: uppercase;
+	img {
+		width: 290px;
+		border-radius: 7px;
+	}
+}
 `;

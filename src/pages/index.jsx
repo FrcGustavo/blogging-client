@@ -10,8 +10,16 @@ const Data = {
 	description: 'I’m a software Developer focused on the MERN stack. I love experimenting with new tools and frameworks. I’ve experience with Js ecosystem, Typescript, Express, React Mongo, Postgres, APIs and Single-page applications.'
 }
 
+const Post = {
+	cover: 'https://res.cloudinary.com/dwapbqqbo/image/upload/v1592516373/ppyvrszlr0s2wxigqpae.jpg',
+	title: 'Como crear el juego de la vida en JavaScript',
+	description: 'El juego de la vida es un sistema que puede evolucionar como la vida, pero desde tu computadora.',
+	href: 'my-link-to-blog'
+}
+
 const CSSMain = styled.main`
 min-height: 100vh;
+padding-top: 60px;
 background: linear-gradient(90deg, ${props => props.theme.primaryDark}, ${props => props.theme.primarylight});
 `;
 
@@ -26,36 +34,16 @@ const Home = () => {
 						title={Data.title}
 						description={Data.description}
 					/>
-					<HomePost />
+					<HomePost
+						cover={Post.cover}
+						title={Post.title}
+						description={Post.description}
+						href={Post.href}
+					/>
 				</Container>
       </CSSMain>
 		</LayoutBlog>
   );
 }
  export default Home;
-
-
- /*
  
- <div>
-					<Container>
-						<div>
-							<img src="/" />
-							<div>
-								<h1>Francisco Hidalgo</h1>
-								<p>Software developer</p>
-								<p>Social Media</p>
-							</div>
-						</div>
-					</Container>
-					<Container>
-						<article>
-							<img src="/" />
-							<div>
-								<h3>Titulo de mi blog</h3>
-								<p>Descripcion de mi blog</p>
-							</div>
-						</article>
-					</Container>
-				</div>
- */

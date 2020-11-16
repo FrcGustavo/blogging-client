@@ -1,18 +1,19 @@
-import { CSSCardContainer, CSSCard, CSSButton } from  './styles.js';
+import { Button } from '@/atoms';
+import { CSSCardContainer, CSSCard } from  './styles.js';
 
-const HomePost = () => {
+const HomePost = ({ cover, title, description, href }) => {
   return (
     <CSSCardContainer>
       <CSSCard>
         <div>
-          <img src="https://res.cloudinary.com/dwapbqqbo/image/upload/v1592516373/ppyvrszlr0s2wxigqpae.jpg" alt=""/>
+          <img src={cover} alt={title} />
         </div>
         <div>
-          <h3>Como crear el juego de la vida en JavaScript</h3>
-          <p>El juego de la vida es un sistema que puede evolucionar como la vida, pero desde tu computadora.</p>
-          <CSSButton>
+          <h3>{title}</h3>
+          <p>{description}</p>
+          <Button href={href}>
             LEER MÁS
-          </CSSButton>
+          </Button>
         </div>
       </CSSCard>
     </CSSCardContainer>

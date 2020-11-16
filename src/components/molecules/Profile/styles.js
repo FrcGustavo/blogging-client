@@ -11,9 +11,15 @@ a svg {
 	color: #6EC6FF;
 }
 
+@media screen and (min-width: 680px) {
+	justify-content: flex-start;
+}
 `;
 
 export const CSSProfile = styled.section`
+width: 100%;
+max-width: 1056px;
+margin: auto;
 padding: 28px;
 
 > div {
@@ -47,4 +53,18 @@ h2 {
 	font-size: 21px;
 }
 
+p {
+	font-weight: normal;
+}
+
+@media screen and (min-width: 680px) {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 28px;
+	padding-top: 56px;
+
+	h1, h2, p {
+		text-align: left;
+	}
+}
 `;

@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const CSSHeader = styled.header`
+position: fixed;
+width: 100vw;
 height: 60px;
 background: linear-gradient(90deg, ${props => props.theme.primaryDark}, ${props => props.theme.primarylight});
 
@@ -12,7 +14,7 @@ div {
   padding: 0 28px;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 1200px) {
   div {
     padding: 0;
   }
