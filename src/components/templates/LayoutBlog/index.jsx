@@ -1,4 +1,4 @@
-import { Header } from '../../mulecules';
+import { Header } from '@/molecules';
 
 const LayoutBlog = ({ children }) => {
   return (

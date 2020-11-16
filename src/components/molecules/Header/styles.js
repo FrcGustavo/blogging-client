@@ -9,6 +9,13 @@ div {
   justify-content: space-between;
   align-items: center;
   height: 100%;
+  padding: 0 28px;
+}
+
+@media screen and (min-width: 600px) {
+  div {
+    padding: 0;
+  }
 }
 
 `;
@@ -25,4 +32,10 @@ a {
   text-decoration: none;
   color: white;
 }
+`;
+
+export const CSSLogo = styled.a`
+font-size: 21px;
+color: #FFF;
+letter-spacing: 1px;
 `;

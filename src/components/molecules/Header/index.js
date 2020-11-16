@@ -1,12 +1,14 @@
 import Link from 'next/link';
-import { Container } from '../../../styles';
-import { CSSHeader, CSSNav } from './styles';
+import { Container } from 'root/styles';
+import { CSSHeader, CSSNav, CSSLogo } from './styles';
 
 const Header = () => {
   return (
     <CSSHeader>
       <Container>
-        <p>FrcGustavo</p>
+          <Link href="/">
+            <CSSLogo>FrcGustavo</CSSLogo>
+          </Link>
         <CSSNav>
           <Link href="/">
             <a>Home</a>
