@@ -7,6 +7,13 @@ const getAll = async () => {
   return data.body;
 }
 
+const getOne = async (slug) => {
+  const res = await axios.get(`http://localhost:5000/api/posts/${slug}`);
+  const data = res.data;
+  return data.body;
+}
+
 export default {
-  getAll
+  getAll,
+  getOne
 }
