@@ -23,3 +23,12 @@ width: 100%;
 max-width: 1200px;
 margin: auto;
 `;
+
+
+export const CSSMain = styled.main`
+min-height: 100vh;
+padding-top: 60px;
+background: ${props => props.degraded 
+  ? `linear-gradient(90deg, ${props.theme.primaryDark}, ${props.theme.primarylight})`
+  : '#FFF'};
+`;

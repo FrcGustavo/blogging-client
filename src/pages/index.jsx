@@ -1,7 +1,6 @@
-import styled from 'styled-components';
 import { Profile, HomePost } from '@/molecules';
 import { LayoutBlog } from '@/templates';
-import { Container } from 'root/styles';
+import { Container, CSSMain } from 'root/styles';
 
 const Data = {
 	cover: 'https://res.cloudinary.com/dwapbqqbo/image/upload/v1592516678/frcgustavo_wl1wgk.jpg',
@@ -17,16 +16,16 @@ const Post = {
 	href: 'my-link-to-blog'
 }
 
-const CSSMain = styled.main`
-min-height: 100vh;
-padding-top: 60px;
-background: linear-gradient(90deg, ${props => props.theme.primaryDark}, ${props => props.theme.primarylight});
-`;
+export async function getStaticProps(context) {
+  return {
+    props: {}
+  }
+}
 
 const Home = () => {
   return (
     <LayoutBlog>
-      <CSSMain>
+      <CSSMain degraded>
 				<Container>
 					<Profile
 						cover={Data.cover}
