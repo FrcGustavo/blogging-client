@@ -1,5 +1,6 @@
-import { Post } from '@/organisms';
 import { LayoutBlog } from '@/templates';
+import { Footer } from '@/molecules';
+import { Post } from '@/organisms';
 import { PostsService } from 'root/services';
 import { Container, CSSMain } from 'root/styles';
 
@@ -19,12 +20,13 @@ const PagePost = ({ post }) => {
     <LayoutBlog>
       <CSSMain>
         <Container>
-        <Post
-          cover={post.cover}
-          title={post.title}
-          body={post.body}
-        />
+          <Post
+            cover={post.cover}
+            title={post.title}
+            body={post.body}
+          />
         </Container>
+        <Footer />
       </CSSMain>
 		</LayoutBlog>
   );

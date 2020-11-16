@@ -14,14 +14,8 @@ Before the start, your must config enviroment variables
 
 Example
 ```
-// Enviroment
-NODE_ENV=
-
-// MongoDB
-DB_HOST=
-DB_USER=
-DB_PASSWORD=
-DB_NAME=
+// API
+NEXT_PUBLIC_API=http://localhost:5000/api
 ```
 
 ## Start
@@ -40,15 +34,4 @@ Run build and production mode
 ```bash
 npm run build
 npm run start
-```
-Run linter and auto fix files
-```bash
-npm run lint
-npm run lint -- --fix
-```
-
-Run test and coverage code
-```bash
-npm run test
-npm run cover
 ```
