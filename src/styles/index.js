@@ -30,5 +30,5 @@ min-height: 100vh;
 padding-top: 60px;
 background: ${props => props.degraded 
   ? `linear-gradient(90deg, ${props.theme.primaryDark}, ${props.theme.primarylight})`
-  : '#FFF'};
+  : 'rgba(75, 90, 138, 0.14);'};
 `;

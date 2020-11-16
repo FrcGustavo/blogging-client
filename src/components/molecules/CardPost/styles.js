@@ -5,6 +5,7 @@ width: 100%;
 max-width: 290px;
 box-shadow: 0 0 7px rgba(0, 0, 0, 0.14);
 border-radius: 7px;
+background-color: #FFF;
 overflow: hidden;
 `;
 

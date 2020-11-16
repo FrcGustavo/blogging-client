@@ -1,5 +1,6 @@
 import { LayoutBlog } from '@/templates';
 import { ListPosts } from '@/organisms';
+import { Loading } from '@/atoms';
 import { useRequest } from 'root/hooks';
 import { PostsService } from 'root/services';
 import { CSSMain } from 'root/styles';
@@ -10,7 +11,7 @@ const Blog = () => {
   return (
     <LayoutBlog>
       <CSSMain>
-        { loading ? <h1>Cargando</h1> : null }
+        { loading ? <Loading secondary /> : null }
         { !error && !loading ? <ListPosts data={data.posts} /> : null }
         { error ? <h1>Error</h1> : null }
       </CSSMain>
