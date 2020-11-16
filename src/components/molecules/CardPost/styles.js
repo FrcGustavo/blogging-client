@@ -25,6 +25,7 @@ p {
 
 export const CSSImage = styled.div`
 height: 150px;
+overflow: hidden;
 
 img {
   width: 100%;
