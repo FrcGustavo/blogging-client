@@ -7,6 +7,7 @@ box-shadow: 0 0 7px rgba(0, 0, 0, 0.14);
 background-color: ${props => props.theme.secondary};
 color: #FFF;
 text-transform: uppercase;
+cursor: pointer;
 `;
 
 export const CSSButtonLink = styled.a`
@@ -17,4 +18,5 @@ box-shadow: 0 0 7px rgba(0, 0, 0, 0.14);
 background-color: ${props => props.theme.secondary};
 color: #FFF;
 text-transform: uppercase;
+cursor: pointer;
 `;
