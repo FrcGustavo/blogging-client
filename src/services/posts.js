@@ -8,7 +8,7 @@ const getAll = async () => {
 }
 
 const getOne = async (slug) => {
-  const res = await axios.get(`http://localhost:5000/api/posts/${slug}`);
+  const res = await axios.get(`${api}/posts/${slug}`);
   const data = res.data;
   return data.body;
 }
