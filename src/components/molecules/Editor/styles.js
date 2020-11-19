@@ -49,6 +49,7 @@ export const CSSHtml = styled.div`
 width: 50%;
 height: 100%;
 background-color: rgba(75,90,138,0.14);
+overflow-y: auto;
 
 div {
   height: 100%;

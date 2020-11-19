@@ -41,7 +41,7 @@ const PostEditor = ({ data }) => {
     setModalAlert({ title, message, status });
     setModal(true);
   }
-  let hasTimeOut;
+  
   const handleSave = () => {
     setDisabledButtons(true);
     handleSaving('Guardando...', 'El post se esta guardando', );

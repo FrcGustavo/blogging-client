@@ -1,5 +1,5 @@
-import { useUserDispatch } from 'root/contexts';
-import { logoutAction } from 'root/actions';
+import { useUserDispatch } from 'store/contexts';
+import { logoutAction } from 'store/actions';
 import { CSSHeader, CSSMenuContainer, CSSCircleImage, CSSMenu } from './styles';
 
 const HeaderBoard = () => {

@@ -1,7 +1,7 @@
 import { Login } from '@/organisms';
 import { UsersService } from 'root/services';
 import { useUserDispatch } from 'root/contexts';
-import { loginAction } from 'root/actions';
+import { loginAction } from 'store/actions';
 
 const form = [
   { type: 'email', label: 'Correo:', placeholder: 'Escribe un correo electronico', value: '', name: 'email' },

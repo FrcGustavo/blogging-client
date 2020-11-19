@@ -1,4 +1,5 @@
 import { BiImageAdd } from 'react-icons/bi';
+import { CSSPost } from 'root/styles';
 import { CSSEditor, CSSMarkdown, CSSHeader, CSSHtml } from './styles';
 
 const Editor = ({ data, html, onHandleChange, onSave, onPublic, onMetadata, disabled }) => {
@@ -13,7 +14,7 @@ const Editor = ({ data, html, onHandleChange, onSave, onPublic, onMetadata, disa
         <textarea name="body" onChange={onHandleChange} defaultValue={data.body}/>
       </CSSMarkdown>
       <CSSHtml>
-        <div dangerouslySetInnerHTML={{ __html: html }}/>
+        <CSSPost dangerouslySetInnerHTML={{ __html: html }}/>
       </CSSHtml>
     </CSSEditor>
   );

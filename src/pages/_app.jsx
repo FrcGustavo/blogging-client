@@ -1,7 +1,7 @@
 import App from 'next/app';
 import cookies from 'next-cookies';
 import { ThemeProvider } from 'styled-components';
-import { UserProvider } from '../contexts';
+import { UserProvider } from 'store/contexts';
 import { GlobalStyles, theme } from 'root/styles';
 
 const MyApp = ({ Component, pageProps, user }) => {
