@@ -16,6 +16,12 @@ export const GlobalStyles = createGlobalStyle`
   font-size: 14px;
   font-weight: normal;
 }
+
+body, #__next {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
 `;
 
 export const Container = styled.div`
@@ -26,8 +32,7 @@ margin: auto;
 
 
 export const CSSMain = styled.main`
-min-height: 100vh;
-padding-top: 60px;
+min-height: calc(100vh - 60px);
 background: ${props => props.degraded 
   ? `linear-gradient(90deg, ${props.theme.primaryDark}, ${props.theme.primarylight})`
   : 'rgba(75, 90, 138, 0.14);'};

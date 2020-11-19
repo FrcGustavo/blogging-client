@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
 export const CSSHeader = styled.header`
-position: fixed;
+position: sticky;
+top: 0;
+left: 0;
 width: 100vw;
 height: 60px;
 background: linear-gradient(90deg, ${props => props.theme.primaryDark}, ${props => props.theme.primarylight});
+box-shadow: ${props => props.shadow ? '0 0 7px rgba(0, 0, 0, 0.14)' : '0 0 0px'};
 
 div {
   display: flex;

@@ -2,9 +2,9 @@ import Link from 'next/link';
 import { Container } from 'root/styles';
 import { CSSHeader, CSSNav, CSSLogo } from './styles';
 
-const Header = () => {
+const Header = ({ shadow }) => {
   return (
-    <CSSHeader>
+    <CSSHeader shadow={shadow}>
       <Container>
           <Link href="/">
             <CSSLogo>FrcGustavo</CSSLogo>
