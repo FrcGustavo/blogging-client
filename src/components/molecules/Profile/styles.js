@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const CSSSocialMedia = styled.div`
 display: grid;
-grid-template-columns: repeat(2, 28px);
+grid-template-columns: repeat(3, 28px);
 gap: 0 14px;
 justify-content: center;
 

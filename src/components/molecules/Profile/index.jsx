@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { CSSProfile, CSSSocialMedia } from './styles';
 
 const Profile = ({ cover, name, title, description }) => {
@@ -13,12 +13,11 @@ const Profile = ({ cover, name, title, description }) => {
         <h2>{title}</h2>
         <p>{description}</p>
         <CSSSocialMedia>
-          <Link href="https://www.linkedin.com/in/frcgustavo/">
-            <a><FaLinkedin /></a>
-          </Link>
-          <Link href="https://github.com/FranciscoGustavo">
-            <a href=""><FaGithub /></a>
-          </Link>
+          <a href="https://www.linkedin.com/in/frcgustavo/" target="_blank"><FaLinkedin /></a>
+          <a href="https://github.com/FranciscoGustavo" target="_blank"><FaGithub /></a>
+          <a href = "mailto:hidalgofco520@gmail.com?subject=frcgustavo.com">
+            <FaEnvelope />
+          </a>
         </CSSSocialMedia>
       </div>
     </CSSProfile>
