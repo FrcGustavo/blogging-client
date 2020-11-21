@@ -1,11 +1,10 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 
 const useAlert = (data = { title: '', message: '', status: ''}) => {
   const [isOpen, setModal] = useState(false);
   const [AlertData, setAlert] = useState({ title: '', message: '', status: ''});
 
   const handleClose = (reset = false) => {
-    clearTimeout(delayToClose);
     setModal(false);
     if (reset){
       setAlert({ title: '', message: '', status: '' });
