@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const handleStatus = (props) => {
-  console.log('ALERT', props.status === 'success');
   switch (props.status) {
     case 'success':
       return '#42B72A';
@@ -21,11 +20,11 @@ border-radius: 7px;
 padding: 14px;
 box-shadow: 0 0 7px rgba(0, 0, 0, 0.14);
 background-color: ${handleStatus}; // 42B72A FA3E3E
-color: ${props => props.status === undefined ? '#FFF' : props.theme.primaryDark};
+color: ${props => props.status !== 'success' ? '#FFF' : props.theme.primaryDark};
 transition: all 0.2s ease-in-out;
 
 svg {
-  color: ${props => props.status === undefined ? '#FFF' : props.theme.primaryDark};
+  color: ${props => props.status !== 'success' ? '#FFF' : props.theme.primaryDark};
   transition: all 0.2s ease-in-out;
 }
 `;

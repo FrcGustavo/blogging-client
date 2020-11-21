@@ -8,7 +8,7 @@ const useForm = (form, { file, middleware } = { file: false, middleware: false }
   const handleChange = async (e) => {
 
     if (e.target.type === 'file' && file) {      
-      setData({
+      return setData({
         ...data,
         [e.target.name]: await file(e.target.files),
       });

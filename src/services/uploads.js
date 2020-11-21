@@ -15,7 +15,7 @@ const image = async (file) => {
     }
   });
 
-  return res.data;
+  return res.data.body;
 }
 
 export default {

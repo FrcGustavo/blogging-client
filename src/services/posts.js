@@ -44,8 +44,22 @@ const update = async (data, slug) => {
   return slug;
 }
 
+const publish = async (data, slug) => {
+  const { token } = JSON.parse(document.cookie.replace('user=', ''));
+  const res = await axios({
+    url: `${api}/posts/${slug}`,
+    method: 'PATCH',
+    data,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    }
+  });
+  return true;
+};
+
 export default {
   getAll,
   getOne,
-  save
+  save,
+  publish
 }

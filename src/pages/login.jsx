@@ -1,6 +1,6 @@
 import { Login } from '@/organisms';
 import { UsersService } from 'root/services';
-import { useUserDispatch } from 'root/contexts';
+import { useUserDispatch } from 'store/contexts';
 import { loginAction } from 'store/actions';
 
 const form = [
