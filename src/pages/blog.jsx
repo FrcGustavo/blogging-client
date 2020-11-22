@@ -1,20 +1,29 @@
+import Head from 'next/head'
 import { LayoutBlog } from '@/templates';
 import { ListPosts } from '@/organisms';
 import { Footer } from '@/molecules';
-import { Loading } from '@/atoms';
-import { useRequest } from 'root/hooks';
 import { PostsService } from 'root/services';
 import { CSSMain } from 'root/styles';
 
-const Blog = () => {
-  const [error, loading, data] = useRequest(PostsService.getAll());
+export async function getStaticProps() {
+	const { posts } = await PostsService.getAll();
+  return {
+    props: {
+			posts
+		}
+  }
+}
 
+const Blog = ({ posts }) => {
   return (
     <LayoutBlog>
+      <Head>
+        <title>FrcGustavo | Blog</title>
+				<meta name="description" content="" />
+				<meta name="keywords" content="" />
+      </Head>
       <CSSMain>
-        { loading ? <Loading secondary /> : null }
-        { !error && !loading ? <ListPosts data={data.posts} /> : null }
-        { error ? <h1>Error</h1> : null }
+        <ListPosts data={posts} />
         <Footer />
       </CSSMain>
 		</LayoutBlog>

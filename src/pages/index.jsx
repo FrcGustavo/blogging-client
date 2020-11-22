@@ -1,30 +1,35 @@
+import Head from 'next/head'
 import { Profile, HomePost } from '@/molecules';
 import { LayoutBlog } from '@/templates';
+import { PostsService } from 'root/services';
 import { Container, CSSMain } from 'root/styles';
 
 const Data = {
 	cover: 'https://res.cloudinary.com/dwapbqqbo/image/upload/v1592516678/frcgustavo_wl1wgk.jpg',
-	name: 'FrcGustavo',
-	title: 'Full Stack Software Developer (MERN)',
-	description: 'I’m a software Developer focused on the MERN stack. I love experimenting with new tools and frameworks. I’ve experience with Js ecosystem, Typescript, Express, React Mongo, Postgres, APIs and Single-page applications.'
+	name: 'Francisco Gustavo',
+	title: 'Desarrollador de software full stack MERN',
+	description: `Me encanta experimentar con nuevas herramientas y frameworks. Me gusta crear soluciones usando mis herramientas de desarrollo. Tengo experiencia con API Rest, API GraphQL, Socket IO, Single Page App, Server side render y más.`,
+	keywords: 'Full, Stack, Software, Developer, MERN, FrcGustavo,'
 }
 
-const Post = {
-	cover: 'https://res.cloudinary.com/dwapbqqbo/image/upload/v1592516373/ppyvrszlr0s2wxigqpae.jpg',
-	title: 'Como crear el juego de la vida en JavaScript',
-	description: 'El juego de la vida es un sistema que puede evolucionar como la vida, pero desde tu computadora.',
-	href: 'my-link-to-blog'
-}
-
-export async function getStaticProps(context) {
+export async function getStaticProps() {
+	const { posts } = await PostsService.getAll();
+	const post = posts[0];
   return {
-    props: {}
+    props: {
+			post
+		}
   }
 }
 
-const Home = () => {
+const Home = ({ post }) => {
   return (
     <LayoutBlog>
+			<Head>
+        <title>FrcGustavo | Full Stack Software Developer MERN</title>
+				<meta name="description" content={Data.cover} />
+				<meta name="keywords" content={Data.keywords} />
+      </Head>
       <CSSMain degraded>
 				<Container>
 					<Profile
@@ -34,10 +39,10 @@ const Home = () => {
 						description={Data.description}
 					/>
 					<HomePost
-						cover={Post.cover}
-						title={Post.title}
-						description={Post.description}
-						href={Post.href}
+						cover={post.cover}
+						title={post.title}
+						description={post.description}
+						href={post.slug}
 					/>
 				</Container>
       </CSSMain>

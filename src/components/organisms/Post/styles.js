@@ -30,8 +30,20 @@ padding: 14px 28px;
 h1 {
   border-bottom: solid 1px gray;
   padding-bottom: 14px;
-  font-size: 28px;
+  font-size: 21px;
   font-weight: bold;
+}
+
+@media screen and (min-width: 680px) {
+  h1 {
+    font-size: 28px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  h1 {
+    font-size: 35px;
+  }
 }
 `;
 

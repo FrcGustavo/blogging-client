@@ -7,6 +7,7 @@ box-shadow: 0 0 7px rgba(0, 0, 0, 0.14);
 background-color: ${props => props.theme.secondary};
 color: #FFF;
 text-transform: uppercase;
+outline: none;
 cursor: pointer;
 `;
 
@@ -18,5 +19,6 @@ box-shadow: 0 0 7px rgba(0, 0, 0, 0.14);
 background-color: ${props => props.theme.secondary};
 color: #FFF;
 text-transform: uppercase;
+outline: none;
 cursor: pointer;
 `;

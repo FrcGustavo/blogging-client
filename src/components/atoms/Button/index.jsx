@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { CSSButton, CSSButtonLink } from './styles';
 
-const Button = ({ children, href }) => {
+const Button = ({ children, type = 'button', href, onHandleClick }) => {
   if (!href) {
     return (
-      <CSSButton>
+      <CSSButton type={type} onClick={onHandleClick}>
         {children}
       </CSSButton>
     );
