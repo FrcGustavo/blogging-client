@@ -10,6 +10,10 @@ padding: 28px;
   gap: 56px;
 }
 
+> div article {
+  justify-self: center;
+}
+
 @media screen and (min-width: 680px) {
   > div {
     grid-template-columns: 1fr 1fr;
@@ -19,6 +23,10 @@ padding: 28px;
 @media screen and (min-width: 1000px) {
   > div {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  article:nth-child(1), article:nth-child(4), article:nth-child(7) {
+    justify-self: start;
   }
 
   article:nth-child(2), article:nth-child(5), article:nth-child(8) {

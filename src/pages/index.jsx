@@ -27,7 +27,7 @@ const Home = ({ post }) => {
     <LayoutBlog>
 			<Head>
         <title>FrcGustavo | Full Stack Software Developer MERN</title>
-				<meta name="description" content={Data.cover} />
+				<meta name="description" content={Data.description} />
 				<meta name="keywords" content={Data.keywords} />
       </Head>
       <CSSMain degraded>
