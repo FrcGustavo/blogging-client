@@ -30,7 +30,7 @@ padding: 14px 28px;
 h1 {
   border-bottom: solid 1px gray;
   padding-bottom: 14px;
-  font-size: 21px;
+  font-size: 24.5px;
   font-weight: bold;
 }
 
@@ -94,7 +94,7 @@ ul, ol {
 h2 {
   border-bottom: 1px solid #eee;
   color: #000;
-  font-size: 2.0em;
+  font-size: 1.75em;
 }
 h3 {
   font-size: 1.5em;
@@ -131,5 +131,15 @@ code {
   margin: 0 2px;
   padding: 0 5px;
   white-space: pre;
+}
+
+img {
+  max-width: 100%;
+}
+
+@media screen and (min-width: 680px) {
+  h2 {
+    font-size: 2em;
+  }
 }
 `;

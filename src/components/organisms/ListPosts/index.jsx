@@ -8,7 +8,7 @@ const ListPosts = ({ data }) => {
       <Container>
         {
           data.map(({ cover, title, description, slug }) => (
-            <CardPost cover={cover} title={title} description={description} href={slug} />
+            <CardPost key={slug} cover={cover} title={title} description={description} href={slug} />
           ))
         }
       </Container>
