@@ -23,7 +23,7 @@ const CardRowPost = ({ title, slug, isPublic }) => {
         </CSSStatus>
       </td>
       <td>
-        <Link href={`/dashboard/edit/${slug}`}>
+        <Link href={`/dashboard/posts/${slug}/edit`}>
           <a>Edit</a>
         </Link>
       </td>

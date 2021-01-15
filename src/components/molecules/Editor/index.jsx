@@ -9,7 +9,7 @@ const Editor = ({ data, html, onHandleChange, onSave, onPublic, onMetadata, disa
         <button onClick={onSave} disabled={disabled}>Guardar</button>
         <button onClick={onPublic} disabled={disabled}>{data.isPublic ? 'Borrador' : 'Publicar'}</button>
         <button onClick={onMetadata} disabled={disabled}>Metadata</button>
-        <Link href={`/dashboard/drafts/${data.id}`}>
+        <Link href={`/dashboard/posts/${data.id}/draft`}>
           <a target="_blank">Leer</a>
         </Link>
       </CSSHeader>

@@ -55,6 +55,7 @@ export const HandleMenuCSS = styled.button`
 border: 0;
 background-color: transparent;
 cursor: pointer;
+outline: none;
 
 svg {
   font-size: 1.5rem;

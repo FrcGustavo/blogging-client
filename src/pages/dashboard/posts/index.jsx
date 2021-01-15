@@ -1,5 +1,9 @@
 import cookies from 'next-cookies';
+import { Loading } from '@/atoms';
+import { Posts } from '@/organisms';
 import { LayoutDashboard } from '@/templates';
+import { useRequest } from 'root/hooks';
+import { UsersService } from 'root/services';
 
 export async function getServerSideProps(context) {
   const { user } = cookies(context);
@@ -12,9 +16,13 @@ export async function getServerSideProps(context) {
 }
 
 const Dashboard = () => {
+  const [error, loading, data] = useRequest(UsersService.getMyPosts, true);
+
   return (
     <LayoutDashboard>
-      <h1>Bievenido</h1>
+      { loading ? <Loading /> : null }
+      { !error && !loading ?  <Posts data={data.posts}/> : null }
+      { error ? <h1>{error.message}</h1> : null }
     </LayoutDashboard>
   );
 }
