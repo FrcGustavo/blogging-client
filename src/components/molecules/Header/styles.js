@@ -36,6 +36,9 @@ a {
   text-transform: uppercase;
   text-decoration: none;
   color: white;
+  &:first-child {
+    margin-left: 0;
+  }
 }
 `;
 
