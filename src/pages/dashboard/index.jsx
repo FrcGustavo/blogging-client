@@ -16,7 +16,8 @@ export async function getServerSideProps(context) {
 }
 
 const Dashboard = () => {
-  const [error, loading, data] = useRequest(UsersService.getMyPosts());
+  if (typeof window === undefined) return null;
+  const [error, loading, data] = useRequest(UsersService.getMyPosts, true);
 
   return (
     <LayoutDashboard>
