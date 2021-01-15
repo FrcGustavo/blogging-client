@@ -1,12 +1,19 @@
 import styled from 'styled-components';
 
 export const CSSTr = styled.tr`
+display: grid;
 border-top: solid 1px rgba(0, 0, 0, 0.14);
 border-bottom: solid 1px rgba(0, 0, 0, 0.14);
 td {
   padding: 12px 24px;
-  white-space: nowrap;
 }
+
+@media screen and (min-width: 680px) {
+  display: table-row;
+  td {
+    white-space: nowrap;
+  }
+} 
 `;
 
 export const CSSAuthor = styled.div`
