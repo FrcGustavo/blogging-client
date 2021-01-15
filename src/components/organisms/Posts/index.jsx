@@ -16,11 +16,11 @@ const Posts = ({ data }) => {
             </CSSTableHead>
             <CSSTableBody>
               {
-                data.map(({ title, slug, isPublic }) => (
+                data.map(({ title, id, isPublic }) => (
                   <CardRowPost
-                    key={slug}
+                    key={id}
                     title={title}
-                    slug={slug}
+                    slug={id}
                     isPublic={isPublic}
                   />
                 ))

@@ -13,7 +13,7 @@ const Header = ({ shadow }) => {
           <Link href="/">
             <a>Home</a>
           </Link>
-          <Link href="blog">
+          <Link href="/blog">
             <a>Blog</a>
           </Link>
         </CSSNav>
