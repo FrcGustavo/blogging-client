@@ -26,24 +26,45 @@ div {
 `;
 
 export const CSSNav = styled.nav`
+display: flex;
+align-items: center;
 a {
-  display: inline-block;
-  border-radius: 5px;
-  margin-left: 21px;
-  padding: 7px 14px;
-  box-shadow: 0 0 7px rgba(0, 0, 0, 0.14);
-  background-color: rgba(0, 0, 0, 0.14);
-  text-transform: uppercase;
-  text-decoration: none;
-  color: white;
-  &:first-child {
-    margin-left: 0;
+  display: flex;
+  img {
+    width: 35px;
   }
 }
 `;
 
+export const NavItem = styled.a`
+display: inline-block;
+border-radius: 5px;
+margin-left: 21px;
+padding: 7px 14px;
+box-shadow: 0 0 7px rgba(0, 0, 0, 0.14);
+background-color: rgba(0, 0, 0, 0.14);
+text-transform: uppercase;
+text-decoration: none;
+color: white;
+&:first-child {
+  margin-left: 0;
+}
+`;
+
+
 export const CSSLogo = styled.a`
-font-size: 21px;
 color: #FFF;
 letter-spacing: 1px;
+span {
+  font-size: 21px;
+  &:nth-child(even) {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 680px) {
+  span:nth-child(even) {
+    display: contents;
+  }
+}
 `;
