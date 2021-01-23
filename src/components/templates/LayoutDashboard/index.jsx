@@ -1,16 +1,19 @@
-import { useState } from 'react';
+import { useAppState, useAppDispatch } from '../../../store/contexts';
+import { handleOpenMenu } from '../../../store/actions';
 import { HeaderBoard, Navbar } from '@/molecules';
 import { CSSDashboard, CSSMain } from './styles';
 
 const LayoutDashboard = ({ children }) => {
-  const [navbar, setNavbar] = useState(false);
+  const dispatch = useAppDispatch();
+  const { isMenuOpen } = useAppState();
+
   const handleNavbar = () => {
-    setNavbar(!navbar);
+    dispatch(handleOpenMenu(!isMenuOpen));
   }
 
   return (
-    <CSSDashboard showNavbar={navbar}>
-      <Navbar showNavbar={navbar} />
+    <CSSDashboard showNavbar={isMenuOpen}>
+      <Navbar showNavbar={isMenuOpen} />
       <HeaderBoard handleNavbar={handleNavbar} />
       <CSSMain>
         {children}
