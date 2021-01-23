@@ -10,8 +10,8 @@ const MetaData = {
 	keywords: 'Full, Stack, Software, Developer, MERN, FrcGustavo,'
 }
 
-export async function getStaticProps() {
-	const { posts } = await PostsService.getAll();
+export async function getStaticProps({ locale }) {
+	const { posts } = await PostsService.getAll(locale);
   return {
     props: {
       posts,

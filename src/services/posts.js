@@ -1,14 +1,14 @@
 import axios from 'axios'; 
-import { api } from 'root/config';
+import { api, apiV1 } from 'root/config';
 
-const getAll = async () => {
-  const res = await axios.get(`${api}/posts`);
+const getAll = async (lang) => {
+  const res = await axios.get(`${apiV1}/posts/?lang=${lang}`);
   const data = res.data;
   return data.body;
 }
 
-const getOne = async (slug) => {
-  const res = await axios.get(`${api}/posts/${slug}`);
+const getOne = async (slug, lang) => {
+  const res = await axios.get(`${apiV1}/posts/${slug}?lang=${lang}`);
   const data = res.data;
   return data.body;
 }
@@ -34,7 +34,7 @@ const create = async (data) => {
 const update = async (data, slug) => {
   const { token } = JSON.parse(document.cookie.replace('user=', ''));
   await axios({
-    url: `${api}/posts/${slug}`,
+    url: `${apiV1}/users/posts/${slug}`,
     method: 'PATCH',
     data,
     headers: {

@@ -7,15 +7,16 @@ import { Container, CSSMain } from 'root/styles';
 
 export const getStaticPaths = async () => {
   const { posts } = await PostsService.getAll();
-  const paths = posts.map(({ slug }) => ({
-    params: { slug },
-  })); 
+  const paths = posts.map(({ slug }) => [
+    { params: { slug }, locale: 'es' },
+    { params: { slug }, locale: 'en' },
+  ]).flat();
   return { paths, fallback: false };
 }
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async ({ params, locale }) => {
   const { slug } = params
-  const post = await PostsService.getOne(slug);
+  const post = await PostsService.getOne(slug, locale);
   return {
     props: { post },
   }
