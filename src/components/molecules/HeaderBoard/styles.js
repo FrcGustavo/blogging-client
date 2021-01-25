@@ -30,6 +30,7 @@ box-shadow: 0 0 7px rgba(0, 0, 0, 0.14);
 background-color: #FFF;
 overflow: hidden;
 transition: all 0.2s ease-in-out;
+z-index: 100;
 
 button {
   display: flex;

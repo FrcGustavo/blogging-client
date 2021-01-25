@@ -5,7 +5,6 @@ const userReducer = (state, action) => {
   const { type, payload } = action;
   switch(type) {
     case LOGOUT:
-      console.log(payload);
       document.cookie = 'user=';
       Router.push('/login');
       return payload; 
