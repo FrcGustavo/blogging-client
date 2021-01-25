@@ -1,4 +1,7 @@
+import { useEffect, useState } from 'react';
 import cookies from 'next-cookies';
+import { useAppState, useAppDispatch } from 'root/store/contexts';
+import { addPosts } from 'root/store/actions';
 import { Loading } from '@/atoms';
 import { Posts } from '@/organisms';
 import { LayoutDashboard } from '@/templates';
@@ -16,12 +19,30 @@ export async function getServerSideProps(context) {
 }
 
 const Dashboard = () => {
-  const [error, loading, data] = useRequest(UsersService.getMyPosts, true);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const { posts } = useAppState();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (!posts) {
+      UsersService.getMyPosts()
+        .then((data) => {
+          dispatch(addPosts(data.posts));
+        })
+        .catch((err) => {
+          setError(err);  
+        })
+        .finally(() => setLoading(false));
+    } else {
+      setLoading(false)
+    }
+  }, []);
 
   return (
     <LayoutDashboard>
       { loading ? <Loading /> : null }
-      { !error && !loading ?  <Posts data={data.posts}/> : null }
+      { !error && !loading ?  <Posts data={posts}/> : null }
       { error ? <h1>{error.message}</h1> : null }
     </LayoutDashboard>
   );

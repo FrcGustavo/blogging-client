@@ -1,20 +1,22 @@
 import Link from 'next/link';
+import { useAppState } from 'root/store/contexts';
 import { CSSTr, CSSAuthor, CSSCategory, CSSTitle, CSSStatus } from './styles';
 
-const CardRowPost = ({ title, slug, isPublic }) => {
+const CardRowPost = ({ userCover, username, es, slug, isPublic }) => {
+  const { user } = useAppState();
   return (
     <CSSTr>
       <td>
         <CSSAuthor>
-          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=4&amp;w=256&amp;h=256&amp;q=60" alt=""/>
+          <img src={userCover} alt={username}/>
           <div>
-            <p>Francisco Gustavo</p>
-            <p>jane.cooper@example.com</p>
+            <p>{username}</p>
+            <p>{user.email}</p>
           </div>
         </CSSAuthor>
       </td>
       <td>
-        <CSSTitle>{title}</CSSTitle>
+        <CSSTitle>{es.title}</CSSTitle>
         <CSSCategory>Optimization</CSSCategory>
       </td>
       <td>

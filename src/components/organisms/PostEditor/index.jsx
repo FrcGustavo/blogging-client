@@ -23,59 +23,72 @@ const file = async (files) => {
   }
 }
 
-const PostEditor = ({ data }) => {
+const reLanguage = new RegExp(/(es|en)/);
+
+const PostEditor = ({ data: post }) => {
+  const [data, setData] = useState(post);
+  const [language, setLanguage] = useState('es');
+  const [isMetadataModalOpen, setMetadataModal] = useState(false);
   const [isOpen, AlertData, handleClose, handleOpen] = useAlert();
-  const { data: post, handleChange } = useForm(data, { middleware, file });
-  const [metadataModal, setMetadataModal] = useState(false);
-  const [html, setHtml] = useState(Html.makeHtml(post.body));
-  
+  const [html, setHtml] = useState(Html.makeHtml(data[language].body));
+
   useEffect(() => {
-    setHtml(Html.makeHtml(post.body));
-  }, [post.body]);
+    setHtml(Html.makeHtml(data[language].body));
+  }, [data[language].body]);
 
-  const handleSave = async () => {
+  const handleChange = (e) => {
+    if (reLanguage.test(e.target.name)) {
+      setData({
+        ...data,
+        [language]: {
+          ...data[language],
+          [e.target.name.substr(3)]: e.target.value
+        }
+      })
+    } else {
+     setData({
+       ...data,
+       [e.target.name]: e.target.value
+     }) 
+    }
+  }
+
+  const handleSave = () => {
     handleOpen('Guardando', 'El post se esta guardando');
-    try {
-      const idOrSlug = post.id ? post.slug : post.id;
-      const id = await PostsService.save(post, idOrSlug)
-      handleChange({ target: { name: 'id', value: id } });
-      handleOpen('Guardado', 'El post se guardado con exito', 'success');
-    } catch {
-      handleOpen('Error', 'Algo salio mal intenta mas tarde', 'fail');
-    }
+    PostsService.save(data, data.id)
+    .then((res) => {
+      console.log(res);
+        handleOpen('Guardado', 'El post se guardado con exito', 'success');
+      });
   }
-
-  const handlePublic = async () => {
-    try {
-      await handleSave();
-      await PostsService.publish({ isPublic: !post.isPublic }, post.slug);
-      handleChange({ target: { name: 'isPublic', value: !post.isPublic } });
-      handleOpen('Guardado', 'El post se guardado con exito', 'success');
-    } catch(error) {
-      console.log('ERRROROR 2', error);
-      handleOpen('Error', 'Algo salio mal intenta mas tarde', 'fail');
-    }
-  }
+  const handlePublic = () => {}
 
   const handleOpenMetadata = () => setMetadataModal(true);
   const handleCloseMetadata = () => setMetadataModal(false);
+  const handleLanguagetoggle = () => {
+    if (language === 'en') setLanguage('es');
+    else setLanguage('en')
+  };
 
   return (
     <CSSEditorContainer>
       <Editor
-        data={post}
+        data={data}
         html={html}
-        onHandleChange={handleChange}
+        lang={language}
         onSave={handleSave}
         onPublic={handlePublic}
         onMetadata={handleOpenMetadata}
-        disabled={isOpen}
+        onLanguage={handleLanguagetoggle}
+        onHandleChange={handleChange}
+        disabledButtons={false}
       />
       <Metadata
-        data={post}
+        data={data}
         onHandleChange={handleChange}
-        isOpen={metadataModal} 
+        isOpen={isMetadataModalOpen} 
         close={handleCloseMetadata}
+        lang={language}
       />
       <Modal isModalOpen={isOpen}>
         <Alert

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { api } from '../config';
+import { api, apiV1 } from '../config';
 
 const login = async ({ email, password }) => {
   const res = await axios({
@@ -16,7 +16,7 @@ const login = async ({ email, password }) => {
 const getMyPosts = async () => {
   const { token } = JSON.parse(document.cookie.replace('user=', ''))
   const res = await axios({
-    url: `${api}/posts/author`,
+    url: `${apiV1}/users/posts`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -28,7 +28,7 @@ const getMyPosts = async () => {
 const getOnePost = async (slug) => {
   const { token } = JSON.parse(document.cookie.replace('user=', ''))
   const res = await axios({
-    url: `${api}/posts/author/${slug}`,
+    url: `${apiV1}/users/posts/${slug}`,
     headers: {
       Authorization: `Bearer ${token}`,
     },

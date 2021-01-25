@@ -8,6 +8,8 @@ const MyApp = ({ Component, pageProps, user }) => {
   const appState = {
     user,
     isMenuOpen: false,
+    posts: false,
+    editingPost: false
   };
 
   return (

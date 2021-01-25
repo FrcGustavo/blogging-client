@@ -2,3 +2,13 @@ export const HANDLE_OPEN_MENU = 'HANDLE_OPEN_MENU';
 export const handleOpenMenu = (payload) => ({
   type: HANDLE_OPEN_MENU, payload,
 });
+
+export const ADD_POSTS = 'ADD_POSTS';
+export const addPosts = (payload) => ({
+  type: ADD_POSTS, payload,
+});
+
+export const ADD_EDIT_POST = 'ADD_EDIT_POST';
+export const addEditPost = (payload) => ({
+  type: ADD_EDIT_POST, payload,
+});
