@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
+import Head from 'next/head';
 import cookies from 'next-cookies';
 import { useAppState, useAppDispatch } from 'root/store/contexts';
 import { addPosts } from 'root/store/actions';
 import { Loading } from '@/atoms';
 import { Posts } from '@/organisms';
 import { LayoutDashboard } from '@/templates';
-import { useRequest } from 'root/hooks';
 import { UsersService } from 'root/services';
 
 export async function getServerSideProps(context) {
@@ -41,6 +41,9 @@ const Dashboard = () => {
 
   return (
     <LayoutDashboard>
+      <Head>
+        <title>Dashboard | Posts</title>
+      </Head>
       { loading ? <Loading /> : null }
       { !error && !loading ?  <Posts data={posts}/> : null }
       { error ? <h1>{error.message}</h1> : null }

@@ -47,9 +47,9 @@ const update = async (data, slug) => {
 const publish = async (data, slug) => {
   const { token } = JSON.parse(document.cookie.replace('user=', ''));
   const res = await axios({
-    url: `${api}/posts/${slug}`,
+    url: `${apiV1}/users/posts/${slug}`,
     method: 'PATCH',
-    data,
+    data: { ...data, isPublic: !data.isPublic },
     headers: {
       Authorization: `Bearer ${token}`,
     }

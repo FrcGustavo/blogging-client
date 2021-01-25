@@ -1,18 +1,11 @@
 import { useState, useEffect } from 'react';
 import showdown from 'showdown';
-import { useForm, useAlert } from 'root/hooks';
+import { useEditPost, useAlert, useModal } from 'root/hooks';
 import { Metadata, Editor, Modal, Alert } from '@/molecules';
 import { PostsService, UploadsService } from 'root/services';
 import { CSSEditorContainer,  } from './styles';
 
 const Html = new showdown.Converter();
-
-const middleware = (data, field) => {
-  if (field === 'title') {
-    data.slug = data.title.toLowerCase();
-  }
-  return data;
-}
 
 const file = async (files) => {
   try {
@@ -23,52 +16,37 @@ const file = async (files) => {
   }
 }
 
-const reLanguage = new RegExp(/(es|en)/);
-
 const PostEditor = ({ data: post }) => {
-  const [data, setData] = useState(post);
-  const [language, setLanguage] = useState('es');
-  const [isMetadataModalOpen, setMetadataModal] = useState(false);
-  const [isOpen, AlertData, handleClose, handleOpen] = useAlert();
+  const [data, handleChange, language, handleLanguagetoggle] = useEditPost(post, file);
+  const [isMetadataModalOpen, handleCloseMetadata, handleOpenMetadata] = useModal();
+  const [isAlertModalOpen, alertMessage, handleCloseAlert, handleOpenAlert] = useAlert();
+  const [disabledButtons, setDisabledButtons] = useState(false);
   const [html, setHtml] = useState(Html.makeHtml(data[language].body));
 
   useEffect(() => {
     setHtml(Html.makeHtml(data[language].body));
   }, [data[language].body]);
 
-  const handleChange = (e) => {
-    if (reLanguage.test(e.target.name)) {
-      setData({
-        ...data,
-        [language]: {
-          ...data[language],
-          [e.target.name.substr(3)]: e.target.value
-        }
-      })
-    } else {
-     setData({
-       ...data,
-       [e.target.name]: e.target.value
-     }) 
+  const handleSavePublic = async (isForPublic = false) => {
+    try {
+      setDisabledButtons(true);
+      handleOpenAlert('Guardando', 'El post se esta guardando');
+      if (isForPublic) {
+        await PostsService.publish(data, data.id);
+        handleChange({ target: { name: 'isPublic', value: !data.isPublic }})
+      } else {
+        await PostsService.save(data, data.id);
+      }
+      handleOpenAlert('Guardado', 'El post se guardado con exito', 'success');
+      setDisabledButtons(false);
+    }
+    catch (err){
+      handleOpen('Error', 'Algo salio mal intenta mas tarde', 'fail');
     }
   }
 
-  const handleSave = () => {
-    handleOpen('Guardando', 'El post se esta guardando');
-    PostsService.save(data, data.id)
-    .then((res) => {
-      console.log(res);
-        handleOpen('Guardado', 'El post se guardado con exito', 'success');
-      });
-  }
-  const handlePublic = () => {}
-
-  const handleOpenMetadata = () => setMetadataModal(true);
-  const handleCloseMetadata = () => setMetadataModal(false);
-  const handleLanguagetoggle = () => {
-    if (language === 'en') setLanguage('es');
-    else setLanguage('en')
-  };
+  const handleSave = async () => await handleSavePublic();
+  const handlePublic = async () => await handleSavePublic(true);
 
   return (
     <CSSEditorContainer>
@@ -81,7 +59,7 @@ const PostEditor = ({ data: post }) => {
         onMetadata={handleOpenMetadata}
         onLanguage={handleLanguagetoggle}
         onHandleChange={handleChange}
-        disabledButtons={false}
+        disabledButtons={disabledButtons}
       />
       <Metadata
         data={data}
@@ -90,12 +68,12 @@ const PostEditor = ({ data: post }) => {
         close={handleCloseMetadata}
         lang={language}
       />
-      <Modal isModalOpen={isOpen}>
+      <Modal isModalOpen={isAlertModalOpen}>
         <Alert
-          title={AlertData.title}
-          message={AlertData.message}
-          status={AlertData.status}
-          onClose={handleClose}
+          title={alertMessage.title}
+          message={alertMessage.message}
+          status={alertMessage.status}
+          onClose={handleCloseAlert}
         />
       </Modal>
     </CSSEditorContainer>
