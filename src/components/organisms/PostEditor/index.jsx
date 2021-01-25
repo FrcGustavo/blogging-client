@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import showdown from 'showdown';
 import { useEditPost, useAlert, useModal } from 'root/hooks';
@@ -17,6 +18,7 @@ const file = async (files) => {
 }
 
 const PostEditor = ({ data: post }) => {
+  const router = useRouter();
   const [data, handleChange, language, handleLanguagetoggle] = useEditPost(post, file);
   const [isMetadataModalOpen, handleCloseMetadata, handleOpenMetadata] = useModal();
   const [isAlertModalOpen, alertMessage, handleCloseAlert, handleOpenAlert] = useAlert();
@@ -35,13 +37,17 @@ const PostEditor = ({ data: post }) => {
         await PostsService.publish(data, data.id);
         handleChange({ target: { name: 'isPublic', value: !data.isPublic }})
       } else {
-        await PostsService.save(data, data.id);
+        const createdPostId = await PostsService.save(data, data.id);
+        if (data.id === false) {
+          return router.push(`/dashboard/posts/${createdPostId}/edit`)
+        }
       }
       handleOpenAlert('Guardado', 'El post se guardado con exito', 'success');
       setDisabledButtons(false);
     }
     catch (err){
-      handleOpen('Error', 'Algo salio mal intenta mas tarde', 'fail');
+      handleOpenAlert('Error', 'Algo salio mal intenta mas tarde', 'fail');
+      setDisabledButtons(false);
     }
   }
 

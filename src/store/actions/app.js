@@ -12,3 +12,8 @@ export const ADD_EDIT_POST = 'ADD_EDIT_POST';
 export const addEditPost = (payload) => ({
   type: ADD_EDIT_POST, payload,
 });
+
+export const CLEAN_POSTS = 'CLEAN_POSTS';
+export const cleanPosts = () => ({
+  type: CLEAN_POSTS, payload: false,
+});

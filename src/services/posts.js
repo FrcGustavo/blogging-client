@@ -21,7 +21,7 @@ const save = async (data, id) => {
 const create = async (data) => {
   const { token } = JSON.parse(document.cookie.replace('user=', ''));
   const res = await axios({
-    url: `${api}/posts`,
+    url: `${apiV1}/users/posts`,
     method: 'POST',
     data,
     headers: {

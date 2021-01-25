@@ -1,4 +1,6 @@
 import cookies from 'next-cookies';
+import { useAppDispatch } from 'root/store/contexts';
+import { cleanPosts } from 'root/store/actions';
 import { PostEditor } from '@/organisms';
 import { LayoutDashboard } from '@/templates';
 
@@ -13,15 +15,26 @@ export async function getServerSideProps(context) {
 }
 
 const DashboardNew = () => {
-  const dataForm = [
-    { name: 'id', value: undefined },
-    { name: 'title', value: '' },
-    { name: 'cover', value: '' },
-    { name: 'body', value: '' },
-    { name: 'description', value: '' },
-    { name: 'keywords', value: '' },
-    { name: 'slug', value: '' },
-  ];
+  const dispatch = useAppDispatch();
+  dispatch(cleanPosts());
+  const dataForm = {
+    id: false,
+    cover: '',
+    slug: '',
+    isPublic: false,
+    es: {
+      body: '',
+      description: '',
+      keywords: '',
+      title: '',
+    },
+    en: {
+      body: '',
+      description: '',
+      keywords: '',
+      title: '',
+    },
+  }
 
   return (
     <LayoutDashboard>

@@ -6,6 +6,7 @@ justify-content: center;
 align-items: center;
 width: 100vw;
 height: 100vh;
+padding: 32px;
 background-color: ${props => props.theme.primaryDark};
 overflow: hidden;
 
@@ -15,7 +16,8 @@ form div {
 `;
 
 export const CSSCardContainer = styled.main`
-width: 33.33%;
+width: 100%;
+max-width: 400px;
 border-radius: 7px;
 padding: 14px;
 box-shadow: 0 0 7px rgba(0, 0, 0, 0.14);
