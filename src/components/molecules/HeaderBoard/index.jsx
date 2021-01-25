@@ -1,14 +1,13 @@
-import { useUser } from 'store/contexts';
 import { AiOutlineMenu } from 'react-icons/ai';
-import { useUserDispatch } from 'store/contexts';
-import { logoutAction } from 'store/actions';
+import { useAppState, useAppDispatch } from 'store/contexts';
+import { logout } from 'store/actions';
 import { CSSHeader, CSSMenuContainer, CSSCircleImage, CSSMenu, HandleMenuCSS } from './styles';
 
 const HeaderBoard = ({ handleNavbar }) => {
-  const user = useUser();
-  const dispatch = useUserDispatch();
+  const { user } = useAppState();
+  const dispatch = useAppDispatch();
   const handleLogout = () => {
-   dispatch(logoutAction());
+   dispatch(logout());
   }
 
   return (

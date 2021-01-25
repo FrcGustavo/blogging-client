@@ -1,7 +1,7 @@
 import { Login } from '@/organisms';
 import { UsersService } from 'root/services';
-import { useUserDispatch } from 'store/contexts';
-import { loginAction } from 'store/actions';
+import { useAppDispatch } from 'store/contexts';
+import { login } from 'store/actions';
 
 const form = [
   { type: 'email', label: 'Correo:', placeholder: 'Escribe un correo electronico', value: '', name: 'email' },
@@ -9,14 +9,14 @@ const form = [
 ];
 
 const LoginPage = () => {
-  const dispatch = useUserDispatch();
+  const dispatch = useAppDispatch();
   const handleSubmit = (data) => {
     UsersService.login(data)
       .then((data) => {
-        dispatch(loginAction(data));
+        dispatch(login(data));
       })
       .catch((err) => {
-        console.log(err);
+        alert(err.message);
       });
   }
 

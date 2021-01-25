@@ -1,7 +1,7 @@
 import App from 'next/app';
 import cookies from 'next-cookies';
 import { ThemeProvider } from 'styled-components';
-import { UserProvider, AppProvider } from 'store/contexts';
+import { AppProvider } from 'store/contexts';
 import { GlobalStyles, theme } from 'root/styles';
 
 const MyApp = ({ Component, pageProps, user }) => {
@@ -14,12 +14,10 @@ const MyApp = ({ Component, pageProps, user }) => {
 
   return (
     <AppProvider initialValue={appState}>
-      <UserProvider initialValue={user}>
         <ThemeProvider theme={theme}>
           <GlobalStyles />
           <Component {...pageProps} />
         </ThemeProvider>
-      </UserProvider>
     </AppProvider>
   );
 }

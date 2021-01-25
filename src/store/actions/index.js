@@ -1,5 +1,8 @@
-export { LOGIN, loginAction, LOGOUT, logoutAction } from './users'; 
 export {
+  LOGIN,
+  login,
+  LOGOUT,
+  logout,
   HANDLE_OPEN_MENU,
   handleOpenMenu,
   ADD_POSTS,
