@@ -25,10 +25,10 @@ const getMyPosts = async () => {
   return res.data.body;
 }
 
-const getOnePost = async (slug) => {
+const getOnePost = async (slug, lang) => {
   const { token } = JSON.parse(document.cookie.replace('user=', ''))
   const res = await axios({
-    url: `${apiV1}/users/posts/${slug}`,
+    url: `${apiV1}/users/posts/${slug}?lang=${lang}`,
     headers: {
       Authorization: `Bearer ${token}`,
     },

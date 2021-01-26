@@ -20,12 +20,12 @@ export async function getServerSideProps(context) {
 
 const PagePost = () => {
   const [post, setPost] = useState(false);
-  const { query } = useRouter();
+  const { locale, query } = useRouter();
 
   useEffect(async () => {
-    const res = await UsersService.getOnePost(query.slug)
+    const res = await UsersService.getOnePost(query.slug, locale)
     setPost(res);
-  }, []);
+  }, [locale]);
 
   if (!post) return <h2>Cargando...</h2>
   return (
@@ -40,7 +40,7 @@ const PagePost = () => {
           <Post
             cover={post.cover}
             title={post.title}
-            body={post.html}
+            body={post.body}
           />
         </Container>
         <Footer />
