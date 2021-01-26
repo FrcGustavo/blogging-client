@@ -46,6 +46,7 @@ background-color: rgba(0, 0, 0, 0.14);
 text-transform: uppercase;
 text-decoration: none;
 color: white;
+cursor: pointer;
 &:first-child {
   margin-left: 0;
 }
@@ -55,6 +56,7 @@ color: white;
 export const CSSLogo = styled.a`
 color: #FFF;
 letter-spacing: 1px;
+cursor: pointer;
 span {
   font-size: 21px;
   &:nth-child(even) {
