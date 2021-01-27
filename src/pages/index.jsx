@@ -7,14 +7,14 @@ import { Container, CSSMain } from 'root/styles';
 
 const Data = {
 	es: {
-		cover: 'https://res.cloudinary.com/dwapbqqbo/image/upload/v1592516678/frcgustavo_wl1wgk.jpg',
+		cover: 'https://res.cloudinary.com/hs8bxfui6/image/upload/v1611699598/me_moo3l1.jpg',
 		name: 'Francisco Gustavo',
 		title: 'Desarrollador de software full stack MERN',
 		description: 'Me encanta experimentar con nuevas herramientas y frameworks. Me gusta crear soluciones usando mis herramientas de desarrollo. Tengo experiencia con API Rest, API GraphQL, Socket IO, Single Page App, Server side render y más.',
 		keywords: 'Full, Stack, Software, Desarrollador, MERN, FrcGustavo'
 	},
 	en: {
-		cover: 'https://res.cloudinary.com/dwapbqqbo/image/upload/v1592516678/frcgustavo_wl1wgk.jpg',
+		cover: 'https://res.cloudinary.com/hs8bxfui6/image/upload/v1611699598/me_moo3l1.jpg',
 		name: 'Francisco Gustavo',
 		title: 'Software developer full stack MERN',
 		description: 'I love to experiment with new tools and frameworks, I like to create solutions using my develop tools, My experience is with API Rest, API GraphQL, Socket IO, Single Page App, Server side render and more.',
