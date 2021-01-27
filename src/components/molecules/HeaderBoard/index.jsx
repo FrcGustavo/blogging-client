@@ -1,17 +1,20 @@
-import { useUserDispatch } from 'store/contexts';
-import { logoutAction } from 'store/actions';
-import { CSSHeader, CSSMenuContainer, CSSCircleImage, CSSMenu } from './styles';
+import { AiOutlineMenu } from 'react-icons/ai';
+import { useAppState, useAppDispatch } from 'store/contexts';
+import { logout } from 'store/actions';
+import { CSSHeader, CSSMenuContainer, CSSCircleImage, CSSMenu, HandleMenuCSS } from './styles';
 
-const HeaderBoard = () => {
-  const dispatch = useUserDispatch();
+const HeaderBoard = ({ handleNavbar }) => {
+  const { user } = useAppState();
+  const dispatch = useAppDispatch();
   const handleLogout = () => {
-   dispatch(logoutAction());
+   dispatch(logout());
   }
 
   return (
     <CSSHeader>
+      <HandleMenuCSS onClick={handleNavbar}><AiOutlineMenu/></HandleMenuCSS>
       <CSSMenuContainer>
-        <CSSCircleImage src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="" />
+        <CSSCircleImage src={user ? user.cover : ''} alt={user ? user.firstName : ''}/>
         <CSSMenu>
           <button onClick={handleLogout}>Salir</button>  
         </CSSMenu>

@@ -127,7 +127,7 @@ code {
   border-radius: 4.5px;
   border: 1px solid #DDD;
   font-family: Consolas, "Liberation Mono", Courier, monospace;
-  font-size: 12px;
+  font-size: 14px;
   margin: 0 2px;
   padding: 0 5px;
   white-space: pre;

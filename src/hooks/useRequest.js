@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 
-const useRequest = (promise) => {
+const useRequest = (promise, ssr = false) => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true); 
   const [data, setData] = useState([]); 
-
+  
   useEffect(() => {
-    promise
+    const handlePromise = ssr ? promise() : promise;
+    handlePromise
       .then((data) => {
         setData(data)
       })

@@ -1,18 +1,12 @@
+import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import showdown from 'showdown';
-import { useForm, useAlert } from 'root/hooks';
+import { useEditPost, useAlert, useModal } from 'root/hooks';
 import { Metadata, Editor, Modal, Alert } from '@/molecules';
 import { PostsService, UploadsService } from 'root/services';
 import { CSSEditorContainer,  } from './styles';
 
 const Html = new showdown.Converter();
-
-const middleware = (data, field) => {
-  if (field === 'title') {
-    data.slug = data.title.toLowerCase();
-  }
-  return data;
-}
 
 const file = async (files) => {
   try {
@@ -23,66 +17,69 @@ const file = async (files) => {
   }
 }
 
-const PostEditor = ({ data }) => {
-  const [isOpen, AlertData, handleClose, handleOpen] = useAlert();
-  const { data: post, handleChange } = useForm(data, { middleware, file });
-  const [metadataModal, setMetadataModal] = useState(false);
-  const [html, setHtml] = useState(Html.makeHtml(post.body));
-  
+const PostEditor = ({ data: post }) => {
+  const router = useRouter();
+  const [data, handleChange, language, handleLanguagetoggle] = useEditPost(post, file);
+  const [isMetadataModalOpen, handleCloseMetadata, handleOpenMetadata] = useModal();
+  const [isAlertModalOpen, alertMessage, handleCloseAlert, handleOpenAlert] = useAlert();
+  const [disabledButtons, setDisabledButtons] = useState(false);
+  const [html, setHtml] = useState(Html.makeHtml(data[language].body));
+
   useEffect(() => {
-    setHtml(Html.makeHtml(post.body));
-  }, [post.body]);
+    setHtml(Html.makeHtml(data[language].body));
+  }, [data[language].body]);
 
-  const handleSave = async () => {
-    handleOpen('Guardando', 'El post se esta guardando');
+  const handleSavePublic = async (isForPublic = false) => {
     try {
-      const idOrSlug = post.id ? post.slug : post.id;
-      const id = await PostsService.save(post, idOrSlug)
-      handleChange({ target: { name: 'id', value: id } });
-      handleOpen('Guardado', 'El post se guardado con exito', 'success');
-    } catch {
-      handleOpen('Error', 'Algo salio mal intenta mas tarde', 'fail');
+      setDisabledButtons(true);
+      handleOpenAlert('Guardando', 'El post se esta guardando');
+      if (isForPublic) {
+        await PostsService.publish(data, data.id);
+        handleChange({ target: { name: 'isPublic', value: !data.isPublic }})
+      } else {
+        const createdPostId = await PostsService.save(data, data.id);
+        if (data.id === false) {
+          return router.push(`/dashboard/posts/${createdPostId}/edit`)
+        }
+      }
+      handleOpenAlert('Guardado', 'El post se guardado con exito', 'success');
+      setDisabledButtons(false);
+    }
+    catch (err){
+      handleOpenAlert('Error', 'Algo salio mal intenta mas tarde', 'fail');
+      setDisabledButtons(false);
     }
   }
 
-  const handlePublic = async () => {
-    try {
-      await handleSave();
-      await PostsService.publish({ isPublic: !post.isPublic }, post.slug);
-      handleChange({ target: { name: 'isPublic', value: !post.isPublic } });
-      handleOpen('Guardado', 'El post se guardado con exito', 'success');
-    } catch(error) {
-      console.log('ERRROROR 2', error);
-      handleOpen('Error', 'Algo salio mal intenta mas tarde', 'fail');
-    }
-  }
-
-  const handleOpenMetadata = () => setMetadataModal(true);
-  const handleCloseMetadata = () => setMetadataModal(false);
+  const handleSave = async () => await handleSavePublic();
+  const handlePublic = async () => await handleSavePublic(true);
 
   return (
     <CSSEditorContainer>
       <Editor
-        data={post}
+        data={data}
         html={html}
-        onHandleChange={handleChange}
+        lang={language}
         onSave={handleSave}
         onPublic={handlePublic}
         onMetadata={handleOpenMetadata}
-        disabled={isOpen}
+        onLanguage={handleLanguagetoggle}
+        onHandleChange={handleChange}
+        disabledButtons={disabledButtons}
       />
       <Metadata
-        data={post}
+        data={data}
         onHandleChange={handleChange}
-        isOpen={metadataModal} 
+        isOpen={isMetadataModalOpen} 
         close={handleCloseMetadata}
+        lang={language}
       />
-      <Modal isModalOpen={isOpen}>
+      <Modal isModalOpen={isAlertModalOpen}>
         <Alert
-          title={AlertData.title}
-          message={AlertData.message}
-          status={AlertData.status}
-          onClose={handleClose}
+          title={alertMessage.title}
+          message={alertMessage.message}
+          status={alertMessage.status}
+          onClose={handleCloseAlert}
         />
       </Modal>
     </CSSEditorContainer>

@@ -6,3 +6,4 @@
 .next
 out
 package-lock.json
+src/oldeditpost.jsx

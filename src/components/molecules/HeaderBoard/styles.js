@@ -4,7 +4,7 @@ export const CSSHeader = styled.header`
 grid-column: 2 / 3;
 grid-row: 1 / 2;
 display: flex;
-justify-content: flex-end;
+justify-content: space-between;
 align-items: center;
 padding: 0 40px;
 box-shadow: 0 0 7px rgba(0, 0, 0, 0.14);
@@ -30,6 +30,7 @@ box-shadow: 0 0 7px rgba(0, 0, 0, 0.14);
 background-color: #FFF;
 overflow: hidden;
 transition: all 0.2s ease-in-out;
+z-index: 100;
 
 button {
   display: flex;
@@ -44,10 +45,21 @@ button {
 }
 `;
 
-
 export const CSSCircleImage = styled.img`
 width: 40px;
 height: 40px;
 border-radius: 50%;
 cursor: pointer;
+`;
+
+export const HandleMenuCSS = styled.button`
+border: 0;
+background-color: transparent;
+cursor: pointer;
+outline: none;
+
+svg {
+  font-size: 1.5rem;
+  color: ${props => props.theme.primaryDark};
+}
 `;
