@@ -37,7 +37,7 @@ const Home = ({ post }) => {
   return (
     <LayoutBlog>
 			<Head>
-        <title>FrcGustavo | Full Stack Software Developer MERN</title>
+        <title>FrcGustavo | React frontend developer</title>
 				<meta name="description" content={Data[locale].description} />
 				<meta name="keywords" content={Data[locale].keywords} />
       </Head>
