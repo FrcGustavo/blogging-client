@@ -22,10 +22,16 @@ const MyApp = ({ Component, pageProps, user }) => {
   );
 }
 
-MyApp.getInitialProps = async function(context) {
-  const { user } = cookies(context.ctx);
-  const props = await App.getInitialProps(context);
-  return { ...props, user };
+MyApp.getInitialProps = async function({ Component, ctx }) {
+  let pageProps = {};
+
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx);
+  }
+
+  const { user } = cookies(ctx);
+    
+  return { ...pageProps, user };
 }
 
 export default MyApp;

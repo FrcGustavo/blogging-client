@@ -24,6 +24,7 @@ overflow: hidden;
 
 img {
 	width: 100%;
+	object-fit: cover;
 }
 
 h3 {
@@ -38,13 +39,16 @@ p {
 
 @media screen and (min-width: 680px) {
 	display: grid;
-	grid-template-columns: auto 1fr;
+	grid-template-columns: 318px 1fr;
 	gap: 21px;
 	width: 100%;
 	max-width: 1000px;
+	height: 218px;
 	
 	div:first-child {
+		height: 100%;
 		padding: 14px;
+		overflow: hidden;
 	}
 
 	img {

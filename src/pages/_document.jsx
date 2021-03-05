@@ -37,10 +37,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang="es-mx">
         <Head>
-          <link
-            href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&display=swap"
-            rel="stylesheet"
-          />
           <link rel="shortcut icon" href="/favicon.ico" />
           <link rel="manifest" href="/manifest.json" />
           <link rel="apple-touch-icon" href="/icons/bloging-logo-192.png"/>
@@ -50,6 +46,10 @@ export default class MyDocument extends Document {
           <Main />
           <div id="modal"></div>
           <NextScript />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&display=swap"
+            rel="stylesheet"
+          />
         </body>
       </Html>
     );

@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { optimizeImage } from 'root/utils';
 import { CSSProfile, CSSSocialMedia } from './styles';
 
 const Profile = ({ cover, name, title, description }) => {
   return (
     <CSSProfile>
       <div>
-        <img src={cover} alt={name} />
+        <img src={optimizeImage(cover, 'w_150,h_150,c_scale')} alt={name} />
       </div>
       <div>
         <h1>{name}</h1>
