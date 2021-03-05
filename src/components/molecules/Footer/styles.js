@@ -9,6 +9,10 @@ display: grid;
 grid-template-columns: repeat(3, 28px);
 gap: 0 14px;
 
+a {
+    font-size: 0;
+}
+
 a svg {
     font-size: 28px;
     color: #6EC6FF;

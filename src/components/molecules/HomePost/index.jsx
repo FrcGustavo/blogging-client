@@ -1,5 +1,4 @@
 import { Button } from '@/atoms';
-import Image from 'next/image';
 import { optimizeImage } from 'root/utils';
 import { CSSCardContainer, CSSCard } from './styles.js';
 
@@ -8,7 +7,7 @@ const HomePost = ({ cover, title, description, href }) => {
     <CSSCardContainer>
       <CSSCard>
         <div>
-          <Image src={optimizeImage(cover, 'w_290,h_190,c_scale')} alt={title} width="290" height="190" />
+          <img src={optimizeImage(cover, 'w_290,h_190,c_scale')} alt={title} width="290px" height="190px" />
         </div>
         <div>
           <h3>{title}</h3>

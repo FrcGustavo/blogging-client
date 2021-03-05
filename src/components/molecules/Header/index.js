@@ -20,7 +20,7 @@ const Header = ({ shadow }) => {
         <CSSNav>
           <Link href={`/${isLocaleEnglish ? 'es' : 'en'}${asPath}`} locale={false}>
             <a>
-              <img src={isLocaleEnglish ? '/spanish.svg' : '/english.svg'} alt="idioma" />
+              <img src={isLocaleEnglish ? '/spanish.svg' : '/english.svg'} alt="idioma" width="35px" height="35px" />
             </a>
           </Link>
           <Link href="/">
