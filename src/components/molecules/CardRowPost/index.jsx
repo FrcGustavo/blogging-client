@@ -8,7 +8,7 @@ const CardRowPost = ({ userCover, username, es, slug, isPublic }) => {
     <CSSTr>
       <td>
         <CSSAuthor>
-          <img src={userCover} alt={username}/>
+          <img src={userCover} alt={username} />
           <div>
             <p>{username}</p>
             <p>{user.email}</p>
@@ -21,7 +21,7 @@ const CardRowPost = ({ userCover, username, es, slug, isPublic }) => {
       </td>
       <td>
         <CSSStatus isPublic={isPublic}>
-          {isPublic ? 'Publicado' : 'Borrador' }
+          {isPublic ? 'Publicado' : 'Borrador'}
         </CSSStatus>
       </td>
       <td>
@@ -31,6 +31,6 @@ const CardRowPost = ({ userCover, username, es, slug, isPublic }) => {
       </td>
     </CSSTr>
   );
-}
+};
 
 export default CardRowPost;

@@ -9,17 +9,15 @@ const LayoutDashboard = ({ children }) => {
 
   const handleNavbar = () => {
     dispatch(handleOpenMenu(!isMenuOpen));
-  }
+  };
 
   return (
     <CSSDashboard showNavbar={isMenuOpen}>
       <Navbar showNavbar={isMenuOpen} />
       <HeaderBoard handleNavbar={handleNavbar} />
-      <CSSMain>
-        {children}
-      </CSSMain>
+      <CSSMain>{children}</CSSMain>
     </CSSDashboard>
   );
-}
+};
 
 export default LayoutDashboard;

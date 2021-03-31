@@ -10,12 +10,10 @@ const CardPost = ({ cover, title, description, href }) => {
       <CSSInfo>
         <h2>{title}</h2>
         <p>{description}</p>
-        <Button href={`/blog/${href}`}>
-          Leer más
-        </Button>
+        <Button href={`/blog/${href}`}>Leer más</Button>
       </CSSInfo>
     </CSSArticle>
   );
-}
+};
 
 export default CardPost;

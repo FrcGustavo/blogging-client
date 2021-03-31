@@ -1,4 +1,4 @@
-import {CSSPostContainer, CSSImage, CSSTitle, CSSPost} from './styles';
+import { CSSPostContainer, CSSImage, CSSTitle, CSSPost } from './styles';
 
 const Post = ({ cover, title, body }) => {
   return (
@@ -14,6 +14,5 @@ const Post = ({ cover, title, body }) => {
       </div>
     </CSSPostContainer>
   );
-}
- export default Post;
- 
+};
+export default Post;

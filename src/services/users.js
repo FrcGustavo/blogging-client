@@ -11,34 +11,34 @@ const login = async ({ email, password }) => {
     },
   });
   return res.data;
-}
+};
 
 const getMyPosts = async () => {
-  const { token } = JSON.parse(document.cookie.replace('user=', ''))
+  const { token } = JSON.parse(document.cookie.replace('user=', ''));
   const res = await axios({
     url: `${apiV1}/users/posts`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
-  })
+  });
 
   return res.data.body;
-}
+};
 
 const getOnePost = async (slug, lang) => {
-  const { token } = JSON.parse(document.cookie.replace('user=', ''))
+  const { token } = JSON.parse(document.cookie.replace('user=', ''));
   const res = await axios({
     url: `${apiV1}/users/posts/${slug}?lang=${lang}`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
-  })
+  });
 
   return res.data.body;
-}
+};
 
 export default {
   login,
   getMyPosts,
-  getOnePost
+  getOnePost,
 };

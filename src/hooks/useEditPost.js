@@ -6,10 +6,11 @@ const useEditPost = (post, file) => {
 
   const reLanguage = new RegExp(/(es|en)/);
 
-  const handleLanguagetoggle = () => (language === 'en') ? setLanguage('es') : setLanguage('en');
-  
+  const handleLanguagetoggle = () =>
+    language === 'en' ? setLanguage('es') : setLanguage('en');
+
   const handleChange = async (e) => {
-    if (e.target.type === 'file' && file) {      
+    if (e.target.type === 'file' && file) {
       return setData({
         ...data,
         [e.target.name]: await file(e.target.files),
@@ -21,18 +22,18 @@ const useEditPost = (post, file) => {
         ...data,
         [language]: {
           ...data[language],
-          [e.target.name.substr(3)]: e.target.value
-        }
-      })
+          [e.target.name.substr(3)]: e.target.value,
+        },
+      });
     } else {
-     setData({
-       ...data,
-       [e.target.name]: e.target.value
-     }) 
+      setData({
+        ...data,
+        [e.target.name]: e.target.value,
+      });
     }
-  }
+  };
 
   return [data, handleChange, language, handleLanguagetoggle];
-}
+};
 
 export default useEditPost;

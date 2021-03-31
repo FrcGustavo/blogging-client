@@ -13,15 +13,19 @@ const Profile = ({ cover, name, title, description }) => {
         <h2>{title}</h2>
         <p>{description}</p>
         <CSSSocialMedia>
-          <a href="https://www.linkedin.com/in/frcgustavo/" target="_blank"><FaLinkedin /></a>
-          <a href="https://github.com/FranciscoGustavo" target="_blank"><FaGithub /></a>
-          <a href = "mailto:hidalgofco520@gmail.com?subject=frcgustavo.com">
+          <a href="https://www.linkedin.com/in/frcgustavo/" target="_blank">
+            <FaLinkedin />
+          </a>
+          <a href="https://github.com/FranciscoGustavo" target="_blank">
+            <FaGithub />
+          </a>
+          <a href="mailto:hidalgofco520@gmail.com?subject=frcgustavo.com">
             <FaEnvelope />
           </a>
         </CSSSocialMedia>
       </div>
     </CSSProfile>
   );
-}
+};
 
 export default Profile;

@@ -1,34 +1,26 @@
 import { InputText } from '@/atoms';
-import { useForm } from 'root/hooks';
 import { CSSContainer, CSSCardContainer, CSSTitle, CSSButton } from './styles';
 
-const Login = ({ form, onHandleSubmit }) => {
-  const { data, handleChange } = useForm(form);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onHandleSubmit(data);
-  }
-
+const Login = ({ csrfToken }) => {
   return (
     <CSSContainer>
       <CSSCardContainer>
-        <form onSubmit={handleSubmit}>
+        <form method="post" action="/api/auth/callback/credentials">
           <CSSTitle>Inicia sesión</CSSTitle>
-          {
-            form.map(({ type, label, placeholder, name }) => (
-              <InputText
-                key={name}
-                type={type}
-                label={label}
-                placeholder={placeholder}
-                value={data[name]}
-                name={name}
-                onChange={handleChange}
-              />
-            ))
-          }
-          <CSSButton>Entrar</CSSButton>
+          <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
+          <InputText
+            type="email"
+            label="Correo"
+            placeholder="Escribe un correo electronico"
+            name="username"
+          />
+          <InputText
+            type="password"
+            label="Contraseña"
+            placeholder="Escribe una contraseña"
+            name="password"
+          />
+          <CSSButton type="submit">Entrar</CSSButton>
         </form>
       </CSSCardContainer>
     </CSSContainer>

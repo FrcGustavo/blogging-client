@@ -11,7 +11,7 @@ export async function getServerSideProps(context) {
   }
   return {
     props: {},
-  }
+  };
 }
 
 const DashboardNew = () => {
@@ -34,13 +34,13 @@ const DashboardNew = () => {
       keywords: '',
       title: '',
     },
-  }
+  };
 
   return (
     <LayoutDashboard>
       <PostEditor data={dataForm} />
-		</LayoutDashboard>
+    </LayoutDashboard>
   );
-}
+};
 
 export default DashboardNew;

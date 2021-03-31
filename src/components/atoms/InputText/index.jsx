@@ -11,10 +11,9 @@ const InputText = ({ type, label, placeholder, value, name, onChange }) => {
         value={value}
         name={name}
         onChange={onChange}
-      /> 
+      />
     </div>
   );
 };
 
 export default InputText;
-

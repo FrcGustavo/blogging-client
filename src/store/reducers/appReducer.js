@@ -5,27 +5,27 @@ import {
   ADD_EDIT_POST,
   CLEAN_POSTS,
   LOGIN,
-  LOGOUT
+  LOGOUT,
 } from '../actions';
 
 const appReducer = (state, action) => {
   const { type, payload } = action;
-  switch(type) {
-    case LOGOUT:{
+  switch (type) {
+    case LOGOUT: {
       document.cookie = 'user=';
       Router.push('/login');
       const newState = { ...state, user: payload };
-      return newState; 
+      return newState;
     }
     case LOGIN: {
-      const user = { token: payload.token, ...payload.user }; 
+      const user = { token: payload.token, ...payload.user };
       const newState = { ...state, user };
       document.cookie = `user=${JSON.stringify(user)}`;
       Router.push('/dashboard');
       return newState;
     }
     case CLEAN_POSTS: {
-      const newState = { ...state, posts: payload }
+      const newState = { ...state, posts: payload };
       return newState;
     }
     case ADD_EDIT_POST: {
@@ -43,6 +43,6 @@ const appReducer = (state, action) => {
     default:
       return state;
   }
-}
+};
 
 export default appReducer;

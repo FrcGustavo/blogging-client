@@ -11,12 +11,10 @@ const Button = ({ children, type = 'button', href, onHandleClick }) => {
   } else {
     return (
       <Link href={href}>
-        <CSSButtonLink>
-          {children}
-        </CSSButtonLink>
+        <CSSButtonLink>{children}</CSSButtonLink>
       </Link>
     );
   }
-}
+};
 
 export default Button;

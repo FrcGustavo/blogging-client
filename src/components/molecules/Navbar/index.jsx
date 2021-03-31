@@ -14,6 +14,6 @@ const Navbar = ({ showNavbar }) => {
       </div>
     </CSSNavbar>
   );
-}
+};
 
 export default Navbar;

@@ -10,5 +10,5 @@ export {
   ADD_EDIT_POST,
   addEditPost,
   CLEAN_POSTS,
-  cleanPosts
-} from './app'; 
+  cleanPosts,
+} from './app';

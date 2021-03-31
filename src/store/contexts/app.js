@@ -14,7 +14,7 @@ export const AppProvider = ({ children, initialValue }) => {
       </AppStateContext.Provider>
     </AppDispatchContext.Provider>
   );
-}
+};
 
 export const useAppState = () => useContext(AppStateContext);
 export const useAppDispatch = () => useContext(AppDispatchContext);

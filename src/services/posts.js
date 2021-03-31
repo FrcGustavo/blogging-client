@@ -1,22 +1,22 @@
-import axios from 'axios'; 
+import axios from 'axios';
 import { api, apiV1 } from 'root/config';
 
 const getAll = async (lang) => {
   const res = await axios.get(`${apiV1}/posts/?lang=${lang}`);
   const data = res.data;
   return data.body;
-}
+};
 
 const getOne = async (slug, lang) => {
   const res = await axios.get(`${apiV1}/posts/${slug}?lang=${lang}`);
   const data = res.data;
   return data.body;
-}
+};
 
 const save = async (data, id) => {
   if (id) return update(data, id);
   return create(data);
-}
+};
 
 const create = async (data) => {
   const { token } = JSON.parse(document.cookie.replace('user=', ''));
@@ -26,10 +26,10 @@ const create = async (data) => {
     data,
     headers: {
       Authorization: `Bearer ${token}`,
-    }
+    },
   });
   return res.data.body._id;
-}
+};
 
 const update = async (data, slug) => {
   const { token } = JSON.parse(document.cookie.replace('user=', ''));
@@ -39,10 +39,10 @@ const update = async (data, slug) => {
     data,
     headers: {
       Authorization: `Bearer ${token}`,
-    }
+    },
   });
   return slug;
-}
+};
 
 const publish = async (data, slug) => {
   const { token } = JSON.parse(document.cookie.replace('user=', ''));
@@ -52,7 +52,7 @@ const publish = async (data, slug) => {
     data: { ...data, isPublic: !data.isPublic },
     headers: {
       Authorization: `Bearer ${token}`,
-    }
+    },
   });
   return true;
 };
@@ -61,5 +61,5 @@ export default {
   getAll,
   getOne,
   save,
-  publish
-}
+  publish,
+};

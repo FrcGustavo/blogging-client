@@ -15,7 +15,7 @@ export async function getServerSideProps(context) {
   }
   return {
     props: {},
-  }
+  };
 }
 
 const PagePost = () => {
@@ -23,30 +23,25 @@ const PagePost = () => {
   const { locale, query } = useRouter();
 
   useEffect(async () => {
-    const res = await UsersService.getOnePost(query.slug, locale)
+    const res = await UsersService.getOnePost(query.slug, locale);
     setPost(res);
   }, [locale]);
 
-  if (!post) return <h2>Cargando...</h2>
+  if (!post) return <h2>Cargando...</h2>;
   return (
     <LayoutBlog>
       <Head>
         <title>{post.title}</title>
-				<meta name="description" content={post.description} />
-				<meta name="keywords" content={post.keywords} />
+        <meta name="description" content={post.description} />
+        <meta name="keywords" content={post.keywords} />
       </Head>
       <CSSMain>
         <Container>
-          <Post
-            cover={post.cover}
-            title={post.title}
-            body={post.body}
-          />
+          <Post cover={post.cover} title={post.title} body={post.body} />
         </Container>
         <Footer />
       </CSSMain>
-		</LayoutBlog>
+    </LayoutBlog>
   );
-}
- export default PagePost;
- 
+};
+export default PagePost;

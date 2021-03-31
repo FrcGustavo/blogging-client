@@ -15,7 +15,7 @@ export async function getServerSideProps(context) {
   }
   return {
     props: {},
-  }
+  };
 }
 
 const DashboardEdit = () => {
@@ -23,7 +23,9 @@ const DashboardEdit = () => {
   const [loading, setLoading] = useState(true);
   const { editingPost, posts } = useAppState();
   const dispatch = useAppDispatch();
-  const { query: { slug }  } = useRouter();
+  const {
+    query: { slug },
+  } = useRouter();
   useEffect(() => {
     if (!posts) {
       UsersService.getMyPosts()
@@ -31,20 +33,20 @@ const DashboardEdit = () => {
           dispatch(addPosts(data.posts));
         })
         .catch((err) => {
-          setError(err);  
-        })
+          setError(err);
+        });
     } else {
       dispatch(addEditPost(slug));
-      setLoading(false)
+      setLoading(false);
     }
   }, [posts]);
 
   return (
     <LayoutDashboard>
-      { loading ? <Loading /> : null }
-      { !error && !loading ?  <PostEditor data={editingPost}/> : null }
-      { error ? <h1>Error</h1> : null }
+      {loading ? <Loading /> : null}
+      {!error && !loading ? <PostEditor data={editingPost} /> : null}
+      {error ? <h1>Error</h1> : null}
     </LayoutDashboard>
   );
-}
- export default DashboardEdit;
+};
+export default DashboardEdit;

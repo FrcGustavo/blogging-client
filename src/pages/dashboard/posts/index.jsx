@@ -15,7 +15,7 @@ export async function getServerSideProps(context) {
   }
   return {
     props: {},
-  }
+  };
 }
 
 const Dashboard = () => {
@@ -31,11 +31,11 @@ const Dashboard = () => {
           dispatch(addPosts(data.posts));
         })
         .catch((err) => {
-          setError(err);  
+          setError(err);
         })
         .finally(() => setLoading(false));
     } else {
-      setLoading(false)
+      setLoading(false);
     }
   }, []);
 
@@ -44,10 +44,10 @@ const Dashboard = () => {
       <Head>
         <title>Dashboard | Posts</title>
       </Head>
-      { loading ? <Loading /> : null }
-      { !error && !loading ?  <Posts data={posts}/> : null }
-      { error ? <h1>{error.message}</h1> : null }
+      {loading ? <Loading /> : null}
+      {!error && !loading ? <Posts data={posts} /> : null}
+      {error ? <h1>{error.message}</h1> : null}
     </LayoutDashboard>
   );
-}
- export default Dashboard;
+};
+export default Dashboard;

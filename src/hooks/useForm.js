@@ -1,13 +1,15 @@
 import { useState } from 'react';
 
-const useForm = (form, { file, middleware } = { file: false, middleware: false }) => {
+const useForm = (
+  form,
+  { file, middleware } = { file: false, middleware: false }
+) => {
   const dataForm = {};
-  form.forEach(({ name, value }) => dataForm[name] = value);
+  form.forEach(({ name, value }) => (dataForm[name] = value));
 
   const [data, setData] = useState(dataForm);
   const handleChange = async (e) => {
-
-    if (e.target.type === 'file' && file) {      
+    if (e.target.type === 'file' && file) {
       return setData({
         ...data,
         [e.target.name]: await file(e.target.files),
@@ -16,17 +18,15 @@ const useForm = (form, { file, middleware } = { file: false, middleware: false }
 
     const newData = {
       ...data,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     };
 
     if (middleware) {
-      setData(
-        middleware(newData, e.target.name)
-      );
+      setData(middleware(newData, e.target.name));
     } else {
       setData(newData);
     }
-  }
+  };
 
   return { data, handleChange };
 };

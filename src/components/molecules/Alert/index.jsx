@@ -11,6 +11,6 @@ const Alert = ({ title, message, onClose, status }) => {
       <CSSMessage>{message}</CSSMessage>
     </CSSAlert>
   );
-}
+};
 
 export default Alert;
