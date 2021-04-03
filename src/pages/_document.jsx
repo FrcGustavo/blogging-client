@@ -42,6 +42,9 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
           <link rel="shortcut icon" href="/favicon.ico" />
+          <link rel="manifest" href="/manifest.json" />
+          <link rel="apple-touch-icon" href="/icons/bloging-logo-192.png"/>
+          <meta name="theme-color" content="#4b5a8a" />
         </Head>
         <body>
           <Main />

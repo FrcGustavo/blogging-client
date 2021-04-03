@@ -9,16 +9,16 @@ const Data = {
 	es: {
 		cover: 'https://res.cloudinary.com/hs8bxfui6/image/upload/v1611699598/me_moo3l1.jpg',
 		name: 'Francisco Gustavo',
-		title: 'Desarrollador de software full stack MERN',
-		description: 'Me encanta experimentar con nuevas herramientas y frameworks. Me gusta crear soluciones usando mis herramientas de desarrollo. Tengo experiencia con API Rest, API GraphQL, Socket IO, Single Page App, Server side render y más.',
-		keywords: 'Full, Stack, Software, Desarrollador, MERN, FrcGustavo'
+		title: 'React frontend developer',
+		description: 'Me encanta experimentar con nuevas herramientas y frameworks. Me gusta crear soluciones usando mis herramientas de desarrollo. Tengo experiencia con HTML, CSS, JavaScript, React, NextJS, API Rest, API GraphQL, Socket IO, Server side render y más.',
+		keywords: 'React, NextJS, Software, Desarrollador, MERN, FrcGustavo'
 	},
 	en: {
 		cover: 'https://res.cloudinary.com/hs8bxfui6/image/upload/v1611699598/me_moo3l1.jpg',
 		name: 'Francisco Gustavo',
-		title: 'Software developer full stack MERN',
-		description: 'I love to experiment with new tools and frameworks, I like to create solutions using my develop tools, My experience is with API Rest, API GraphQL, Socket IO, Single Page App, Server side render and more.',
-		keywords: 'Full, Stack, Software, Developer, MERN, FrcGustavo'
+		title: 'React frontend developer',
+		description: 'I love to experiment with new tools and frameworks, I like to create solutions using my develop tools, My experience is with HTML, CSS, JavaScript, React, NextJS, API Rest, API GraphQL, Socket IO, Server side render and more.',
+		keywords: 'React, NextJS, Software, Developer, MERN, FrcGustavo'
 	}
 }
 
@@ -37,7 +37,7 @@ const Home = ({ post }) => {
   return (
     <LayoutBlog>
 			<Head>
-        <title>FrcGustavo | Full Stack Software Developer MERN</title>
+        <title>FrcGustavo | React frontend developer</title>
 				<meta name="description" content={Data[locale].description} />
 				<meta name="keywords" content={Data[locale].keywords} />
       </Head>
