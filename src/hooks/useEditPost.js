@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useSession } from 'next-auth/client';
 
 const useEditPost = (post, file) => {
+  const [session] = useSession();
   const [data, setData] = useState(post);
   const [language, setLanguage] = useState('es');
 
@@ -13,7 +15,7 @@ const useEditPost = (post, file) => {
     if (e.target.type === 'file' && file) {
       return setData({
         ...data,
-        [e.target.name]: await file(e.target.files),
+        [e.target.name]: await file(e.target.files, session?.accessToken),
       });
     }
 

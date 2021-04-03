@@ -1,9 +1,10 @@
 import Link from 'next/link';
-import { useAppState } from 'root/store/contexts';
+import { useSession } from 'next-auth/client';
 import { CSSTr, CSSAuthor, CSSCategory, CSSTitle, CSSStatus } from './styles';
 
 const CardRowPost = ({ userCover, username, es, slug, isPublic }) => {
-  const { user } = useAppState();
+  const [{ user }] = useSession();
+
   return (
     <CSSTr>
       <td>
@@ -11,7 +12,7 @@ const CardRowPost = ({ userCover, username, es, slug, isPublic }) => {
           <img src={userCover} alt={username} />
           <div>
             <p>{username}</p>
-            <p>{user.email}</p>
+            <p>{user?.email}</p>
           </div>
         </CSSAuthor>
       </td>

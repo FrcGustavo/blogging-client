@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { api, apiV1 } from 'root/config';
+import { apiV1 } from 'root/config';
 
 const getAll = async (lang) => {
   const res = await axios.get(`${apiV1}/posts/?lang=${lang}`);
@@ -13,13 +13,12 @@ const getOne = async (slug, lang) => {
   return data.body;
 };
 
-const save = async (data, id) => {
-  if (id) return update(data, id);
-  return create(data);
+const save = async (data, id, token) => {
+  if (id) return update(data, id, token);
+  return create(data, token);
 };
 
-const create = async (data) => {
-  const { token } = JSON.parse(document.cookie.replace('user=', ''));
+const create = async (data, token) => {
   const res = await axios({
     url: `${apiV1}/users/posts`,
     method: 'POST',
@@ -31,8 +30,7 @@ const create = async (data) => {
   return res.data.body._id;
 };
 
-const update = async (data, slug) => {
-  const { token } = JSON.parse(document.cookie.replace('user=', ''));
+const update = async (data, slug, token) => {
   await axios({
     url: `${apiV1}/users/posts/${slug}`,
     method: 'PATCH',
@@ -44,8 +42,7 @@ const update = async (data, slug) => {
   return slug;
 };
 
-const publish = async (data, slug) => {
-  const { token } = JSON.parse(document.cookie.replace('user=', ''));
+const publish = async (data, slug, token) => {
   const res = await axios({
     url: `${apiV1}/users/posts/${slug}`,
     method: 'PATCH',

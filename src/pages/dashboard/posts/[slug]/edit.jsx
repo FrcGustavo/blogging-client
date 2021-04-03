@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import cookies from 'next-cookies';
+import { getSession } from 'next-auth/client';
 import { useRouter } from 'next/router';
 import { useAppState, useAppDispatch } from 'root/store/contexts';
 import { addPosts, addEditPost } from 'root/store/actions';
@@ -9,16 +9,21 @@ import { LayoutDashboard } from '@/templates';
 import { UsersService } from 'root/services';
 
 export async function getServerSideProps(context) {
-  const { user } = cookies(context);
-  if (!user) {
-    context.res.writeHead(302, { Location: '/login' }).end();
+  const session = await getSession(context);
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
   }
   return {
-    props: {},
+    props: { session },
   };
 }
 
-const DashboardEdit = () => {
+const DashboardEdit = ({ session }) => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
   const { editingPost, posts } = useAppState();
@@ -28,7 +33,7 @@ const DashboardEdit = () => {
   } = useRouter();
   useEffect(() => {
     if (!posts) {
-      UsersService.getMyPosts()
+      UsersService.getMyPosts(session?.accessToken)
         .then((data) => {
           dispatch(addPosts(data.posts));
         })

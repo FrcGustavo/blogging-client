@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { api } from '../config';
 
-const image = async (file) => {
-  const { token } = JSON.parse(document.cookie.replace('user=', ''));
+const image = async (file, token) => {
   const formData = new FormData();
   formData.append('cover', file);
   const res = await axios({

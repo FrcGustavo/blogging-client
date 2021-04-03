@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import { useSession } from 'next-auth/client';
 import { useState, useEffect } from 'react';
 import showdown from 'showdown';
 import { useEditPost, useAlert, useModal } from 'root/hooks';
@@ -8,9 +9,9 @@ import { CSSEditorContainer } from './styles';
 
 const Html = new showdown.Converter();
 
-const file = async (files) => {
+const file = async (files, token) => {
   try {
-    const data = await UploadsService.image(files[0]);
+    const data = await UploadsService.image(files[0], token);
     return data.secure_url;
   } catch (error) {
     return '';
@@ -18,6 +19,8 @@ const file = async (files) => {
 };
 
 const PostEditor = ({ data: post }) => {
+  const [session] = useSession();
+  console.log(session);
   const router = useRouter();
   const [data, handleChange, language, handleLanguagetoggle] = useEditPost(
     post,
@@ -46,10 +49,14 @@ const PostEditor = ({ data: post }) => {
       setDisabledButtons(true);
       handleOpenAlert('Guardando', 'El post se esta guardando');
       if (isForPublic) {
-        await PostsService.publish(data, data.id);
+        await PostsService.publish(data, data.id, session?.accessToken);
         handleChange({ target: { name: 'isPublic', value: !data.isPublic } });
       } else {
-        const createdPostId = await PostsService.save(data, data.id);
+        const createdPostId = await PostsService.save(
+          data,
+          data.id,
+          session?.accessToken
+        );
         if (data.id === false) {
           return router.push(`/dashboard/posts/${createdPostId}/edit`);
         }
