@@ -6,9 +6,7 @@ const Modal = ({ isModalOpen, children }) => {
   }
 
   return ReactDom.createPortal(
-    <>
-      {children}
-    </>,
+    <>{children}</>,
     document.getElementById('modal')
   );
 };

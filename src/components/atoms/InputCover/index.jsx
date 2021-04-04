@@ -8,14 +8,14 @@ const InputForm = ({ name, label, cover, onHandleChange }) => {
       <CSSInputCover>
         <img src={cover} alt="cover" />
         <div>
-          <BiImageAdd/>
+          <BiImageAdd />
           <p>PNG, JPG, GIF menor a 2MB</p>
           <input type="file" id={name} name={name} onChange={onHandleChange} />
         </div>
       </CSSInputCover>
     </div>
   );
-}
+};
 
 export default InputForm;
 /*

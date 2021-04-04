@@ -1,31 +1,19 @@
+import { getCsrfToken } from 'next-auth/client';
 import { Login } from '@/organisms';
 import { UsersService } from 'root/services';
 import { useAppDispatch } from 'store/contexts';
 import { login } from 'store/actions';
 
-const form = [
-  { type: 'email', label: 'Correo:', placeholder: 'Escribe un correo electronico', value: '', name: 'email' },
-  { type: 'password', label: 'Contraseña:', placeholder: 'Escribe una contraseña', value: '', name: 'password' }
-];
+export async function getServerSideProps(context) {
+  return {
+    props: {
+      csrfToken: await getCsrfToken(context),
+    },
+  };
+}
 
-const LoginPage = () => {
-  const dispatch = useAppDispatch();
-  const handleSubmit = (data) => {
-    UsersService.login(data)
-      .then((data) => {
-        dispatch(login(data));
-      })
-      .catch((err) => {
-        alert(err.message);
-      });
-  }
-
-  return (
-    <Login
-      form={form}
-      onHandleSubmit={handleSubmit}
-    />
-  );
+const LoginPage = ({ csrfToken }) => {
+  return <Login csrfToken={csrfToken} />;
 };
 
 export default LoginPage;

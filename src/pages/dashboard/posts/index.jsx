@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
-import cookies from 'next-cookies';
+import { getSession } from 'next-auth/client';
 import { useAppState, useAppDispatch } from 'root/store/contexts';
 import { addPosts } from 'root/store/actions';
 import { Loading } from '@/atoms';
@@ -9,16 +9,21 @@ import { LayoutDashboard } from '@/templates';
 import { UsersService } from 'root/services';
 
 export async function getServerSideProps(context) {
-  const { user } = cookies(context);
-  if (!user || user === 'null') {
-    context.res.writeHead(302, { Location: '/login' }).end();
+  const session = await getSession(context);
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
   }
   return {
-    props: {},
-  }
+    props: { session },
+  };
 }
 
-const Dashboard = () => {
+const Dashboard = ({ session }) => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
   const { posts } = useAppState();
@@ -26,16 +31,16 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (!posts) {
-      UsersService.getMyPosts()
+      UsersService.getMyPosts(session?.accessToken)
         .then((data) => {
           dispatch(addPosts(data.posts));
         })
         .catch((err) => {
-          setError(err);  
+          setError(err);
         })
         .finally(() => setLoading(false));
     } else {
-      setLoading(false)
+      setLoading(false);
     }
   }, []);
 
@@ -44,10 +49,10 @@ const Dashboard = () => {
       <Head>
         <title>Dashboard | Posts</title>
       </Head>
-      { loading ? <Loading /> : null }
-      { !error && !loading ?  <Posts data={posts}/> : null }
-      { error ? <h1>{error.message}</h1> : null }
+      {loading ? <Loading /> : null}
+      {!error && !loading ? <Posts data={posts} /> : null}
+      {error ? <h1>{error.message}</h1> : null}
     </LayoutDashboard>
   );
-}
- export default Dashboard;
+};
+export default Dashboard;

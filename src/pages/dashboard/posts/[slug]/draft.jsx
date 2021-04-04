@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
-import cookies from 'next-cookies';
+import { getSession } from 'next-auth/client';
 import { useRouter } from 'next/router';
 import { LayoutBlog } from '@/templates';
 import { Footer } from '@/molecules';
@@ -9,44 +9,48 @@ import { UsersService } from 'root/services';
 import { Container, CSSMain } from 'root/styles';
 
 export async function getServerSideProps(context) {
-  const { user } = cookies(context);
-  if (!user || user === 'null') {
-    context.res.writeHead(302, { Location: '/login' }).end();
+  const session = await getSession(context);
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
   }
   return {
-    props: {},
-  }
+    props: { session },
+  };
 }
 
-const PagePost = () => {
+const PagePost = ({ session }) => {
   const [post, setPost] = useState(false);
   const { locale, query } = useRouter();
 
   useEffect(async () => {
-    const res = await UsersService.getOnePost(query.slug, locale)
+    const res = await UsersService.getOnePost(
+      query.slug,
+      locale,
+      session?.accessToken
+    );
     setPost(res);
   }, [locale]);
 
-  if (!post) return <h2>Cargando...</h2>
+  if (!post) return <h2>Cargando...</h2>;
   return (
     <LayoutBlog>
       <Head>
         <title>{post.title}</title>
-				<meta name="description" content={post.description} />
-				<meta name="keywords" content={post.keywords} />
+        <meta name="description" content={post.description} />
+        <meta name="keywords" content={post.keywords} />
       </Head>
       <CSSMain>
         <Container>
-          <Post
-            cover={post.cover}
-            title={post.title}
-            body={post.body}
-          />
+          <Post cover={post.cover} title={post.title} body={post.body} />
         </Container>
         <Footer />
       </CSSMain>
-		</LayoutBlog>
+    </LayoutBlog>
   );
-}
- export default PagePost;
- 
+};
+export default PagePost;

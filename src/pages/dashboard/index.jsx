@@ -1,14 +1,19 @@
-import cookies from 'next-cookies';
+import { getSession } from 'next-auth/client';
 import { LayoutDashboard } from '@/templates';
 
 export async function getServerSideProps(context) {
-  const { user } = cookies(context);
-  if (!user || user === 'null') {
-    context.res.writeHead(302, { Location: '/login' }).end();
+  const session = await getSession(context);
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
   }
   return {
     props: {},
-  }
+  };
 }
 
 const Dashboard = () => {
@@ -17,5 +22,5 @@ const Dashboard = () => {
       <h1>Bievenido</h1>
     </LayoutDashboard>
   );
-}
- export default Dashboard;
+};
+export default Dashboard;

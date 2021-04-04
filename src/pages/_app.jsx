@@ -1,31 +1,25 @@
-import App from 'next/app';
-import cookies from 'next-cookies';
+import { Provider } from 'next-auth/client';
 import { ThemeProvider } from 'styled-components';
 import { AppProvider } from 'store/contexts';
 import { GlobalStyles, theme } from 'root/styles';
 
-const MyApp = ({ Component, pageProps, user }) => {
+const MyApp = ({ Component, pageProps }) => {
   const appState = {
-    user,
     isMenuOpen: false,
     posts: false,
-    editingPost: false
+    editingPost: false,
   };
 
   return (
-    <AppProvider initialValue={appState}>
+    <Provider session={pageProps.session}>
+      <AppProvider initialValue={appState}>
         <ThemeProvider theme={theme}>
           <GlobalStyles />
           <Component {...pageProps} />
         </ThemeProvider>
-    </AppProvider>
+      </AppProvider>
+    </Provider>
   );
-}
-
-MyApp.getInitialProps = async function(context) {
-  const { user } = cookies(context.ctx);
-  const props = await App.getInitialProps(context);
-  return { ...props, user };
-}
+};
 
 export default MyApp;

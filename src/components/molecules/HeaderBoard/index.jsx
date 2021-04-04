@@ -1,22 +1,26 @@
+import { useSession, signOut } from 'next-auth/client';
 import { AiOutlineMenu } from 'react-icons/ai';
-import { useAppState, useAppDispatch } from 'store/contexts';
-import { logout } from 'store/actions';
-import { CSSHeader, CSSMenuContainer, CSSCircleImage, CSSMenu, HandleMenuCSS } from './styles';
+import {
+  CSSHeader,
+  CSSMenuContainer,
+  CSSCircleImage,
+  CSSMenu,
+  HandleMenuCSS,
+} from './styles';
 
 const HeaderBoard = ({ handleNavbar }) => {
-  const { user } = useAppState();
-  const dispatch = useAppDispatch();
-  const handleLogout = () => {
-   dispatch(logout());
-  }
+  const [session] = useSession();
+  const handleLogout = () => signOut();
 
   return (
     <CSSHeader>
-      <HandleMenuCSS onClick={handleNavbar}><AiOutlineMenu/></HandleMenuCSS>
+      <HandleMenuCSS onClick={handleNavbar}>
+        <AiOutlineMenu />
+      </HandleMenuCSS>
       <CSSMenuContainer>
-        <CSSCircleImage src={user ? user.cover : ''} alt={user ? user.firstName : ''}/>
+        <CSSCircleImage src={session?.user?.image} alt={session?.user?.name} />
         <CSSMenu>
-          <button onClick={handleLogout}>Salir</button>  
+          <button onClick={handleLogout}>Salir</button>
         </CSSMenu>
       </CSSMenuContainer>
     </CSSHeader>

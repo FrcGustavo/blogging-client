@@ -1,13 +1,9 @@
-const withPWA = require('next-pwa');
-
-module.exports = withPWA({
-  pwa: {
-    dest: 'public',
-    register: true,
-    skipWaiting: true,
+module.exports = {
+  images: {
+    domains: ['res.cloudinary.com'],
   },
   i18n: {
     locales: ['es', 'en'],
-    defaultLocale: 'es'
-  }
-});
+    defaultLocale: 'es',
+  },
+};

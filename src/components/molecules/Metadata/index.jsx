@@ -43,13 +43,11 @@ const Metadata = ({ onHandleChange, data, isOpen, close, lang }) => {
           value={data[lang].description}
         />
         <div>
-          <Button onHandleClick={close}>
-            Aceptar
-          </Button>
+          <Button onHandleClick={close}>Aceptar</Button>
         </div>
       </div>
     </CSSMetadata>
   );
-}
+};
 
 export default Metadata;

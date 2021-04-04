@@ -9,18 +9,26 @@ const Header = ({ shadow }) => {
   return (
     <CSSHeader shadow={shadow}>
       <Container>
-          <Link href="/">
-            <CSSLogo>
-              <span>F</span>
-              <span>rc</span>
-              <span>G</span>
-              <span>ustavo</span>
-            </CSSLogo>
-          </Link>
+        <Link href="/">
+          <CSSLogo>
+            <span>F</span>
+            <span>rc</span>
+            <span>G</span>
+            <span>ustavo</span>
+          </CSSLogo>
+        </Link>
         <CSSNav>
-          <Link href={`/${isLocaleEnglish ? 'es' : 'en'}${asPath}`} locale={false}>
+          <Link
+            href={`/${isLocaleEnglish ? 'es' : 'en'}${asPath}`}
+            locale={false}
+          >
             <a>
-              <img src={isLocaleEnglish ? '/spanish.svg' : '/english.svg'} />
+              <img
+                src={isLocaleEnglish ? '/spanish.svg' : '/english.svg'}
+                alt="idioma"
+                width="35px"
+                height="35px"
+              />
             </a>
           </Link>
           <Link href="/">
@@ -33,6 +41,6 @@ const Header = ({ shadow }) => {
       </Container>
     </CSSHeader>
   );
-}
+};
 
 export default Header;
