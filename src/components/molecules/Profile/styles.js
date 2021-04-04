@@ -6,6 +6,10 @@ export const CSSSocialMedia = styled.div`
   gap: 0 14px;
   justify-content: center;
 
+  a {
+    font-size: 0;
+  }
+
   a svg {
     font-size: 28px;
     color: #6ec6ff;

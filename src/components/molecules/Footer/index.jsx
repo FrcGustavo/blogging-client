@@ -12,6 +12,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
+            LinkedIn
             <FaLinkedin className="fill-icon" />
           </a>
           <a
@@ -20,9 +21,11 @@ const Footer = () => {
             rel="noopener noreferrer"
           >
             <FaGithub className="fill-icon" />
+            Github
           </a>
           <a href="mailto:hidalgofco520@gmail.com?subject=frcgustavo.com">
             <FaEnvelope />
+            Correo Electronico
           </a>
         </CSSSocialMedia>
       </Container>

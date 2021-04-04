@@ -23,7 +23,12 @@ const Header = ({ shadow }) => {
             locale={false}
           >
             <a>
-              <img src={isLocaleEnglish ? '/spanish.svg' : '/english.svg'} />
+              <img
+                src={isLocaleEnglish ? '/spanish.svg' : '/english.svg'}
+                alt="idioma"
+                width="35px"
+                height="35px"
+              />
             </a>
           </Link>
           <Link href="/">

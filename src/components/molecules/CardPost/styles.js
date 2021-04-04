@@ -29,5 +29,6 @@ export const CSSImage = styled.div`
 
   img {
     width: 100%;
+    object-fit: cover;
   }
 `;

@@ -20,7 +20,6 @@ const file = async (files, token) => {
 
 const PostEditor = ({ data: post }) => {
   const [session] = useSession();
-  console.log(session);
   const router = useRouter();
   const [data, handleChange, language, handleLanguagetoggle] = useEditPost(
     post,
