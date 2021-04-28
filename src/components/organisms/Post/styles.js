@@ -1,17 +1,18 @@
 import styled from 'styled-components';
 
-export const CSSPostContainer = styled.article`
-  > div {
-    background-color: #fff;
-  }
+export const CSSPostCard = styled.div`
+  background-color: #fff;
 
   @media screen and (min-width: 1000px) {
-    padding: 56px 0;
-    > div {
-      border-radius: 7px;
-      box-shadow: 0 0 7px rgba(0, 0, 0, 0.14);
-      overflow: hidden;
-    }
+    border-radius: 7px;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.14);
+    overflow: hidden;
+  }
+`;
+
+export const CSSPostContainer = styled.article`
+  @media screen and (min-width: 1000px) {
+    padding: 64px 0;
   }
 `;
 
@@ -24,8 +25,15 @@ export const CSSImage = styled.section`
   }
 `;
 
+export const CSSPostContent = styled.div`
+  padding-left: 32px;
+  padding-right: 32px;
+`;
+
 export const CSSTitle = styled.section`
-  padding: 14px 28px;
+  max-width: 700px;
+  margin: auto;
+  padding: 14px 0px;
   h1 {
     border-bottom: solid 1px gray;
     padding-bottom: 14px;
@@ -47,7 +55,8 @@ export const CSSTitle = styled.section`
 `;
 
 export const CSSPost = styled.section`
-  padding: 14px 28px;
+  max-width: 700px;
+  margin: auto;
   overflow: hidden;
 
   a {
@@ -59,6 +68,18 @@ export const CSSPost = styled.section`
   }
 
   p,
+  strong,
+  a {
+    font-size: 18px;
+    letter-spacing: 0.25px;
+    line-height: 1.5;
+  }
+
+  strong {
+    font-weigth: 700;
+  }
+
+  p,
   blockquote,
   ul,
   ol,
@@ -66,6 +87,11 @@ export const CSSPost = styled.section`
   table,
   pre {
     margin: 14px 0;
+  }
+
+  p {
+    margin-top: 0px;
+    margin-bottom: 30px;
   }
 
   pre {
@@ -141,5 +167,14 @@ export const CSSPost = styled.section`
     h2 {
       font-size: 2em;
     }
+    p,
+    strong,
+    a {
+      font-size: 20px;
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    padding-bottom: 32px;
   }
 `;
