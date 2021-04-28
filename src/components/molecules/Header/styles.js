@@ -6,6 +6,8 @@ export const CSSHeader = styled.header`
   left: 0;
   width: 100%;
   height: 60px;
+  padding-left: 32px;
+  padding-right: 32px;
   background: linear-gradient(
     90deg,
     ${(props) => props.theme.primaryDark},
@@ -19,7 +21,6 @@ export const CSSHeader = styled.header`
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    padding: 0 28px;
   }
 
   @media screen and (min-width: 1200px) {
@@ -57,7 +58,11 @@ export const NavItem = styled.a`
 `;
 
 export const CSSLogo = styled.a`
-  color: #fff;
+  display: block;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  /* color: #fff;
   letter-spacing: 1px;
   cursor: pointer;
   span {
@@ -71,5 +76,5 @@ export const CSSLogo = styled.a`
     span:nth-child(even) {
       display: contents;
     }
-  }
+  }*/
 `;

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { Container } from 'root/styles';
 import { CSSHeader, CSSNav, NavItem, CSSLogo } from './styles';
@@ -9,12 +10,14 @@ const Header = ({ shadow }) => {
   return (
     <CSSHeader shadow={shadow}>
       <Container>
-        <Link href="/">
+        <Link href="/" passHref>
           <CSSLogo>
-            <span>F</span>
-            <span>rc</span>
-            <span>G</span>
-            <span>ustavo</span>
+            <Image
+              src="/icons/bloging-logo-192.png"
+              layout="fixed"
+              width="40px"
+              height="40px"
+            />
           </CSSLogo>
         </Link>
         <CSSNav>
@@ -31,10 +34,10 @@ const Header = ({ shadow }) => {
               />
             </a>
           </Link>
-          <Link href="/">
+          <Link href="/" passHref>
             <NavItem>Home</NavItem>
           </Link>
-          <Link href="/blog">
+          <Link href="/blog" passHref>
             <NavItem>Blog</NavItem>
           </Link>
         </CSSNav>
