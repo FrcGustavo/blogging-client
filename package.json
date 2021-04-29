@@ -8,7 +8,8 @@
     "start": "next start",
     "build": "next build",
     "export": "next export",
-    "format": "prettier --write \"**/*.{js,jsx}\""
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\"",
+    "type-check": "tsc --project ./tsconfig.json"
   },
   "repository": {
     "type": "git",

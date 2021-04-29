@@ -5,12 +5,19 @@ type InputTextProps = {
   type: string;
   label: string;
   placeholder: string;
-  name: string,
+  name: string;
   value?: string;
   onChange?: () => void;
-}
+};
 
-const InputText: FC<InputTextProps> = ({ type, label, placeholder, value, name, onChange }) => {
+const InputText: FC<InputTextProps> = ({
+  type,
+  label,
+  placeholder,
+  value,
+  name,
+  onChange,
+}) => {
   return (
     <div>
       <CSSLabel>{label}</CSSLabel>

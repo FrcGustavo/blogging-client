@@ -1,9 +1,11 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import breakpoints from './breakpoints';
 
 export const theme = {
   primaryDark: '#1C2237',
   primarylight: '#4B5A8A',
   secondary: '#C63F17',
+  breakpoints,
 };
 
 export const GlobalStyles = createGlobalStyle`

@@ -4,7 +4,7 @@ import { CSSContainer, CSSCardContainer, CSSTitle, CSSButton } from './styles';
 
 type SigninProps = {
   csrfToken: string;
-}
+};
 
 const Signin: FC<SigninProps> = ({ csrfToken }) => {
   return (
@@ -30,6 +30,6 @@ const Signin: FC<SigninProps> = ({ csrfToken }) => {
       </CSSCardContainer>
     </CSSContainer>
   );
-}
+};
 
 export default Signin;
