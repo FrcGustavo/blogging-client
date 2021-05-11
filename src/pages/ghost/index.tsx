@@ -1,5 +1,5 @@
 import { getSession } from 'next-auth/client';
-import { Layout } from '@ghost/components/templates';
+import { Home } from '@ghost/pages';
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
@@ -16,11 +16,7 @@ export async function getServerSideProps(context) {
   };
 }
 
-const Home = () => {
-  return (
-    <Layout>
-      <h1>Bievenido</h1>
-    </Layout>
-  );
+const GhostHomePage = () => {
+  return <Home />;
 };
-export default Home;
+export default GhostHomePage;

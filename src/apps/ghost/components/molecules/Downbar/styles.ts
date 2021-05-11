@@ -16,4 +16,5 @@ export const CSSDownbar = styled.nav`
   ${({ theme }) => theme.breakpoints.up('md')} {
     display: none;
   }
+  background-color: ${({ theme }) => theme.palette.primary.dark};
 `;

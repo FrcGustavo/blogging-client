@@ -1,11 +1,17 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import breakpoints from './breakpoints';
+import palette from './palette';
+import typography from './typography';
+import spacing from './spacing';
 
 export const theme = {
   primaryDark: '#1C2237',
   primarylight: '#4B5A8A',
   secondary: '#C63F17',
   breakpoints,
+  palette,
+  typography,
+  spacing,
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -14,9 +20,9 @@ export const GlobalStyles = createGlobalStyle`
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Lato', sans-serif;
-  font-size: 16px;
-  font-weight: normal;
+  font-family: ${({ theme }) => theme.typography.fontFamily};
+  font-size: ${({ theme }) => theme.typography.htmlFontSize}px;
+  font-weight: ${({ theme }) => theme.typography.fontWeightRegular};
 }
 
 body, #__next {
