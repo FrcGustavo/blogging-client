@@ -17,7 +17,7 @@ const Nav = () => {
   return (
     <CSSNav>
       {NAV_ROUTES.map(({ label, href, items, Icon }) => (
-        <CSSNavSection>
+        <CSSNavSection key={href}>
           {!href && <CSSStaticItem>{label}</CSSStaticItem>}
           {href && (
             <Link href={href} passHref>
@@ -29,7 +29,7 @@ const Nav = () => {
           )}
           {items &&
             items.map(({ label, href, Icon }) => (
-              <Link href={href} passHref>
+              <Link key={href} href={href} passHref>
                 <CSSLinkItem>
                   {Icon && <Icon />}
                   {label}
