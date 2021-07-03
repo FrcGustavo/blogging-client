@@ -11,7 +11,8 @@ export const CSSDownbar = styled.nav`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: ${({ theme }) => theme.spacing(0.5)};
-  padding: ${({ theme }) => theme.spacing(0.5)} ${({ theme }) => theme.spacing(1)};
+  padding: ${({ theme }) => theme.spacing(0.5)}
+    ${({ theme }) => theme.spacing(1)};
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.14);
   ${({ theme }) => theme.breakpoints.up('md')} {
     display: none;

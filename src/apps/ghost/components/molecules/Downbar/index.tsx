@@ -10,19 +10,13 @@ const Downbar: FC<BownbarProps> = ({ onMobileNavOpen }) => {
   return (
     <CSSDownbar>
       <Link href="/posts/new" passHref>
-        <CSSLinkItem>
-          New Post
-        </CSSLinkItem>
+        <CSSLinkItem>New Post</CSSLinkItem>
       </Link>
       <Link href="/ghost/posts" passHref>
-        <CSSLinkItem>
-          Posts
-        </CSSLinkItem>
+        <CSSLinkItem>Posts</CSSLinkItem>
       </Link>
       <Link href="/ghost/staff" passHref>
-        <CSSLinkItem>
-          Staff
-        </CSSLinkItem>
+        <CSSLinkItem>Staff</CSSLinkItem>
       </Link>
       <button onClick={onMobileNavOpen}>New Post</button>
     </CSSDownbar>

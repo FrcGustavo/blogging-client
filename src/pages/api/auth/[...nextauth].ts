@@ -6,7 +6,13 @@ export default NextAuth({
   providers: [
     Providers.Credentials({
       name: 'credentials',
-      async authorize({ username, password }: { username: string, password: string }) {
+      async authorize({
+        username,
+        password,
+      }: {
+        username: string;
+        password: string;
+      }) {
         const { token, user: loggedUser } = await UsersService.login({
           email: username,
           password,
@@ -32,10 +38,10 @@ export default NextAuth({
     session: async (session, token) => {
       session.accessToken = token.accessToken;
       return session;
-    }
+    },
   },
   pages: {
     signIn: '/ghost/signin',
-    error: '/ghost/signin'
-  }
+    error: '/ghost/signin',
+  },
 });
