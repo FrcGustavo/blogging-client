@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Link from 'next/link';
-import { CSSDownbar } from './styles';
+import { CSSDownbar, CSSLinkItem } from './styles';
 
 type BownbarProps = {
   onMobileNavOpen: () => void;
@@ -9,14 +9,20 @@ type BownbarProps = {
 const Downbar: FC<BownbarProps> = ({ onMobileNavOpen }) => {
   return (
     <CSSDownbar>
-      <Link href="">
-        <a>New Post</a>
+      <Link href="/posts/new" passHref>
+        <CSSLinkItem>
+          New Post
+        </CSSLinkItem>
       </Link>
-      <Link href="">
-        <a>New Post</a>
+      <Link href="/ghost/posts" passHref>
+        <CSSLinkItem>
+          Posts
+        </CSSLinkItem>
       </Link>
-      <Link href="">
-        <a>New Post</a>
+      <Link href="/ghost/staff" passHref>
+        <CSSLinkItem>
+          Staff
+        </CSSLinkItem>
       </Link>
       <button onClick={onMobileNavOpen}>New Post</button>
     </CSSDownbar>
