@@ -7,6 +7,7 @@ export const CSSSidebarContainer = styled.div`
   width: 100%;
   height: 100%;
   transition: all 0.2s;
+  z-index: 1000;
 
   ${({ theme }) => theme.breakpoints.up('md')} {
     position: static;
@@ -15,7 +16,7 @@ export const CSSSidebarContainer = styled.div`
   }
 `;
 
-export const CSSSidebar = styled.nav`
+export const CSSSidebar = styled.div`
   width: 256px;
   height: 100%;
   background-color: ${({ theme }) => theme.palette.primary.dark};
