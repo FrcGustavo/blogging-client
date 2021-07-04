@@ -21,7 +21,7 @@ const Profile = ({ cover, name, title, description }) => {
         <CSSSocialMedia>
           <a
             href="https://www.linkedin.com/in/frcgustavo/"
-            rel="noopener"
+            rel="noopener noreferrer"
             target="_blank"
           >
             <FaLinkedin />
@@ -29,7 +29,7 @@ const Profile = ({ cover, name, title, description }) => {
           </a>
           <a
             href="https://github.com/FranciscoGustavo"
-            rel="noopener"
+            rel="noopener noreferrer"
             target="_blank"
           >
             <FaGithub />

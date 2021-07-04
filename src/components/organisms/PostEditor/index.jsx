@@ -25,17 +25,10 @@ const PostEditor = ({ data: post }) => {
     post,
     file
   );
-  const [
-    isMetadataModalOpen,
-    handleCloseMetadata,
-    handleOpenMetadata,
-  ] = useModal();
-  const [
-    isAlertModalOpen,
-    alertMessage,
-    handleCloseAlert,
-    handleOpenAlert,
-  ] = useAlert();
+  const [isMetadataModalOpen, handleCloseMetadata, handleOpenMetadata] =
+    useModal();
+  const [isAlertModalOpen, alertMessage, handleCloseAlert, handleOpenAlert] =
+    useAlert();
   const [disabledButtons, setDisabledButtons] = useState(false);
   const [html, setHtml] = useState(Html.makeHtml(data[language].body));
 
