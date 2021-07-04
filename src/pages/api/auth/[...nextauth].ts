@@ -5,12 +5,8 @@ import { UsersService } from 'root/services';
 export default NextAuth({
   providers: [
     Providers.Credentials({
-      name: 'Credentials',
-      pages: {
-        signIn: '/login',
-        error: '/login',
-      },
-      async authorize({ username, password }) {
+      name: 'credentials',
+      async authorize({ username, password }: { username: string, password: string }) {
         const { token, user: loggedUser } = await UsersService.login({
           email: username,
           password,
@@ -36,6 +32,10 @@ export default NextAuth({
     session: async (session, token) => {
       session.accessToken = token.accessToken;
       return session;
-    },
+    }
   },
+  pages: {
+    signIn: '/ghost/signin',
+    error: '/ghost/signin'
+  }
 });
