@@ -30,6 +30,9 @@
       ],
       "@ghost/*": [
         "src/apps/ghost/*"
+      ],
+      "@apis/*": [
+        "src/apis/*"
       ]
     },
     "incremental": true
