@@ -12,6 +12,11 @@ const GhostPostsPage = () => {
 
   return (
     <div>
+      <div>
+        <Link href={'/ghost/posts/create'}>
+          <a>Nuevo</a>
+        </Link>
+      </div>
       {posts.map(({ uuid, title }) => (
         <div key={uuid}>
           <p>{title}</p>
