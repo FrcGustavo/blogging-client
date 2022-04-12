@@ -17,14 +17,14 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params, locale }) => {
-  const { slug } = params;
-  const post = await PostsService.getOne(slug, locale);
+  // const { slug } = params;
+  // const post = await PostsService.getOne(slug, locale);
   return {
-    props: { post },
+    props: {  },
   };
 };
 
-const PagePost = ({ post }) => {
+const PagePost = () => {
   return (
     <LayoutBlog>
       <Head>
@@ -34,7 +34,7 @@ const PagePost = ({ post }) => {
       </Head>
       <CSSMain>
         <Container>
-          <Post cover={post.cover} title={post.title} body={post.body} />
+          {/* <Post cover={post.cover} title={post.title} body={post.body} /> */}
         </Container>
         <Footer />
       </CSSMain>
