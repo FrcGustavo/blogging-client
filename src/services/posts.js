@@ -7,11 +7,12 @@ const getAll = async ({ limit } = { limit: 9 }) => {
   return res.data;
 };
 
-// const getOne = async (slug, lang) => {
-//   const res = await axios.get(`${apiV1}/posts/${slug}?lang=${lang}`);
-//   const data = res.data;
-//   return data.body;
-// };
+const getOne = async (slug, lang) => {
+  const res = await axios.get(`${api}/posts/slug/${slug}?key=${apiKey}`);
+  const data = res.data;
+  console.log(`${api}/posts/slug/${slug}?key=${apiKey}`);
+  return data.posts[0];
+};
 
 // const save = async (data, id, token) => {
 //   if (id) return update(data, id, token);
@@ -56,7 +57,7 @@ const getAll = async ({ limit } = { limit: 9 }) => {
 
 export default {
   getAll,
-  // getOne,
+  getOne,
   // save,
   // publish,
 };
