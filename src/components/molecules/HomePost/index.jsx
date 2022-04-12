@@ -8,7 +8,8 @@ const HomePost = ({ cover, title, description, href }) => {
       <CSSCard>
         <div>
           <img
-            src={optimizeImage(cover, 'w_290,h_190,c_scale')}
+            // src={optimizeImage(cover, 'w_290,h_190,c_scale')}
+            src={cover}
             alt={title}
             width="290px"
             height="190px"

@@ -8,17 +8,13 @@ import { Container, CSSMain } from 'root/styles';
 export const getStaticPaths = async () => {
   const { posts } = await PostsService.getAll();
   const paths = posts
-    .map(({ slug }) => [
-      { params: { slug }, locale: 'es' },
-      { params: { slug }, locale: 'en' },
-    ])
-    .flat();
+    .map(({ slug }) => ({ params: { slug } }))
   return { paths, fallback: false };
 };
 
-export const getStaticProps = async ({ params, locale }) => {
+export const getStaticProps = async ({ params }) => {
   const { slug } = params;
-  const post = await PostsService.getOne(slug, locale);
+  const post = await PostsService.getOne(slug);
   return {
     props: { post },
   };
@@ -29,12 +25,12 @@ const PagePost = ({ post }) => {
     <LayoutBlog>
       <Head>
         <title>{post.title}</title>
-        <meta name="description" content={post.description} />
-        <meta name="keywords" content={post.keywords} />
+        <meta name="description" content={post.meta_description} />
+        {/* <meta name="keywords" content={post.keywords} /> */}
       </Head>
       <CSSMain>
         <Container>
-          <Post cover={post.cover} title={post.title} body={post.body} />
+          <Post cover={post.feature_image} title={post.title} body={post.html} />
         </Container>
         <Footer />
       </CSSMain>

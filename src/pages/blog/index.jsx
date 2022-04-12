@@ -12,6 +12,7 @@ const MetaData = {
 
 export async function getStaticProps({ locale }) {
   const { posts } = await PostsService.getAll(locale);
+
   return {
     props: {
       posts,

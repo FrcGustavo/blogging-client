@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import { Profile, HomePost } from '@/molecules';
 import { LayoutBlog } from '@/templates';
 import { PostsService } from 'root/services';
@@ -26,8 +25,8 @@ const Data = {
   },
 };
 
-export async function getStaticProps({ locale }) {
-  const { posts } = await PostsService.getAll(locale);
+export async function getStaticProps() {
+  const { posts } = await PostsService.getAll({ limit: 1 });
   const post = posts[0];
   return {
     props: {
@@ -37,26 +36,25 @@ export async function getStaticProps({ locale }) {
 }
 
 const Home = ({ post }) => {
-  const { locale } = useRouter();
   return (
     <LayoutBlog>
       <Head>
         <title>FrcGustavo | React frontend developer</title>
-        <meta name="description" content={Data[locale].description} />
-        <meta name="keywords" content={Data[locale].keywords} />
+        <meta name="description" content={Data['es'].description} />
+        <meta name="keywords" content={Data['es'].keywords} />
       </Head>
       <CSSMain degraded>
         <Container>
           <Profile
-            cover={Data[locale].cover}
-            name={Data[locale].name}
-            title={Data[locale].title}
-            description={Data[locale].description}
+            cover={Data['es'].cover}
+            name={Data['es'].name}
+            title={Data['es'].title}
+            description={Data['es'].description}
           />
           <HomePost
-            cover={post.cover}
+            cover={post.feature_image}
             title={post.title}
-            description={post.description}
+            description={post.meta_description}
             href={`/blog/${post.slug}`}
           />
         </Container>

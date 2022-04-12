@@ -21,7 +21,7 @@ const Header = ({ shadow }) => {
           </CSSLogo>
         </Link>
         <CSSNav>
-          <Link
+          {/* <Link
             href={`/${isLocaleEnglish ? 'es' : 'en'}${asPath}`}
             locale={false}
           >
@@ -33,7 +33,7 @@ const Header = ({ shadow }) => {
                 height="35px"
               />
             </a>
-          </Link>
+          </Link> */}
           <Link href="/" passHref>
             <NavItem>Home</NavItem>
           </Link>
