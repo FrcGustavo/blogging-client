@@ -9,7 +9,7 @@
     "build": "next build",
     "export": "next export",
     "format": "prettier --write \"**/*.{js,jsx}\"",
-    "lint": "eslint"
+    "lint": "next lint"
   },
   "repository": {
     "type": "git",
