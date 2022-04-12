@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { githubProfile, linkedinProfile, contactEmail } from 'root/config'
 import { optimizeImage } from 'root/utils';
 import { CSSProfile, CSSSocialMedia } from './styles';
 
@@ -20,7 +20,7 @@ const Profile = ({ cover, name, title, description }) => {
         <p>{description}</p>
         <CSSSocialMedia>
           <a
-            href="https://www.linkedin.com/in/frcgustavo/"
+            href={linkedinProfile}
             rel="noopener"
             target="_blank"
           >
@@ -28,14 +28,14 @@ const Profile = ({ cover, name, title, description }) => {
             LinkedIn
           </a>
           <a
-            href="https://github.com/FranciscoGustavo"
+            href={githubProfile}
             rel="noopener"
             target="_blank"
           >
             <FaGithub />
             Github
           </a>
-          <a href="mailto:hidalgofco520@gmail.com?subject=frcgustavo.com">
+          <a href={`mailto:${contactEmail}?subject=frcgustavo.com`}>
             <FaEnvelope />
             Correo electronico
           </a>
