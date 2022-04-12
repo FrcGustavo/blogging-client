@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import { Profile, HomePost } from '@/molecules';
 import { LayoutBlog } from '@/templates';
 import { PostsService } from 'root/services';
@@ -26,18 +25,17 @@ const Data = {
   },
 };
 
-export async function getStaticProps({ locale }) {
-  // const { posts } = await PostsService.getAll(locale);
-  // const post = posts[0];
+export async function getStaticProps() {
+  const { posts } = await PostsService.getAll({ limit: 1 });
+  const post = posts[0];
   return {
     props: {
-      // post,
+      post,
     },
   };
 }
 
-const Home = () => {
-  const { locale } = useRouter();
+const Home = ({ post }) => {
   return (
     <LayoutBlog>
       <Head>
@@ -53,12 +51,12 @@ const Home = () => {
             title={Data['es'].title}
             description={Data['es'].description}
           />
-          {/* <HomePost
-            cover={post.cover}
+          <HomePost
+            cover={post.feature_image}
             title={post.title}
-            description={post.description}
+            description={post.meta_description}
             href={`/blog/${post.slug}`}
-          /> */}
+          />
         </Container>
       </CSSMain>
     </LayoutBlog>

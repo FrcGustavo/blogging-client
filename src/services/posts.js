@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { api, apiKey } from 'root/config';
 
-const getAll = async (lang) => {
-  const res = await axios.get(`${api}/posts?key=${apiKey}`);
+const getAll = async ({ limit } = { limit: 9 }) => {
+  console.log(`${api}/posts?key=${apiKey}`);
+  const res = await axios.get(`${api}/posts?key=${apiKey}&limit=${limit}`);
   return res.data;
 };
 
