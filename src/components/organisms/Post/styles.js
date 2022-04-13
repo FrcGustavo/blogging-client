@@ -161,6 +161,7 @@ export const CSSPost = styled.section`
 
   img {
     max-width: 100%;
+    height: auto;
   }
 
   @media screen and (min-width: 680px) {

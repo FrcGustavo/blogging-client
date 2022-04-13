@@ -19,6 +19,7 @@ export const CSSButtonLink = styled.a`
   background-color: ${(props) => props.theme.secondary};
   color: #fff;
   text-transform: uppercase;
+  text-decoration: none;
   outline: none;
   cursor: pointer;
 `;
