@@ -10,7 +10,7 @@ const Button = ({ children, type = 'button', href, onHandleClick }) => {
     );
   } else {
     return (
-      <Link href={href}>
+      <Link href={href} passHref>
         <CSSButtonLink>{children}</CSSButtonLink>
       </Link>
     );
