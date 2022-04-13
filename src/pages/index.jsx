@@ -9,10 +9,10 @@ const Data = {
     cover:
       'https://res.cloudinary.com/hs8bxfui6/image/upload/v1611699598/me_moo3l1.jpg',
     name: 'Francisco Gustavo',
-    title: 'React frontend developer',
+    title: 'Front-end web development',
     description:
       'Me encanta experimentar con nuevas herramientas y frameworks. Me gusta crear soluciones usando mis herramientas de desarrollo. Tengo experiencia con HTML, CSS, JavaScript, React, NextJS, API Rest, API GraphQL, Socket IO, Server side render y más.',
-    keywords: 'React, NextJS, Software, Desarrollador, MERN, FrcGustavo',
+    keywords: 'FrcGustavo, React, Next JS, Javascript, Typescript',
   },
   en: {
     cover:
@@ -39,7 +39,7 @@ const Home = ({ post }) => {
   return (
     <LayoutBlog>
       <Head>
-        <title>FrcGustavo | React frontend developer</title>
+        <title>FrcGustavo | Front-end web development</title>
         <meta name="description" content={Data['es'].description} />
         <meta name="keywords" content={Data['es'].keywords} />
       </Head>
