@@ -15,6 +15,7 @@ export const CSSHeader = styled.header`
   );
   box-shadow: ${(props) =>
     props.shadow ? '0 0 7px rgba(0, 0, 0, 0.14)' : '0 0 0px'};
+  z-index: 1;
 
   div {
     display: flex;

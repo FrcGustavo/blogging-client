@@ -1,17 +1,39 @@
 import axios from 'axios';
 import { api, apiKey } from 'root/config';
 
-const getAll = async ({ limit } = { limit: 9 }) => {
-  console.log(`${api}/posts?key=${apiKey}`);
+type Post = {
+  cover: string
+  title: string
+  description: string
+  href: string
+}
+type Posts = Post[]
+type GetAll = (props: { limit: number }) => Promise<{ posts: Posts }>
+
+const getAll: GetAll = async ({ limit } = { limit: 9 })  => {
   const res = await axios.get(`${api}/posts?key=${apiKey}&limit=${limit}`);
-  return res.data;
+  const posts = res.data.posts.map((post => ({
+    cover: post.feature_image,
+    title: post.title,
+    description: post.meta_description,
+    slug: post.slug,
+  })))
+  return {
+    posts
+  };
 };
 
-const getOne = async (slug, lang) => {
+const getOne = async ({slug}: { slug: string }) => {
   const res = await axios.get(`${api}/posts/slug/${slug}?key=${apiKey}`);
-  const data = res.data;
-  console.log(`${api}/posts/slug/${slug}?key=${apiKey}`);
-  return data.posts[0];
+
+  const data = res.data.posts[0];
+  const post = {
+    cover: data.feature_image,
+    title: data.title,
+    html: data.html
+  }
+
+  return post;
 };
 
 // const save = async (data, id, token) => {

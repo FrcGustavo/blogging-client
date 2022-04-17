@@ -17,6 +17,7 @@ export const CSSPostContainer = styled.article`
 `;
 
 export const CSSImage = styled.section`
+  position: relative;
   height: 200px;
   img {
     width: 100%;
