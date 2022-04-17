@@ -7,14 +7,13 @@ import { Container, CSSMain } from 'root/styles';
 
 export const getStaticPaths = async () => {
   const { posts } = await PostsService.getAll();
-  const paths = posts
-    .map(({ slug }) => ({ params: { slug } }))
+  const paths = posts.map(({ slug }) => ({ params: { slug } }));
   return { paths, fallback: false };
 };
 
 export const getStaticProps = async ({ params }) => {
   const { slug } = params;
-  const post = await PostsService.getOne(slug);
+  const post = await PostsService.getOne({ slug });
   return {
     props: { post },
   };
@@ -30,7 +29,7 @@ const PagePost = ({ post }) => {
       </Head>
       <CSSMain>
         <Container>
-          <Post cover={post.feature_image} title={post.title} body={post.html} />
+          <Post cover={post.cover} title={post.title} body={post.html} />
         </Container>
         <Footer />
       </CSSMain>

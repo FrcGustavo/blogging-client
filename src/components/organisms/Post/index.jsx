@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import {
   CSSPostContainer,
   CSSPostCard,
@@ -12,7 +13,7 @@ const Post = ({ cover, title, body }) => {
     <CSSPostContainer>
       <CSSPostCard>
         <CSSImage>
-          <img src={cover} alt={title} />
+          <Image layout="fill" src={cover} alt={title} />
         </CSSImage>
         <CSSPostContent>
           <CSSTitle>
