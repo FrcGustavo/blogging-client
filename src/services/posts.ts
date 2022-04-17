@@ -23,10 +23,17 @@ const getAll: GetAll = async ({ limit } = { limit: 9 })  => {
   };
 };
 
-const getOne = async (slug, lang) => {
+const getOne = async ({slug}: { slug: string }) => {
   const res = await axios.get(`${api}/posts/slug/${slug}?key=${apiKey}`);
-  const data = res.data;
-  return data.posts[0];
+
+  const data = res.data.posts[0];
+  const post = {
+    cover: data.feature_image,
+    title: data.title,
+    html: data.html
+  }
+
+  return post;
 };
 
 // const save = async (data, id, token) => {

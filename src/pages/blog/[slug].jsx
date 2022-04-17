@@ -14,7 +14,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
   const { slug } = params;
-  const post = await PostsService.getOne(slug);
+  const post = await PostsService.getOne({slug});
   return {
     props: { post },
   };
@@ -30,7 +30,7 @@ const PagePost = ({ post }) => {
       </Head>
       <CSSMain>
         <Container>
-          <Post cover={post.feature_image} title={post.title} body={post.html} />
+          <Post cover={post.cover} title={post.title} body={post.html} />
         </Container>
         <Footer />
       </CSSMain>
