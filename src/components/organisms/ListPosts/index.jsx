@@ -6,12 +6,12 @@ const ListPosts = ({ data }) => {
   return (
     <CSSList>
       <Container>
-        {data.map(({ feature_image, title, meta_description, slug }) => (
+        {data.map(({ cover, title, description, slug }) => (
           <CardPost
             key={slug}
-            cover={feature_image}
+            cover={cover}
             title={title}
-            description={meta_description}
+            description={description}
             href={slug}
           />
         ))}
