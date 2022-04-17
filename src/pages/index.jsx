@@ -9,10 +9,10 @@ const Data = {
     cover:
       'https://res.cloudinary.com/hs8bxfui6/image/upload/v1611699598/me_moo3l1.jpg',
     name: 'Francisco Gustavo',
-    title: 'Front-end web development',
+    title: 'Desarollador web',
     description:
       'Me encanta experimentar con nuevas herramientas y frameworks. Me gusta crear soluciones usando mis herramientas de desarrollo. Tengo experiencia con HTML, CSS, JavaScript, React, NextJS, API Rest, API GraphQL, Socket IO, Server side render y más.',
-    keywords: 'FrcGustavo, React, Next JS, Javascript, Typescript',
+    keywords: 'FrcGustavo, Desarollador web, React, Next JS, Javascript, Typescript',
   },
   en: {
     cover:
@@ -39,7 +39,7 @@ const Home = ({ post }) => {
   return (
     <LayoutBlog>
       <Head>
-        <title>FrcGustavo | Front-end web development</title>
+        <title>FrcGustavo | Desarollador web</title>
         <meta name="description" content={Data['es'].description} />
         <meta name="keywords" content={Data['es'].keywords} />
       </Head>
@@ -52,9 +52,9 @@ const Home = ({ post }) => {
             description={Data['es'].description}
           />
           <HomePost
-            cover={post.feature_image}
+            cover={post.cover}
             title={post.title}
-            description={post.meta_description}
+            description={post.description}
             href={`/blog/${post.slug}`}
           />
         </Container>
