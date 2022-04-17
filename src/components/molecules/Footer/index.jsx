@@ -1,5 +1,5 @@
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
-import { githubProfile, linkedinProfile, contactEmail } from 'root/config'
+import { githubProfile, linkedinProfile, contactEmail } from 'root/config';
 import { Container } from 'root/styles';
 import { CSSFooter, CSSSocialMedia } from './styles.js';
 
@@ -8,19 +8,11 @@ const Footer = () => {
     <CSSFooter>
       <Container>
         <CSSSocialMedia>
-          <a
-            href={linkedinProfile}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href={linkedinProfile} target="_blank" rel="noopener noreferrer">
             LinkedIn
             <FaLinkedin className="fill-icon" />
           </a>
-          <a
-            href={githubProfile}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href={githubProfile} target="_blank" rel="noopener noreferrer">
             <FaGithub className="fill-icon" />
             Github
           </a>

@@ -17,6 +17,7 @@ const Header = ({ shadow }) => {
               layout="fixed"
               width="40px"
               height="40px"
+              alt="blogging logo"
             />
           </CSSLogo>
         </Link>
