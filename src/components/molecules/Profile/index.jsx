@@ -8,7 +8,7 @@ const Profile = ({ cover, name, title, description }) => {
   return (
     <CSSProfile>
       <div>
-        <Image src={cover} alt={name} width="150px" height="150px" />
+        <Image src={cover} alt={name} width={150} height={150} />
       </div>
       <div>
         <h1>{name}</h1>

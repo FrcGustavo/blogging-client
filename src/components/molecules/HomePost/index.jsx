@@ -12,8 +12,8 @@ const HomePost = ({ cover, title, description, href }) => {
             // src={optimizeImage(cover, 'w_290,h_190,c_scale')}
             src={cover}
             alt={title}
-            width="290px"
-            height="190px"
+            width={290}
+            height={190}
           />
         </div>
         <div>

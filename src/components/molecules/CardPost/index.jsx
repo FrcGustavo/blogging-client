@@ -7,7 +7,7 @@ const CardPost = ({ cover, title, description, href }) => {
   return (
     <CSSArticle>
       <CSSImage>
-        <Image src={cover} alt={title} width="290px" height="150px" />
+        <Image src={cover} alt={title} width={290} height={150} />
       </CSSImage>
       <CSSInfo>
         <h2>{title}</h2>

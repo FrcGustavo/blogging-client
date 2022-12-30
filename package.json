@@ -4,37 +4,37 @@
   "description": "It is the blog",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
-    "start": "next start",
+    "dev": "next dev",
     "build": "next build",
+    "start": "next start",
     "export": "next export",
     "format": "prettier --write \"**/*.{js,jsx}\"",
     "lint": "next lint"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FranciscoGustavo/bloging-client.git"
+    "url": "git+https://github.com/FrcGustavo/bloging-client.git"
   },
-  "author": "Francisco Gustavo <hidalgofco520@gmail.com>",
+  "author": "Francisco Gustavo <gustavo@frcgustavo.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/FranciscoGustavo/bloging-client/issues"
+    "url": "https://github.com/FrcGustavo/bloging-client/issues"
   },
-  "homepage": "https://github.com/FranciscoGustavo/bloging-client#readme",
+  "homepage": "https://github.com/FrcGustavo/bloging-client#readme",
   "dependencies": {
-    "axios": "^0.26.1",
-    "next": "^12.1.4",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-icons": "^4.3.1",
-    "styled-components": "^5.3.5"
-  },
-  "devDependencies": {
-    "@types/node": "^17.0.23",
-    "@types/react": "^18.0.4",
-    "eslint": "8.13.0",
-    "eslint-config-next": "12.1.4",
-    "prettier": "^2.6.2",
-    "typescript": "^4.6.3"
+    "@next/font": "13.1.1",
+    "@types/node": "18.11.18",
+    "@types/react": "18.0.26",
+    "@types/react-dom": "18.0.10",
+    "axios": "^1.2.2",
+    "eslint": "8.30.0",
+    "eslint-config-next": "13.1.1",
+    "next": "13.1.1",
+    "prettier": "^2.8.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.7.1",
+    "styled-components": "^5.3.6",
+    "typescript": "4.9.4"
   }
 }

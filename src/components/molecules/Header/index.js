@@ -15,8 +15,8 @@ const Header = ({ shadow }) => {
             <Image
               src="/icons/bloging-logo-192.png"
               layout="fixed"
-              width="40px"
-              height="40px"
+              width={40}
+              height={40}
               alt="blogging logo"
             />
           </CSSLogo>
