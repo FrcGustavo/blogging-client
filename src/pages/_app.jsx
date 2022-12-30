@@ -1,5 +1,6 @@
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles, theme } from 'root/styles';
+import '../styles/globals.css';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
