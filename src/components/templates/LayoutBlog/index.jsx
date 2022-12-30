@@ -11,13 +11,16 @@ const LayoutBlog = ({ children }) => {
     } else {
       setShadow(false);
     }
-  };
+  }
 
   return (
-    <CSSBlogApp onScroll={handleScroll}>
+    <div className='w-full h-full overflow-x-hidden overflow-y-auto' onScroll={handleScroll}>
+
+    {/* <CSSBlogApp onScroll={handleScroll}> */}
       <Header shadow={shadow} />
       {children}
-    </CSSBlogApp>
+    {/* </CSSBlogApp> */}
+    </div>
   );
 };
 
