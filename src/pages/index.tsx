@@ -45,7 +45,7 @@ const Home = ({ post }) => {
         <meta name="keywords" content={Data['es'].keywords} />
       </Head>
       <main className={styles.main}>
-        <container className='container mx-auto'>
+        <section className='container mx-auto'>
           <Profile
             cover={Data['es'].cover}
             name={Data['es'].name}
@@ -58,7 +58,7 @@ const Home = ({ post }) => {
             description={post.description}
             href={`/blog/${post.slug}`}
             />
-        </container>
+        </section>
       </main>
     </LayoutBlog>
   );
