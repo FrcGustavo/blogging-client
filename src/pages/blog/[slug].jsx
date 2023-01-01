@@ -3,7 +3,8 @@ import { LayoutBlog } from '@/templates';
 import { Footer } from '@/molecules';
 import { Post } from '@/organisms';
 import { PostsService } from 'root/services';
-import { Container, CSSMain } from 'root/styles';
+import styles from './index.module.css'
+
 
 export const getStaticPaths = async () => {
   const { posts } = await PostsService.getAll();
@@ -25,14 +26,14 @@ const PagePost = ({ post }) => {
       <Head>
         <title>{post.title}</title>
         <meta name="description" content={post.meta_description} />
-        {/* <meta name="keywords" content={post.keywords} /> */}
+        <meta name="keywords" content={post.keywords} />
       </Head>
-      <CSSMain>
-        <Container>
+      <main className={styles.main}>
+        <section className='container mx-auto'>
           <Post cover={post.cover} title={post.title} body={post.html} />
-        </Container>
+        </section>
         <Footer />
-      </CSSMain>
+      </main>
     </LayoutBlog>
   );
 };

@@ -3,7 +3,7 @@ import { LayoutBlog } from '@/templates';
 import { ListPosts } from '@/organisms';
 import { Footer } from '@/molecules';
 import { PostsService } from 'root/services';
-import { CSSMain } from 'root/styles';
+import styles from './index.module.css'
 
 const MetaData = {
   description: `Me encanta experimentar con nuevas herramientas y frameworks. Me gusta crear soluciones usando mis herramientas de desarrollo. Tengo experiencia con API Rest, API GraphQL, Socket IO, Single Page App, Server side render y más.`,
@@ -28,10 +28,10 @@ const Blog = ({ posts }) => {
         <meta name="description" content={MetaData.description} />
         <meta name="keywords" content={MetaData.keywords} />
       </Head>
-      <CSSMain>
+      <main className={styles.main}>
         <ListPosts data={posts} />
         <Footer />
-      </CSSMain>
+      </main>
     </LayoutBlog>
   );
 };
