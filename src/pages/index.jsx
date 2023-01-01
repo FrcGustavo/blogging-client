@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { Profile, HomePost } from '@/molecules';
 import { LayoutBlog } from '@/templates';
 import { PostsService } from 'root/services';
-import { Container, CSSMain } from 'root/styles';
+import styles from './index.module.css'
 
 const Data = {
   es: {
@@ -44,22 +44,22 @@ const Home = ({ post }) => {
         <meta name="description" content={Data['es'].description} />
         <meta name="keywords" content={Data['es'].keywords} />
       </Head>
-      <CSSMain degraded>
-        <Container>
+      <main className={styles.main}>
+        <container className='container mx-auto'>
           <Profile
             cover={Data['es'].cover}
             name={Data['es'].name}
             title={Data['es'].title}
             description={Data['es'].description}
-          />
+            />
           <HomePost
             cover={post.cover}
             title={post.title}
             description={post.description}
             href={`/blog/${post.slug}`}
-          />
-        </Container>
-      </CSSMain>
+            />
+        </container>
+      </main>
     </LayoutBlog>
   );
 };

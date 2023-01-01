@@ -30,13 +30,13 @@ export const Container = styled.div`
   margin: auto;
 `;
 
-export const CSSMain = styled.main`
-  min-height: calc(100vh - 60px);
-  background: ${(props) =>
-    props.degraded
-      ? `linear-gradient(90deg, ${props.theme.primaryDark}, ${props.theme.primarylight})`
-      : 'rgba(75, 90, 138, 0.14);'};
-`;
+// export const CSSMain = styled.main`
+//   min-height: calc(100vh - 60px);
+//   background: ${(props) =>
+//     props.degraded
+//       ? `linear-gradient(90deg, ${props.theme.primaryDark}, ${props.theme.primarylight})`
+//       : 'rgba(75, 90, 138, 0.14);'};
+// `;
 
 export const CSSPost = styled.section`
   padding: 14px 28px;

@@ -1,5 +1,5 @@
 .header {
-    @apply sticky top-0 left-0 w-full h-16 px-8 z-10 bg-gradient-to-tr from-primary-dark to-primary-light ;
+    @apply sticky top-0 left-0 w-full h-16 px-8 z-10 bg-gradient-to-r from-primary-dark to-primary-light ;
 }
 
 .headerContainer {
