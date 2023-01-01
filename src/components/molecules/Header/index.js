@@ -1,49 +1,25 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
-import { Container } from 'root/styles';
-import { CSSHeader, CSSNav, NavItem, CSSLogo } from './styles';
+import styles from './styles.module.css'
 
 const Header = ({ shadow }) => {
-  const { asPath, locale } = useRouter();
-  const isLocaleEnglish = locale === 'en';
   return (
-    <CSSHeader shadow={shadow}>
-      <Container>
-        <Link href="/" passHref>
-          <CSSLogo>
+    <header className={`${styles.header} ${shadow ? 'shadow-md' : ''}`}>
+      <section className={styles.headerContainer}>
+        <Link href="/" passHref className={styles.headerLogo}>
             <Image
               src="/icons/bloging-logo-192.png"
-              layout="fixed"
               width={40}
               height={40}
               alt="blogging logo"
             />
-          </CSSLogo>
         </Link>
-        <CSSNav>
-          {/* <Link
-            href={`/${isLocaleEnglish ? 'es' : 'en'}${asPath}`}
-            locale={false}
-          >
-            <a>
-              <img
-                src={isLocaleEnglish ? '/spanish.svg' : '/english.svg'}
-                alt="idioma"
-                width="35px"
-                height="35px"
-              />
-            </a>
-          </Link> */}
-          <Link href="/" passHref>
-            <NavItem>Home</NavItem>
-          </Link>
-          <Link href="/blog" passHref>
-            <NavItem>Blog</NavItem>
-          </Link>
-        </CSSNav>
-      </Container>
-    </CSSHeader>
+        <nav className={styles.headerNav}>
+          <Link href="/" passHref className={styles.headerNavItem}>Home</Link>
+          <Link href="/blog" passHref className={styles.headerNavItem}>Blog</Link>
+        </nav>
+      </section>
+    </header>
   );
 };
 
