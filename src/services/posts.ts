@@ -5,7 +5,7 @@ type Post = {
   cover: string
   title: string
   description: string
-  href: string
+  slug: string
 }
 type Posts = Post[]
 type GetAll = (props: { limit: number }) => Promise<{ posts: Posts }>

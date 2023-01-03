@@ -7,7 +7,7 @@ import styles from './index.module.css'
 
 
 export const getStaticPaths = async () => {
-  const { posts } = await PostsService.getAll();
+  const { posts } = await PostsService.getAll({ limit: 9 });
   const paths = posts.map(({ slug }) => ({ params: { slug } }));
   return { paths, fallback: false };
 };
