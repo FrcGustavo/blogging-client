@@ -1,28 +1,26 @@
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { githubProfile, linkedinProfile, contactEmail } from 'root/config';
-import { Container } from 'root/styles';
-import { CSSFooter, CSSSocialMedia } from './styles.js';
 
 const Footer = () => {
   return (
-    <CSSFooter>
-      <Container>
-        <CSSSocialMedia>
-          <a href={linkedinProfile} target="_blank" rel="noopener noreferrer">
+    <footer className='p-7 bg-gradient-to-r from-primary-dark to-primary-light '>
+      <section className='container mx-auto'>
+        <div className='w-32 grid grid-cols-3 gap-x-3'>
+          <a href={linkedinProfile} target="_blank" rel="noopener noreferrer"  className="text-[0px]">
+            <FaLinkedin className="fill-icon text-2xl text-primary" />
             LinkedIn
-            <FaLinkedin className="fill-icon" />
           </a>
-          <a href={githubProfile} target="_blank" rel="noopener noreferrer">
-            <FaGithub className="fill-icon" />
+          <a href={githubProfile} target="_blank" rel="noopener noreferrer"  className="text-[0px]">
+            <FaGithub className="fill-icon text-2xl text-primary" />
             Github
           </a>
-          <a href={`mailto:${contactEmail}?subject=frcgustavo.com`}>
-            <FaEnvelope />
+          <a href={`mailto:${contactEmail}?subject=frcgustavo.com`} className="text-[0px]">
+            <FaEnvelope className="text-2xl text-primary" />
             Correo Electronico
           </a>
-        </CSSSocialMedia>
-      </Container>
-    </CSSFooter>
+        </div>
+      </section>
+    </footer>
   );
 };
 
