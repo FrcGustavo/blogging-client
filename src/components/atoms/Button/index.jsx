@@ -1,17 +1,17 @@
 import Link from 'next/link';
-import { CSSButton, CSSButtonLink } from './styles';
+import styles from './Button.module.css';
 
 const Button = ({ children, type = 'button', href, onHandleClick }) => {
   if (!href) {
     return (
-      <CSSButton type={type} onClick={onHandleClick}>
+      <button type={type} onClick={onHandleClick} className={styles.button}>
         {children}
-      </CSSButton>
+      </button>
     );
   } else {
     return (
-      <Link href={href} passHref>
-        <CSSButtonLink>{children}</CSSButtonLink>
+      <Link href={href} passHref className={styles.buttonLink}>
+        {children}
       </Link>
     );
   }

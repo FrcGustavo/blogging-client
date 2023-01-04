@@ -1,0 +1,7 @@
+.button, .buttonLink {
+    @apply py-2 px-4 rounded-md shadow-md text-white uppercase outline-none cursor-pointer bg-secondary;
+}
+
+.buttonLink {
+    @apply inline-block
+}
