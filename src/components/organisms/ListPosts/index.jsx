@@ -1,22 +1,21 @@
 import { CardPost } from '@/molecules';
-import { Container } from 'root/styles';
-import { CSSList } from './styles';
+import styles from './ListPosts.module.css'
 
 const ListPosts = ({ data }) => {
   return (
-    <CSSList>
-      <Container>
-        {data.map(({ cover, title, description, slug }) => (
-          <CardPost
+      <div className='p-8'>
+        <section className={styles.listPosts}>
+          {data.map(({ cover, title, description, slug }) => (
+            <CardPost
             key={slug}
             cover={cover}
             title={title}
             description={description}
             href={slug}
-          />
-        ))}
-      </Container>
-    </CSSList>
+            />
+            ))}
+        </section>
+      </div>
   );
 };
 

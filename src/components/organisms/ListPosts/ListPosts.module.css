@@ -1,0 +1,37 @@
+.listPosts {
+    @apply container m-auto grid grid-cols-1 gap-14 justify-self-center;
+}
+
+.listPosts > article {
+    @apply justify-self-center;
+}
+
+@screen sm {
+    .listPosts {
+        @apply grid-cols-2;
+    }
+}
+
+@screen md {
+    .listPosts {
+        @apply grid-cols-3;
+    }
+
+    .listPosts > article:nth-child(1),
+    .listPosts > article:nth-child(4),
+    .listPosts > article:nth-child(7) {
+      justify-self: start;
+    }
+
+    .listPosts > article:nth-child(2),
+    .listPosts > article:nth-child(5),
+    .listPosts > article:nth-child(8) {
+      justify-self: center;
+    }
+
+    .listPosts > article:nth-child(3),
+    .listPosts > article:nth-child(6),
+    .listPosts > article:nth-child(9) {
+      justify-self: end;
+    }
+}

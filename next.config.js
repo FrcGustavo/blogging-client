@@ -9,6 +9,7 @@ const nextConfig = {
       'res-2.cloudinary.com',
       'res-3.cloudinary.com',
       'res-4.cloudinary.com',
+      'static.ghost.org'
     ],
   },
 }
