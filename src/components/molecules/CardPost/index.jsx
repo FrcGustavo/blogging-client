@@ -1,20 +1,19 @@
 import Image from 'next/image';
 import { Button } from '@/atoms';
-import { optimizeImage } from 'root/utils';
-import { CSSArticle, CSSImage, CSSInfo } from './styles';
+import styles from './CardPost.module.css'
 
 const CardPost = ({ cover, title, description, href }) => {
   return (
-    <CSSArticle>
-      <CSSImage>
-        <Image src={cover} alt={title} width={290} height={150} />
-      </CSSImage>
-      <CSSInfo>
-        <h2>{title}</h2>
-        <p>{description}</p>
-        <Button href={`/blog/${href}`}>Leer más</Button>
-      </CSSInfo>
-    </CSSArticle>
+    <article className={styles.article}>
+        <div className='h-36 overflow-hidden'>
+          <Image src={cover} alt={title} width={290} height={150} className="w-full object-cover" />
+        </div>
+        <div className='p-3'>
+          <h2 className='mb-3 font-bold text-xl'>{title}</h2>
+          <p className='mb-3 font-light text-sm'>{description}</p>
+          <Button href={`/blog/${href}`}>Leer más</Button>
+        </div>
+    </article>
   );
 };
 
