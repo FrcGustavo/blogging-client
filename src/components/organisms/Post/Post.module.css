@@ -1,0 +1,129 @@
+.post {
+    max-width: 700px;
+    margin: auto;
+    overflow: hidden;
+}
+
+
+
+.post a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.post a:hover {
+    text-decoration: underline;
+}
+
+.post p,
+.post strong,
+.post a {
+  font-size: 18px;
+  letter-spacing: 0.25px;
+  line-height: 1.5;
+}
+
+.post strong {
+  font-weight: 700;
+}
+
+.post p,
+.post blockquote,
+.post ul,
+.post ol,
+.post dl,
+.post table,
+.post pre {
+  margin: 14px 0;
+}
+
+.post p {
+  margin-top: 0px;
+  margin-bottom: 30px;
+}
+
+.post pre {
+  border-radius: 4.5px;
+  padding: 14px;
+  overflow: auto;
+  background-color: #f6f8fa;
+  line-height: 1.45;
+}
+
+.post pre code {
+    display: block;
+    max-width: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    line-height: inherit;
+    word-wrap: normal;
+    background-color: initial;
+    border: 0;
+}
+
+.post ul,
+.post ol {
+  padding-left: 30px;
+}
+.post h2 {
+  border-bottom: 1px solid #eee;
+  color: #000;
+  font-size: 1.75em;
+}
+.post h3 {
+  font-size: 1.5em;
+}
+.post h4 {
+  font-size: 1.2em;
+}
+.post h5 {
+  font-size: 1em;
+}
+.post h6 {
+  color: #777;
+  font-size: 1em;
+}
+.post h2,
+.post h3,
+.post h4,
+.post h5,
+.post h6 {
+  font-weight: bold;
+  line-height: 1.7;
+  margin: 1em 0 15px 0;
+}
+.post h2 + p,
+.post h3 + p {
+  margin-top: 14px;
+}
+.post code {
+  background-color: #f8f8f8;
+  border-radius: 4.5px;
+  border: 1px solid #ddd;
+  font-family: Consolas, 'Liberation Mono', Courier, monospace;
+  font-size: 14px;
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: pre;
+}
+
+.post img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* @media screen and (min-width: 680px) {
+  h2 {
+    font-size: 2em;
+  }
+  p,
+  strong,
+  a {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  padding-bottom: 32px;
+} */

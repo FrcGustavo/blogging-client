@@ -7,22 +7,23 @@ import {
   CSSTitle,
   CSSPost,
 } from './styles';
+import styles from './Post.module.css'
 
 const Post = ({ cover, title, body }) => {
   return (
-    <CSSPostContainer>
+    <article className="lg:py-16">
       <CSSPostCard>
-        <CSSImage>
-          <Image layout="fill" src={cover} alt={title} />
-        </CSSImage>
+        <section className="relative h-52">
+          <Image src={cover} alt={title} fill className="w-full h-full object-cover" />
+        </section>
         <CSSPostContent>
-          <CSSTitle>
-            <h1>{title}</h1>
-          </CSSTitle>
-          <CSSPost dangerouslySetInnerHTML={{ __html: body }} />
+          <section className="max-w-3xl mx-auto py-4">
+            <h1 className="border-b-2 border-b-gray-200 pb-4 text-2xl font-bold">{title}</h1>
+          </section>
+          <section className={styles.post} dangerouslySetInnerHTML={{ __html: body }} />
         </CSSPostContent>
       </CSSPostCard>
-    </CSSPostContainer>
+    </article>
   );
 };
 export default Post;
