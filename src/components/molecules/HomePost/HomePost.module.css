@@ -1,0 +1,21 @@
+.cardContainer {
+    @apply p-7
+}
+
+@screen sm {
+    .cardContainer {
+        @apply flex justify-center;
+    }
+}
+
+.card {
+    @apply w-full max-w-xs rounded-lg m-auto shadow-md bg-white overflow-hidden;
+}
+
+
+@screen sm {
+    .card {
+        @apply grid gap-5 w-full max-w-5xl h-56;
+        grid-template-columns: 320px 1fr;
+    }
+}
