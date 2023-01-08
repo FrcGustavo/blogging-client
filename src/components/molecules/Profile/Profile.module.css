@@ -1,0 +1,25 @@
+.profile {
+    @apply w-full max-w-5xl mx-auto p-7;
+}
+
+.profile > div{
+    @apply w-full;
+}
+
+@screen sm {
+    .profile {
+        grid-template-columns: auto 1fr;
+        @apply grid gap-7 pt-14;
+    }
+}
+
+.socialMedia {
+    grid-template-columns: repeat(3, 28px);
+    @apply grid gap-x-3 justify-center;
+}
+
+@screen sm {
+    .socialMedia {
+        @apply justify-start;
+    }
+}
