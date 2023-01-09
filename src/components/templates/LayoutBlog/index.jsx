@@ -10,10 +10,13 @@ const LayoutBlog = ({ children }) => {
     } else {
       setShadow(false);
     }
-  }
+  };
 
   return (
-    <div className='w-full h-full overflow-x-hidden overflow-y-auto' onScroll={handleScroll}>
+    <div
+      className="w-full h-full overflow-x-hidden overflow-y-auto"
+      onScroll={handleScroll}
+    >
       <Header shadow={shadow} />
       {children}
     </div>
