@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 
 export const CSSButton = styled.button`
@@ -11,7 +12,7 @@ export const CSSButton = styled.button`
   cursor: pointer;
 `;
 
-export const CSSButtonLink = styled.a`
+export const CSSButtonLink = styled(Link)`
   display: inline-block;
   border-radius: 7px;
   padding: 7px 14px;

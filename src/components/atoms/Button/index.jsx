@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { CSSButton, CSSButtonLink } from './styles';
 
 const Button = ({ children, type = 'button', href, onHandleClick }) => {
@@ -8,13 +7,9 @@ const Button = ({ children, type = 'button', href, onHandleClick }) => {
         {children}
       </CSSButton>
     );
-  } else {
-    return (
-      <Link href={href} passHref>
-        <CSSButtonLink>{children}</CSSButtonLink>
-      </Link>
-    );
   }
+
+  return <CSSButtonLink href={href}>{children}</CSSButtonLink>;
 };
 
 export default Button;

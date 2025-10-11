@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 
 export const CSSHeader = styled.header`
@@ -42,7 +43,7 @@ export const CSSNav = styled.nav`
   }
 `;
 
-export const NavItem = styled.a`
+export const NavItem = styled(Link)`
   display: inline-block;
   border-radius: 5px;
   margin-left: 21px;
@@ -58,7 +59,7 @@ export const NavItem = styled.a`
   }
 `;
 
-export const CSSLogo = styled.a`
+export const CSSLogo = styled(Link)`
   display: block;
   width: 40px;
   height: 40px;
