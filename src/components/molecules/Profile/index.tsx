@@ -6,7 +6,14 @@ import Typography from '@mui/material/Typography';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { githubProfile, linkedinProfile, contactEmail } from 'root/config';
 
-const Profile = ({ cover, name, title, description }) => {
+type ProfileProps = {
+  cover: string;
+  name: string;
+  title: string;
+  description: string;
+};
+
+const Profile = ({ cover, name, title, description }: ProfileProps) => {
   return (
     <Box
       sx={{

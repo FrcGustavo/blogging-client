@@ -1,15 +1,16 @@
 import React from 'react';
 import { GlobalStyles as MuiGlobalStyles } from '@mui/material';
 import ContainerBase from '@mui/material/Container';
-import Box from '@mui/material/Box';
+import Box, { type BoxProps } from '@mui/material/Box';
 import {
   createTheme,
   styled,
   ThemeProvider as MuiThemeProvider,
 } from '@mui/material/styles';
+import type { PaletteOptions, Theme, ThemeOptions } from '@mui/material/styles';
 import { indigo, blueGrey, blue, deepOrange } from '@mui/material/colors';
 
-const baseThemeOptions = {
+const baseThemeOptions: ThemeOptions = {
   typography: {
     fontFamily: "'Lato', sans-serif",
     fontSize: 16,
@@ -30,7 +31,7 @@ const baseThemeOptions = {
   },
 };
 
-const createPaletteTheme = (palette) =>
+const createPaletteTheme = (palette: PaletteOptions): Theme =>
   createTheme({
     ...baseThemeOptions,
     palette,
@@ -174,9 +175,22 @@ export const blueDeepOrange = {
   }),
 };
 
-export const theme = indigoDeepOrange.light;
+export const theme: Theme = indigoDeepOrange.light;
 
-const paletteDefinitions = [
+type ThemeVariantId = 'indigoDeepOrange' | 'blueGreyDeepOrange' | 'blueDeepOrange';
+
+type ThemeVariants = {
+  light: Theme;
+  dark: Theme;
+};
+
+type PaletteDefinition = {
+  id: ThemeVariantId;
+  label: string;
+  variants: ThemeVariants;
+};
+
+const paletteDefinitions: PaletteDefinition[] = [
   {
     id: 'indigoDeepOrange',
     label: 'Indigo / Deep Orange',
@@ -194,17 +208,31 @@ const paletteDefinitions = [
   },
 ];
 
-const ThemePaletteContext = React.createContext({
+type ThemePaletteContextValue = {
+  paletteId: ThemeVariantId;
+  paletteLabel: string;
+  cyclePalette: () => void;
+  mode: 'light' | 'dark';
+  toggleMode: () => void;
+};
+
+const ThemePaletteContext = React.createContext<ThemePaletteContextValue>({
   paletteId: paletteDefinitions[0].id,
   paletteLabel: paletteDefinitions[0].label,
-  cyclePalette: () => {},
+  cyclePalette: () => undefined,
   mode: 'light',
-  toggleMode: () => {},
+  toggleMode: () => undefined,
 });
 
-export const ThemePaletteProvider = ({ children }) => {
+type ThemePaletteProviderProps = {
+  children: React.ReactNode;
+};
+
+export const ThemePaletteProvider: React.FC<ThemePaletteProviderProps> = ({
+  children,
+}) => {
   const [paletteIndex, setPaletteIndex] = React.useState(0);
-  const [mode, setMode] = React.useState('light');
+  const [mode, setMode] = React.useState<'light' | 'dark'>('light');
 
   const cyclePalette = React.useCallback(() => {
     setPaletteIndex((prev) => (prev + 1) % paletteDefinitions.length);
@@ -214,7 +242,7 @@ export const ThemePaletteProvider = ({ children }) => {
     setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
   }, []);
 
-  const value = React.useMemo(() => {
+  const value = React.useMemo<ThemePaletteContextValue>(() => {
     const current = paletteDefinitions[paletteIndex];
     return {
       paletteId: current.id,
@@ -225,7 +253,7 @@ export const ThemePaletteProvider = ({ children }) => {
     };
   }, [paletteIndex, cyclePalette, mode, toggleMode]);
 
-  const themePalette = React.useMemo(
+  const themePalette = React.useMemo<Theme>(
     () => paletteDefinitions[paletteIndex].variants[mode],
     [paletteIndex, mode]
   );
@@ -237,9 +265,10 @@ export const ThemePaletteProvider = ({ children }) => {
   );
 };
 
-export const useThemePalette = () => React.useContext(ThemePaletteContext);
+export const useThemePalette = (): ThemePaletteContextValue =>
+  React.useContext(ThemePaletteContext);
 
-export const GlobalStyles = () => (
+export const GlobalStyles: React.FC = () => (
   <MuiGlobalStyles
     styles={{
       '*': {
@@ -277,14 +306,20 @@ export const Container = styled(ContainerBase)(({ theme: muiTheme }) => ({
   },
 }));
 
+type CSSMainProps = BoxProps & {
+  degraded?: boolean;
+};
+
 const MainRoot = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'degraded',
-})(({ theme: muiTheme, degraded }) => ({
+})<CSSMainProps>(({ theme: muiTheme, degraded }) => ({
   minHeight: 'calc(100vh - 60px)',
   background: degraded
-    ? `linear-gradient(90deg, ${muiTheme.palette.primary.dark}, ${muiTheme.palette.primary.light})`
+    ? `linear-gradient(90deg, ${muiTheme.palette.primary.dark}, ${muiTheme.palette.primary.main})`
     : 'rgba(75, 90, 138, 0.14)',
   width: '100%',
 }));
 
-export const CSSMain = (props) => <MainRoot component="main" {...props} />;
+export const CSSMain = ({ component = 'main', ...props }: CSSMainProps) => (
+  <MainRoot component={component} {...props} />
+);

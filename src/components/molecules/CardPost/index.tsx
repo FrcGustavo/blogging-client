@@ -4,7 +4,14 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button } from '@/atoms';
 
-const CardPost = ({ cover, title, description, href }) => {
+type CardPostProps = {
+  cover: string;
+  title: string;
+  description: string;
+  href: string;
+};
+
+const CardPost = ({ cover, title, description, href }: CardPostProps) => {
   return (
     <Card
       sx={{

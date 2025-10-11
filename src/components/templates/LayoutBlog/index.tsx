@@ -1,16 +1,16 @@
-import { useState } from 'react';
+import { useState, type ReactNode, type UIEvent } from 'react';
 import Box from '@mui/material/Box';
 import { Header } from '@/molecules';
 
-const LayoutBlog = ({ children }) => {
+type LayoutBlogProps = {
+  children: ReactNode;
+};
+
+const LayoutBlog = ({ children }: LayoutBlogProps) => {
   const [shadow, setShadow] = useState(false);
 
-  const handleScroll = (e) => {
-    if (e.target.scrollTop > 0) {
-      setShadow(true);
-    } else {
-      setShadow(false);
-    }
+  const handleScroll = (event: UIEvent<HTMLDivElement>) => {
+    setShadow(event.currentTarget.scrollTop > 0);
   };
 
   return (

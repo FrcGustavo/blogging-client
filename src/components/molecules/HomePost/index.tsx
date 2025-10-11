@@ -5,7 +5,14 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button } from '@/atoms';
 
-const HomePost = ({ cover, title, description, href }) => {
+type HomePostProps = {
+  cover: string;
+  title: string;
+  description: string;
+  href: string;
+};
+
+const HomePost = ({ cover, title, description, href }: HomePostProps) => {
   return (
     <Box
       component="section"

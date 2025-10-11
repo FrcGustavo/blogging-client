@@ -1,8 +1,10 @@
 import Head from 'next/head';
+import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { LayoutBlog } from '@/templates';
 import { ListPosts } from '@/organisms';
 import { Footer } from '@/molecules';
 import { PostsService } from 'root/services';
+import type { PostSummary } from 'root/services';
 import { CSSMain } from 'root/styles';
 
 const MetaData = {
@@ -10,7 +12,11 @@ const MetaData = {
   keywords: 'Full, Stack, Software, Developer, MERN, FrcGustavo,',
 };
 
-export async function getStaticProps() {
+type BlogProps = {
+  posts: PostSummary[];
+};
+
+export const getStaticProps: GetStaticProps<BlogProps> = async () => {
   const { posts } = await PostsService.getAll();
 
   return {
@@ -18,9 +24,9 @@ export async function getStaticProps() {
       posts,
     },
   };
-}
+};
 
-const Blog = ({ posts }) => {
+const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <LayoutBlog>
       <Head>

@@ -12,7 +12,7 @@ type MarkdownFrontMatter = {
   date?: string | Date;
 };
 
-type PostSummary = {
+export type PostSummary = {
   slug: string;
   title: string;
   description: string;
@@ -21,7 +21,7 @@ type PostSummary = {
   date?: string;
 };
 
-type PostDetail = PostSummary & {
+export type PostDetail = PostSummary & {
   html: string;
 };
 
@@ -130,3 +130,5 @@ const PostsService = {
 };
 
 export default PostsService;
+
+export type { GetAllArgs };

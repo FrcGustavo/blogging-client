@@ -1,16 +1,23 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { CacheProvider } from '@emotion/react';
+import type { EmotionCache } from '@emotion/cache';
+import type { AppProps } from 'next/app';
 import CssBaseline from '@mui/material/CssBaseline';
 import createEmotionCache from 'root/styles/createEmotionCache';
 import { GlobalStyles, ThemePaletteProvider } from 'root/styles';
 
 const clientSideEmotionCache = createEmotionCache();
 
-const MyApp = (props) => {
-  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+type MyAppProps = AppProps & {
+  emotionCache?: EmotionCache;
+};
 
+const MyApp = ({
+  Component,
+  emotionCache = clientSideEmotionCache,
+  pageProps,
+}: MyAppProps) => {
   return (
     <CacheProvider value={emotionCache}>
       <Head>
@@ -23,12 +30,6 @@ const MyApp = (props) => {
       </ThemePaletteProvider>
     </CacheProvider>
   );
-};
-
-MyApp.propTypes = {
-  Component: PropTypes.elementType.isRequired,
-  emotionCache: PropTypes.object,
-  pageProps: PropTypes.object.isRequired,
 };
 
 export default MyApp;

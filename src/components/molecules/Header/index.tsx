@@ -7,9 +7,11 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { alpha, darken } from '@mui/material/styles';
+import type { Theme } from '@mui/material/styles';
+import type { SxProps } from '@mui/system';
 import { useThemePalette } from 'root/styles';
 
-const navButtonSx = {
+const navButtonSx: SxProps<Theme> = {
   borderRadius: '5px',
   paddingY: 0.875,
   paddingX: 1.75,
@@ -21,7 +23,11 @@ const navButtonSx = {
   },
 };
 
-const Header = ({ shadow }) => {
+type HeaderProps = {
+  shadow?: boolean;
+};
+
+const Header = ({ shadow = false }: HeaderProps) => {
   const { cyclePalette, paletteLabel, mode, toggleMode } = useThemePalette();
 
   return (
@@ -30,7 +36,7 @@ const Header = ({ shadow }) => {
       elevation={0}
       sx={{
         backgroundImage: (theme) =>
-          `linear-gradient(90deg, ${theme.palette.primary.dark}, ${theme.palette.primary.light})`,
+          `linear-gradient(90deg, ${theme.palette.primary.dark}, ${theme.palette.primary.main})`,
         boxShadow: shadow ? '0 0 7px rgba(0, 0, 0, 0.14)' : 'none',
         paddingX: { xs: 4, md: 8 },
       }}

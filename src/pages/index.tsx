@@ -1,7 +1,9 @@
 import Head from 'next/head';
+import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { Profile, HomePost } from '@/molecules';
 import { LayoutBlog } from '@/templates';
 import { PostsService } from 'root/services';
+import type { PostSummary } from 'root/services';
 import { Container, CSSMain } from 'root/styles';
 
 const Data = {
@@ -24,19 +26,30 @@ const Data = {
       'I love to experiment with new tools and frameworks, I like to create solutions using my develop tools, My experience is with HTML, CSS, JavaScript, React, NextJS, API Rest, API GraphQL, Socket IO, Server side render and more.',
     keywords: 'React, NextJS, Software, Developer, MERN, FrcGustavo',
   },
+} as const;
+
+type HomeProps = {
+  post: PostSummary;
 };
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const { posts } = await PostsService.getAll({ limit: 1 });
   const post = posts[0];
+
+  if (!post) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {
       post,
     },
   };
-}
+};
 
-const Home = ({ post }) => {
+const Home = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <LayoutBlog>
       <Head>

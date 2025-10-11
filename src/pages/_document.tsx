@@ -1,13 +1,24 @@
 import * as React from 'react';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Document, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  type DocumentContext,
+  type DocumentInitialProps,
+} from 'next/document';
+import type { EmotionCache } from '@emotion/cache';
+import type { AppProps } from 'next/app';
 import createEmotionServer from '@emotion/server/create-instance';
 import createEmotionCache from 'root/styles/createEmotionCache';
 import { theme } from 'root/styles';
 
+type AppPropsWithEmotionCache = AppProps & {
+  emotionCache: EmotionCache;
+};
+
 export default class MyDocument extends Document {
   render() {
-    const { emotionStyleTags } = this.props;
-
     return (
       <Html lang="es-mx">
         <Head>
@@ -19,11 +30,10 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&display=swap"
             rel="stylesheet"
           />
-          {emotionStyleTags}
         </Head>
         <body>
           <Main />
-          <div id="modal"></div>
+          <div id="modal" />
           <NextScript />
         </body>
       </Html>
@@ -31,7 +41,9 @@ export default class MyDocument extends Document {
   }
 }
 
-MyDocument.getInitialProps = async (ctx) => {
+MyDocument.getInitialProps = async (
+  ctx: DocumentContext,
+): Promise<DocumentInitialProps> => {
   const originalRenderPage = ctx.renderPage;
 
   const cache = createEmotionCache();
@@ -39,9 +51,10 @@ MyDocument.getInitialProps = async (ctx) => {
 
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: (App) =>
-        function EnhanceApp(props) {
-          return <App emotionCache={cache} {...props} />;
+      enhanceApp:
+        (App: React.ComponentType<AppPropsWithEmotionCache>) =>
+        function EnhanceApp(props: AppProps) {
+          return <App {...props} emotionCache={cache} />;
         },
     });
 
@@ -57,6 +70,9 @@ MyDocument.getInitialProps = async (ctx) => {
 
   return {
     ...initialProps,
-    emotionStyleTags,
+    styles: [
+      ...React.Children.toArray(initialProps.styles),
+      ...emotionStyleTags,
+    ],
   };
 };

@@ -3,8 +3,10 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import type { Theme } from '@mui/material/styles';
+import type { SxProps } from '@mui/system';
 
-const postContentSx = {
+const postContentSx: SxProps<Theme> = {
   maxWidth: 700,
   margin: '0 auto',
   overflow: 'hidden',
@@ -93,7 +95,13 @@ const postContentSx = {
   },
 };
 
-const Post = ({ cover, title, body }) => {
+type PostProps = {
+  cover: string;
+  title: string;
+  body: string;
+};
+
+const Post = ({ cover, title, body }: PostProps) => {
   return (
     <Box
       component="article"
