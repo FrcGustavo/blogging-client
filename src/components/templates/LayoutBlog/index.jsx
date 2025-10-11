@@ -1,6 +1,6 @@
 import { useState } from 'react';
+import Box from '@mui/material/Box';
 import { Header } from '@/molecules';
-import { CSSBlogApp } from './styles';
 
 const LayoutBlog = ({ children }) => {
   const [shadow, setShadow] = useState(false);
@@ -14,10 +14,19 @@ const LayoutBlog = ({ children }) => {
   };
 
   return (
-    <CSSBlogApp onScroll={handleScroll}>
+    <Box
+      onScroll={handleScroll}
+      sx={{
+        width: '100%',
+        height: '100%',
+        overflowX: 'hidden',
+        overflowY: 'auto',
+        backgroundColor: 'transparent',
+      }}
+    >
       <Header shadow={shadow} />
       {children}
-    </CSSBlogApp>
+    </Box>
   );
 };
 

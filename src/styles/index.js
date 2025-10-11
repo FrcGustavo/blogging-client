@@ -1,127 +1,290 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import React from 'react';
+import { GlobalStyles as MuiGlobalStyles } from '@mui/material';
+import ContainerBase from '@mui/material/Container';
+import Box from '@mui/material/Box';
+import {
+  createTheme,
+  styled,
+  ThemeProvider as MuiThemeProvider,
+} from '@mui/material/styles';
+import { indigo, blueGrey, blue, deepOrange } from '@mui/material/colors';
 
-export const theme = {
-  primaryDark: '#1C2237',
-  primarylight: '#4B5A8A',
-  secondary: '#C63F17',
+const baseThemeOptions = {
+  typography: {
+    fontFamily: "'Lato', sans-serif",
+    fontSize: 16,
+  },
+  components: {
+    MuiButton: {
+      defaultProps: {
+        disableElevation: true,
+      },
+      styleOverrides: {
+        root: {
+          borderRadius: 7,
+          textTransform: 'uppercase',
+          boxShadow: '0 0 7px rgba(0, 0, 0, 0.14)',
+        },
+      },
+    },
+  },
 };
 
-export const GlobalStyles = createGlobalStyle`
-* {
-  border: 0;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: 'Lato', sans-serif;
-  font-size: 16px;
-  font-weight: normal;
-}
+const createPaletteTheme = (palette) =>
+  createTheme({
+    ...baseThemeOptions,
+    palette,
+  });
 
-body, #__next {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-`;
+// 🟣 Indigo + Deep Orange
+export const indigoDeepOrange = {
+  light: createPaletteTheme({
+    mode: 'light',
+    primary: {
+      main: indigo[500],
+      dark: indigo[900],
+      contrastText: '#fff',
+    },
+    secondary: {
+      main: deepOrange[800],
+      contrastText: '#fff',
+    },
+    background: {
+      default: '#F7F8FC',
+      paper: '#FFFFFF',
+    },
+    text: {
+      primary: '#1A1A1A',
+      secondary: '#4A5568',
+    },
+    divider: '#E2E8F0',
+  }),
+  dark: createPaletteTheme({
+    mode: 'dark',
+    primary: {
+      main: indigo[500],
+      dark: indigo[900],
+      contrastText: '#fff',
+    },
+    secondary: {
+      main: deepOrange[800],
+      contrastText: '#fff',
+    },
+    background: {
+      default: '#0b0f1a',
+      paper: '#101522',
+    },
+    text: {
+      primary: '#EAEAEA',
+      secondary: '#B0B0B0',
+    },
+    divider: '#2D3748',
+  }),
+};
 
-export const Container = styled.div`
-  width: 100%;
-  max-width: 1040px;
-  margin: auto;
-`;
+// 🩶 Blue Grey + Deep Orange
+export const blueGreyDeepOrange = {
+  light: createPaletteTheme({
+    mode: 'light',
+    primary: {
+      main: blueGrey[600],
+      dark: blueGrey[900],
+      contrastText: '#fff',
+    },
+    secondary: {
+      main: deepOrange[800],
+      contrastText: '#fff',
+    },
+    background: {
+      default: '#F8FAFC',
+      paper: '#FFFFFF',
+    },
+    text: {
+      primary: '#1A1A1A',
+      secondary: '#4A5568',
+    },
+    divider: '#E2E8F0',
+  }),
+  dark: createPaletteTheme({
+    mode: 'dark',
+    primary: {
+      main: blueGrey[600],
+      dark: blueGrey[900],
+      contrastText: '#fff',
+    },
+    secondary: {
+      main: deepOrange[800],
+      contrastText: '#fff',
+    },
+    background: {
+      default: '#0F1416',
+      paper: '#1A202C',
+    },
+    text: {
+      primary: '#EAEAEA',
+      secondary: '#A8B3B8',
+    },
+    divider: '#2D3748',
+  }),
+};
 
-export const CSSMain = styled.main`
-  min-height: calc(100vh - 60px);
-  background: ${(props) =>
-    props.degraded
-      ? `linear-gradient(90deg, ${props.theme.primaryDark}, ${props.theme.primarylight})`
-      : 'rgba(75, 90, 138, 0.14);'};
-`;
+// 🔵 Blue + Deep Orange
+export const blueDeepOrange = {
+  light: createPaletteTheme({
+    mode: 'light',
+    primary: {
+      main: blue[500],
+      dark: blue[900],
+      contrastText: '#fff',
+    },
+    secondary: {
+      main: deepOrange[800],
+      contrastText: '#fff',
+    },
+    background: {
+      default: '#F5F9FF',
+      paper: '#FFFFFF',
+    },
+    text: {
+      primary: '#1A1A1A',
+      secondary: '#4A5568',
+    },
+    divider: '#E2E8F0',
+  }),
+  dark: createPaletteTheme({
+    mode: 'dark',
+    primary: {
+      main: blue[500],
+      dark: blue[900],
+      contrastText: '#fff',
+    },
+    secondary: {
+      main: deepOrange[800],
+      contrastText: '#fff',
+    },
+    background: {
+      default: '#0E1524',
+      paper: '#101522',
+    },
+    text: {
+      primary: '#EAEAEA',
+      secondary: '#9FB4D0',
+    },
+    divider: '#2D3748',
+  }),
+};
 
-export const CSSPost = styled.section`
-  padding: 14px 28px;
-  overflow: hidden;
+export const theme = indigoDeepOrange.light;
 
-  a {
-    color: #4183c4;
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+const paletteDefinitions = [
+  {
+    id: 'indigoDeepOrange',
+    label: 'Indigo / Deep Orange',
+    variants: indigoDeepOrange,
+  },
+  {
+    id: 'blueGreyDeepOrange',
+    label: 'Blue Grey / Deep Orange',
+    variants: blueGreyDeepOrange,
+  },
+  {
+    id: 'blueDeepOrange',
+    label: 'Blue / Deep Orange',
+    variants: blueDeepOrange,
+  },
+];
 
-  p,
-  blockquote,
-  ul,
-  ol,
-  dl,
-  table,
-  pre {
-    margin: 14px 0;
-  }
+const ThemePaletteContext = React.createContext({
+  paletteId: paletteDefinitions[0].id,
+  paletteLabel: paletteDefinitions[0].label,
+  cyclePalette: () => {},
+  mode: 'light',
+  toggleMode: () => {},
+});
 
-  pre {
-    border-radius: 4.5px;
-    padding: 14px;
-    overflow: auto;
-    background-color: #f6f8fa;
-    line-height: 1.45;
-    code {
-      display: block;
-      max-width: auto;
-      padding: 0;
-      margin: 0;
-      overflow: visible;
-      line-height: inherit;
-      word-wrap: normal;
-      background-color: initial;
-      border: 0;
-    }
-  }
+export const ThemePaletteProvider = ({ children }) => {
+  const [paletteIndex, setPaletteIndex] = React.useState(0);
+  const [mode, setMode] = React.useState('light');
 
-  ul,
-  ol {
-    padding-left: 30px;
-  }
-  h2 {
-    border-bottom: 1px solid #eee;
-    color: #000;
-    font-size: 2em;
-  }
-  h3 {
-    font-size: 1.5em;
-  }
-  h4 {
-    font-size: 1.2em;
-  }
-  h5 {
-    font-size: 1em;
-  }
-  h6 {
-    color: #777;
-    font-size: 1em;
-  }
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-weight: bold;
-    line-height: 1.7;
-    margin: 1em 0 15px 0;
-  }
-  h2 + p,
-  h3 + p {
-    margin-top: 14px;
-  }
-  code {
-    background-color: #f8f8f8;
-    border-radius: 4.5px;
-    border: 1px solid #ddd;
-    font-family: Consolas, 'Liberation Mono', Courier, monospace;
-    font-size: 12px;
-    margin: 0 2px;
-    padding: 0 5px;
-    white-space: pre;
-  }
-`;
+  const cyclePalette = React.useCallback(() => {
+    setPaletteIndex((prev) => (prev + 1) % paletteDefinitions.length);
+  }, []);
+
+  const toggleMode = React.useCallback(() => {
+    setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
+  }, []);
+
+  const value = React.useMemo(() => {
+    const current = paletteDefinitions[paletteIndex];
+    return {
+      paletteId: current.id,
+      paletteLabel: current.label,
+      cyclePalette,
+      mode,
+      toggleMode,
+    };
+  }, [paletteIndex, cyclePalette, mode, toggleMode]);
+
+  const themePalette = React.useMemo(
+    () => paletteDefinitions[paletteIndex].variants[mode],
+    [paletteIndex, mode]
+  );
+
+  return (
+    <ThemePaletteContext.Provider value={value}>
+      <MuiThemeProvider theme={themePalette}>{children}</MuiThemeProvider>
+    </ThemePaletteContext.Provider>
+  );
+};
+
+export const useThemePalette = () => React.useContext(ThemePaletteContext);
+
+export const GlobalStyles = () => (
+  <MuiGlobalStyles
+    styles={{
+      '*': {
+        border: 0,
+        margin: 0,
+        padding: 0,
+        boxSizing: 'border-box',
+        fontFamily: "'Lato', sans-serif",
+        fontSize: '16px',
+        fontWeight: 'normal',
+      },
+      body: {
+        width: '100vw',
+        height: '100vh',
+        overflow: 'hidden',
+      },
+      '#__next': {
+        width: '100vw',
+        height: '100vh',
+        overflow: 'hidden',
+      },
+    }}
+  />
+);
+
+export const Container = styled(ContainerBase)(({ theme: muiTheme }) => ({
+  width: '100%',
+  maxWidth: 1040,
+  margin: '0 auto',
+  paddingLeft: muiTheme.spacing(4),
+  paddingRight: muiTheme.spacing(4),
+  [muiTheme.breakpoints.down('sm')]: {
+    paddingLeft: muiTheme.spacing(3),
+    paddingRight: muiTheme.spacing(3),
+  },
+}));
+
+const MainRoot = styled(Box, {
+  shouldForwardProp: (prop) => prop !== 'degraded',
+})(({ theme: muiTheme, degraded }) => ({
+  minHeight: 'calc(100vh - 60px)',
+  background: degraded
+    ? `linear-gradient(90deg, ${muiTheme.palette.primary.dark}, ${muiTheme.palette.primary.light})`
+    : 'rgba(75, 90, 138, 0.14)',
+  width: '100%',
+}));
+
+export const CSSMain = (props) => <MainRoot component="main" {...props} />;
