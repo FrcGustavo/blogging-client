@@ -51,7 +51,7 @@ interface CSSMainProps {
 export const CSSMain = styled('main', {
   shouldForwardProp: (prop) => prop !== 'degraded',
 })<CSSMainProps>(({ theme, degraded }) => ({
-  minHeight: 'calc(100vh - 60px)',
+  minHeight: 'calc(100vh - 72px)',
   background: degraded
     ? `linear-gradient(90deg, ${theme.palette.primary.dark}, ${theme.palette.primary.main})`
     : 'rgba(75, 90, 138, 0.14)',
