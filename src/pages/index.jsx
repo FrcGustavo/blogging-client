@@ -1,10 +1,13 @@
 import Head from 'next/head';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { Profile, Footer } from '@/molecules';
+import Button from '@mui/material/Button';
+import Link from 'next/link';
+import { Profile, Footer, CardPost } from '@/molecules';
 import { ProjectsList, ExperienceList } from '@/organisms';
 import { LayoutBlog } from '@/templates';
 import { Container } from 'root/styles';
+import { PostsService } from 'root/services';
 
 const profileData = {
   cover:
@@ -94,7 +97,12 @@ const SectionTitle = ({ children }) => (
   </Typography>
 );
 
-const Home = () => {
+export async function getStaticProps() {
+  const { posts } = await PostsService.getAll({ limit: 3 });
+  return { props: { posts } };
+}
+
+const Home = ({ posts = [] }) => {
   return (
     <LayoutBlog>
       <Head>
@@ -138,6 +146,48 @@ const Home = () => {
         <Container>
           <SectionTitle>Experiencia Profesional</SectionTitle>
           <ExperienceList data={experience} />
+        </Container>
+      </Box>
+
+      {/* Últimas entradas del blog */}
+      <Box component="section" sx={{ backgroundColor: '#f5f7fa', padding: '56px 28px' }}>
+        <Container>
+          <SectionTitle>Últimas entradas del blog</SectionTitle>
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: '1fr',
+              gap: '28px',
+              justifyItems: 'center',
+              '@media screen and (min-width: 680px)': {
+                gridTemplateColumns: '1fr 1fr',
+              },
+              '@media screen and (min-width: 1000px)': {
+                gridTemplateColumns: '1fr 1fr 1fr',
+              },
+            }}
+          >
+            {posts.map(({ cover, title, description, slug }) => (
+              <CardPost
+                key={slug}
+                cover={cover}
+                title={title}
+                description={description}
+                href={slug}
+              />
+            ))}
+          </Box>
+          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 5 }}>
+            <Button
+              component={Link}
+              href="/blog"
+              variant="contained"
+              color="secondary"
+              sx={{ borderRadius: '7px', padding: '10px 28px', textTransform: 'uppercase' }}
+            >
+              Ver todos los posts
+            </Button>
+          </Box>
         </Container>
       </Box>
 
