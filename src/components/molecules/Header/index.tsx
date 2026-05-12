@@ -3,7 +3,11 @@ import { useRouter } from 'next/router';
 import { Container } from 'root/styles';
 import { CSSHeader, CSSNav, NavItem, CSSLogo } from './styles';
 
-const Header = ({ shadow }) => {
+interface HeaderProps {
+  shadow?: boolean;
+}
+
+const Header = ({ shadow }: HeaderProps) => {
   const { asPath, locale } = useRouter();
   const isLocaleEnglish = locale === 'en';
   return (

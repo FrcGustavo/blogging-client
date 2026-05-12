@@ -8,7 +8,13 @@ import {
   CSSPost,
 } from './styles';
 
-const Post = ({ cover, title, body }) => {
+interface PostProps {
+  cover: string;
+  title: string;
+  body: string;
+}
+
+const Post = ({ cover, title, body }: PostProps) => {
   return (
     <CSSPostContainer>
       <CSSPostCard>

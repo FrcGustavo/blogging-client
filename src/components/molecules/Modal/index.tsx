@@ -1,6 +1,12 @@
+import type { ReactNode } from 'react';
 import ReactDom from 'react-dom';
 
-const Modal = ({ isModalOpen, children }) => {
+interface ModalProps {
+  isModalOpen: boolean;
+  children: ReactNode;
+}
+
+const Modal = ({ isModalOpen, children }: ModalProps) => {
   if (!isModalOpen) {
     return null;
   }

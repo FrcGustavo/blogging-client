@@ -31,4 +31,4 @@ export const CSSButtonLink = styled(MuiButton)(({ theme }) => ({
     backgroundColor: theme.palette.secondary.dark || theme.palette.secondary.main,
     textDecoration: 'none',
   },
-}));
+})) as unknown as typeof MuiButton;

@@ -1,3 +1,4 @@
+import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -80,7 +81,11 @@ const experience = [
   },
 ];
 
-const SectionTitle = ({ children }) => (
+interface SectionTitleProps {
+  children: React.ReactNode;
+}
+
+const SectionTitle = ({ children }: SectionTitleProps) => (
   <Typography
     variant="h5"
     fontWeight="bold"
@@ -97,12 +102,21 @@ const SectionTitle = ({ children }) => (
   </Typography>
 );
 
-export async function getStaticProps() {
-  const { posts } = await PostsService.getAll({ limit: 3 });
-  return { props: { posts } };
+interface HomeProps {
+  posts: Array<{
+    cover: string;
+    title: string;
+    description: string;
+    slug: string;
+  }>;
 }
 
-const Home = ({ posts = [] }) => {
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const { posts } = await PostsService.getAll({ limit: 3 });
+  return { props: { posts } };
+};
+
+const Home: NextPage<HomeProps> = ({ posts = [] }) => {
   return (
     <LayoutBlog>
       <Head>

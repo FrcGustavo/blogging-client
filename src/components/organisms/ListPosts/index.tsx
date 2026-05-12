@@ -2,7 +2,18 @@ import { CardPost } from '@/molecules';
 import { Container } from 'root/styles';
 import { CSSList } from './styles';
 
-const ListPosts = ({ data }) => {
+interface PostItem {
+  cover: string;
+  title: string;
+  description: string;
+  slug: string;
+}
+
+interface ListPostsProps {
+  data: PostItem[];
+}
+
+const ListPosts = ({ data }: ListPostsProps) => {
   return (
     <CSSList>
       <Container>

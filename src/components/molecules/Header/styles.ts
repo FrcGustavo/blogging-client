@@ -2,9 +2,13 @@ import Link from 'next/link';
 import { styled } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 
+interface HeaderStyleProps {
+  shadow?: boolean;
+}
+
 export const CSSHeader = styled(AppBar, {
   shouldForwardProp: (prop) => prop !== 'shadow',
-})(({ theme, shadow }) => ({
+})<HeaderStyleProps>(({ theme, shadow }) => ({
   position: 'sticky',
   top: 0,
   left: 0,

@@ -6,7 +6,19 @@ import Chip from '@mui/material/Chip';
 import IconButton from '@mui/material/IconButton';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
-const ProjectCard = ({ name, description, tech = [], github, demo }) => (
+interface Project {
+  name: string;
+  description: string;
+  tech?: string[];
+  github?: string;
+  demo?: string | null;
+}
+
+interface ProjectsListProps {
+  data?: Project[];
+}
+
+const ProjectCard = ({ name, description, tech = [], github, demo }: Project) => (
   <Card
     sx={{
       height: '100%',
@@ -65,7 +77,7 @@ const ProjectCard = ({ name, description, tech = [], github, demo }) => (
   </Card>
 );
 
-const ProjectsList = ({ data = [] }) => (
+const ProjectsList = ({ data = [] }: ProjectsListProps) => (
   <Box
     sx={{
       display: 'grid',

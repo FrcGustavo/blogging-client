@@ -1,20 +1,32 @@
-import React from 'react';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import React, { type ComponentType } from 'react';
+import Document, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentContext,
+  DocumentInitialProps,
+} from 'next/document';
+import type { EmotionCache } from '@emotion/react';
 import createEmotionServer from '@emotion/server/create-instance';
 import createEmotionCache from 'root/lib/createEmotionCache';
 
 export default class MyDocument extends Document {
-  static async getInitialProps(ctx) {
+  static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
     const originalRenderPage = ctx.renderPage;
     const cache = createEmotionCache();
     const { extractCriticalToChunks } = createEmotionServer(cache);
 
     ctx.renderPage = () =>
       originalRenderPage({
-        enhanceApp: (App) =>
-          function EnhanceApp(props) {
-            return <App emotionCache={cache} {...props} />;
-          },
+        enhanceApp: (App) => {
+          const AppWithCache = App as unknown as ComponentType<
+            { emotionCache: EmotionCache } & Record<string, unknown>
+          >;
+          return function EnhanceApp(props) {
+            return <AppWithCache emotionCache={cache} {...props} />;
+          };
+        },
       });
 
     const initialProps = await Document.getInitialProps(ctx);

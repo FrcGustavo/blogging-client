@@ -1,7 +1,7 @@
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { githubProfile, linkedinProfile, contactEmail } from 'root/config';
 import { Container } from 'root/styles';
-import { CSSFooter, CSSSocialMedia } from './styles.js';
+import { CSSFooter, CSSSocialMedia } from './styles';
 
 const Footer = () => {
   return (

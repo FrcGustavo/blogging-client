@@ -1,4 +1,4 @@
-const optimizeImage = (url, optimization) => {
+const optimizeImage = (url: string, optimization: string): string => {
   const splitedUrl = url.split('/');
   const newUrl = `https://res.cloudinary.com/hs8bxfui6/image/upload/${optimization}/${splitedUrl[6]}/${splitedUrl[7]}`;
   return newUrl;

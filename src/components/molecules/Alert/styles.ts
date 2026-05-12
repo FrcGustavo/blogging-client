@@ -1,7 +1,14 @@
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 
-const handleStatus = ({ status, theme }) => {
+import type { Theme } from '@mui/material/styles';
+
+interface StatusProps {
+  status?: string;
+  theme: Theme;
+}
+
+const handleStatus = ({ status, theme }: StatusProps): string => {
   switch (status) {
     case 'success':
       return '#42B72A';
@@ -12,9 +19,13 @@ const handleStatus = ({ status, theme }) => {
   }
 };
 
+interface AlertStyleProps {
+  status?: string;
+}
+
 export const CSSAlert = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'status',
-})(({ theme, status }) => ({
+})<AlertStyleProps>(({ theme, status }) => ({
   position: 'absolute',
   top: '70px',
   right: '30px',

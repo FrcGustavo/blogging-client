@@ -1,3 +1,4 @@
+import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import { LayoutBlog } from '@/templates';
 import { ListPosts } from '@/organisms';
@@ -10,7 +11,16 @@ const MetaData = {
   keywords: 'Full, Stack, Software, Developer, MERN, FrcGustavo,',
 };
 
-export async function getStaticProps() {
+interface BlogProps {
+  posts: Array<{
+    cover: string;
+    title: string;
+    description: string;
+    slug: string;
+  }>;
+}
+
+export const getStaticProps: GetStaticProps<BlogProps> = async () => {
   const { posts } = await PostsService.getAll();
 
   return {
@@ -18,9 +28,9 @@ export async function getStaticProps() {
       posts,
     },
   };
-}
+};
 
-const Blog = ({ posts }) => {
+const Blog: NextPage<BlogProps> = ({ posts }) => {
   return (
     <LayoutBlog>
       <Head>
