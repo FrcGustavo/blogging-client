@@ -1,14 +1,14 @@
-import { Button } from '@/atoms';
+import { ButtonLink } from '@/atoms';
 import { CSSArticle, CSSImage, CSSInfo } from './styles';
 
 interface CardPostProps {
   cover: string;
   title: string;
   description: string;
-  href: string;
+  slug: string;
 }
 
-const CardPost = ({ cover, title, description, href }: CardPostProps) => {
+const CardPost = ({ cover, title, description, slug }: CardPostProps) => {
   return (
     <CSSArticle>
       <CSSImage>
@@ -17,7 +17,7 @@ const CardPost = ({ cover, title, description, href }: CardPostProps) => {
       <CSSInfo>
         <h2>{title}</h2>
         <p>{description}</p>
-        <Button href={`/blog/${href}`}>Leer más</Button>
+        <ButtonLink to="/blog/$slug" params={{ slug }}>Leer más</ButtonLink>
       </CSSInfo>
     </CSSArticle>
   );

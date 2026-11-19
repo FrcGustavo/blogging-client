@@ -1,4 +1,5 @@
-import type { ReactNode } from 'react';
+import type { ComponentPropsWithRef, ReactNode } from 'react';
+import { createLink } from '@tanstack/react-router';
 import { CSSButton, CSSButtonLink } from './styles';
 
 interface ButtonProps {
@@ -19,5 +20,11 @@ const Button = ({ children, type = 'button', href, onHandleClick }: ButtonProps)
 
   return <CSSButtonLink href={href}>{children}</CSSButtonLink>;
 };
+
+type ButtonAnchorProps = Omit<ComponentPropsWithRef<'a'>, 'color'>;
+
+export const ButtonLink = createLink(function ButtonAnchor(props: ButtonAnchorProps) {
+  return <CSSButtonLink component="a" {...props} />;
+});
 
 export default Button;

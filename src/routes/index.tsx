@@ -179,7 +179,7 @@ function Home() {
                 cover={cover}
                 title={title}
                 description={description}
-                href={slug}
+                slug={slug}
               />
             ))}
           </Box>
