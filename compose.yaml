@@ -1,0 +1,11 @@
+services:
+  blog:
+    build:
+      context: .
+      dockerfile: dockerfile
+      args:
+        VITE_GITHUB_PROFILE: ${VITE_GITHUB_PROFILE:-}
+        VITE_LINKEDIN_PROFILE: ${VITE_LINKEDIN_PROFILE:-}
+        VITE_CONTACT_EMAIL: ${VITE_CONTACT_EMAIL:-}
+    ports:
+      - "${BLOG_PORT:-3000}:3000"
