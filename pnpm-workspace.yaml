@@ -1,4 +1,0 @@
-allowBuilds:
-  sharp: true
-  styled-components: false
-  unrs-resolver: true
