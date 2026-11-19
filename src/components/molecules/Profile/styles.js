@@ -1,78 +1,75 @@
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
 
-export const CSSSocialMedia = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 28px);
-  gap: 0 14px;
-  justify-content: center;
+export const CSSSocialMedia = styled(Box)({
+  display: 'grid',
+  gridTemplateColumns: 'repeat(3, 28px)',
+  gap: '0 14px',
+  justifyContent: 'center',
 
-  a {
-    font-size: 0;
-  }
+  '& a': {
+    fontSize: 0,
+  },
 
-  a svg {
-    font-size: 28px;
-    color: #6ec6ff;
-  }
+  '& a svg': {
+    fontSize: '28px',
+    color: '#6ec6ff',
+  },
 
-  @media screen and (min-width: 680px) {
-    justify-content: flex-start;
-  }
-`;
+  '@media screen and (min-width: 680px)': {
+    justifyContent: 'flex-start',
+  },
+});
 
-export const CSSProfile = styled.section`
-  width: 100%;
-  max-width: 1056px;
-  margin: auto;
-  padding: 28px;
+export const CSSProfile = styled('section')({
+  width: '100%',
+  maxWidth: '1056px',
+  margin: 'auto',
+  padding: '28px',
 
-  > div {
-    width: 100%;
-    &:first-child {
-      display: flex;
-      justify-content: center;
-      padding-bottom: 28px;
-    }
-  }
+  '& > div': {
+    width: '100%',
+    '&:first-of-type': {
+      display: 'flex',
+      justifyContent: 'center',
+      paddingBottom: '28px',
+    },
+  },
 
-  img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-  }
+  '& img': {
+    width: '150px',
+    height: '150px',
+    borderRadius: '50%',
+  },
 
-  h1,
-  h2,
-  p {
-    margin-bottom: 14px;
-    color: #fff;
-    font-weight: bold;
-    text-align: center;
-    letter-spacing: 1px;
-  }
+  '& h1, & h2, & p': {
+    marginBottom: '14px',
+    color: '#fff',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    letterSpacing: '1px',
+  },
 
-  h1 {
-    font-size: 28px;
-  }
+  '& h1': {
+    fontSize: '28px',
+  },
 
-  h2 {
-    font-size: 21px;
-  }
+  '& h2': {
+    fontSize: '21px',
+  },
 
-  p {
-    font-weight: normal;
-  }
+  '& p': {
+    fontWeight: 'normal',
+  },
 
-  @media screen and (min-width: 680px) {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 28px;
-    padding-top: 56px;
+  '@media screen and (min-width: 680px)': {
+    display: 'grid',
+    gridTemplateColumns: 'auto 1fr',
+    gap: '28px',
+    paddingTop: '56px',
 
-    h1,
-    h2,
-    p {
-      text-align: left;
-    }
-  }
-`;
+    '& h1, & h2, & p': {
+      textAlign: 'left',
+    },
+  },
+});

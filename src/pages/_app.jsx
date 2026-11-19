@@ -1,12 +1,19 @@
-import { ThemeProvider } from 'styled-components';
-import { GlobalStyles, theme } from 'root/styles';
+import React from 'react';
+import { CacheProvider } from '@emotion/react';
+import { ThemeProvider, CssBaseline } from '@mui/material';
+import { theme } from 'root/styles';
+import createEmotionCache from 'root/lib/createEmotionCache';
 
-const MyApp = ({ Component, pageProps }) => {
+const clientSideEmotionCache = createEmotionCache();
+
+const MyApp = ({ Component, pageProps, emotionCache = clientSideEmotionCache }) => {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <CacheProvider value={emotionCache}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </CacheProvider>
   );
 };
 
