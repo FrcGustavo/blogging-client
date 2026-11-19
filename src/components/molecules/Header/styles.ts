@@ -1,10 +1,13 @@
-import Link from 'next/link';
 import { styled } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 
+interface HeaderStyleProps {
+  shadow?: boolean;
+}
+
 export const CSSHeader = styled(AppBar, {
   shouldForwardProp: (prop) => prop !== 'shadow',
-})(({ theme, shadow }) => ({
+})<HeaderStyleProps>(({ theme, shadow }) => ({
   position: 'sticky',
   top: 0,
   left: 0,
@@ -41,7 +44,7 @@ export const CSSNav = styled('nav')({
   },
 });
 
-export const NavItem = styled(Link)({
+export const NavItem = styled('a')({
   display: 'inline-block',
   borderRadius: '5px',
   marginLeft: '21px',
@@ -57,7 +60,7 @@ export const NavItem = styled(Link)({
   },
 });
 
-export const CSSLogo = styled(Link)({
+export const CSSLogo = styled('a')({
   display: 'block',
   width: '40px',
   height: '40px',
