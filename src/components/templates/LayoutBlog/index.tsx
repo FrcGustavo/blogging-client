@@ -20,7 +20,10 @@ const LayoutBlog = ({ children }: LayoutBlogProps) => {
   };
 
   return (
-    <CSSBlogApp onScroll={handleScroll}>
+    <CSSBlogApp
+      data-scroll-restoration-id="blog-layout"
+      onScroll={handleScroll}
+    >
       <Header shadow={shadow} />
       {children}
     </CSSBlogApp>
