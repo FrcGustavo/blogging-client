@@ -1,5 +1,3 @@
-import fs from 'fs/promises';
-import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
@@ -31,13 +29,20 @@ type GetAllArgs = {
 
 type GetAll = (props?: GetAllArgs) => Promise<{ posts: PostSummary[] }>;
 
-const POSTS_DIRECTORY = path.join(process.cwd(), 'content', 'posts');
-const MARKDOWN_EXTENSIONS = ['.md', '.mdx'] as const;
+const markdownFiles = import.meta.glob<string>('../../content/posts/*', {
+  eager: true,
+  import: 'default',
+  query: '?raw',
+});
 
-const isMarkdownFile = (fileName: string) =>
-  MARKDOWN_EXTENSIONS.some((extension) => fileName.toLowerCase().endsWith(extension));
-
-const toSlug = (fileName: string) => fileName.replace(/\.(mdx?|MDX?)$/, '');
+const postsBySlug = new Map(
+  Object.entries(markdownFiles)
+    .filter(([filename]) => /\.mdx?$/i.test(filename))
+    .map(([filename, markdown]) => [
+      filename.slice(filename.lastIndexOf('/') + 1).replace(/\.mdx?$/i, ''),
+      markdown,
+    ] as const),
+);
 
 const parseDate = (value?: string | Date): string | undefined => {
   if (!value) return undefined;
@@ -63,26 +68,6 @@ const normalizeMetadata = (
   };
 };
 
-const readMarkdownFilenames = async () => {
-  const entries = await fs.readdir(POSTS_DIRECTORY, { withFileTypes: true });
-  return entries
-    .filter((entry) => entry.isFile() && isMarkdownFile(entry.name))
-    .map((entry) => entry.name);
-};
-
-const resolveFilenameForSlug = async (slug: string) => {
-  for (const extension of MARKDOWN_EXTENSIONS) {
-    const filename = `${slug}${extension}`;
-    try {
-      await fs.access(path.join(POSTS_DIRECTORY, filename));
-      return filename;
-    } catch {
-      // continue searching
-    }
-  }
-  throw new Error(`No markdown file found for slug "${slug}" in ${POSTS_DIRECTORY}`);
-};
-
 const sortByDateDesc = (a: PostSummary, b: PostSummary) => {
   const timeA = a.date ? new Date(a.date).getTime() : 0;
   const timeB = b.date ? new Date(b.date).getTime() : 0;
@@ -90,16 +75,10 @@ const sortByDateDesc = (a: PostSummary, b: PostSummary) => {
 };
 
 const getAll: GetAll = async ({ limit } = { limit: 9 }) => {
-  const filenames = await readMarkdownFilenames();
-  const posts = await Promise.all(
-    filenames.map(async (filename) => {
-      const slug = toSlug(filename);
-      const filePath = path.join(POSTS_DIRECTORY, filename);
-      const fileContents = await fs.readFile(filePath, 'utf8');
-      const { data } = matter(fileContents);
-      return normalizeMetadata(slug, data as MarkdownFrontMatter);
-    }),
-  );
+  const posts = Array.from(postsBySlug, ([slug, markdown]) => {
+    const { data } = matter(markdown);
+    return normalizeMetadata(slug, data as MarkdownFrontMatter);
+  });
 
   const sortedPosts = posts.sort(sortByDateDesc);
   const limitedPosts = typeof limit === 'number' ? sortedPosts.slice(0, limit) : sortedPosts;
@@ -109,11 +88,11 @@ const getAll: GetAll = async ({ limit } = { limit: 9 }) => {
   };
 };
 
-const getOne = async ({ slug }: { slug: string }): Promise<PostDetail> => {
-  const filename = await resolveFilenameForSlug(slug);
-  const filePath = path.join(POSTS_DIRECTORY, filename);
-  const fileContents = await fs.readFile(filePath, 'utf8');
-  const { data, content } = matter(fileContents);
+const getOne = async ({ slug }: { slug: string }): Promise<PostDetail | undefined> => {
+  const markdown = postsBySlug.get(slug);
+  if (markdown === undefined) return undefined;
+
+  const { data, content } = matter(markdown);
   const metadata = normalizeMetadata(slug, data as MarkdownFrontMatter);
 
   const processedContent = await remark().use(html).process(content);

@@ -1,14 +1,12 @@
-import type { GetStaticProps, NextPage } from 'next';
-import Head from 'next/head';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import Link from 'next/link';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { Profile, Footer, CardPost } from '@/molecules';
 import { ProjectsList, ExperienceList } from '@/organisms';
 import { LayoutBlog } from '@/templates';
 import { Container } from 'root/styles';
-import { PostsService } from 'root/services';
+import { listPosts } from 'root/services/posts.functions';
 
 const profileData = {
   cover:
@@ -47,8 +45,8 @@ const projects = [
   {
     name: 'Blogging Client',
     description:
-      'Blog personal con soporte para artículos en Markdown. Generación estática con Next.js, SSG, diseño responsivo y Material UI v7.',
-    tech: ['React', 'Next.js', 'MUI v7', 'TypeScript', 'Emotion'],
+      'Blog personal con soporte para artículos en Markdown. Generación estática con TanStack Start, diseño responsivo y Material UI v7.',
+    tech: ['React', 'TanStack Start', 'MUI v7', 'TypeScript', 'Emotion'],
     github: 'https://github.com/FrcGustavo/blogging-client',
     demo: null,
   },
@@ -102,32 +100,26 @@ const SectionTitle = ({ children }: SectionTitleProps) => (
   </Typography>
 );
 
-interface HomeProps {
-  posts: Array<{
-    cover: string;
-    title: string;
-    description: string;
-    slug: string;
-  }>;
-}
+export const Route = createFileRoute('/')({
+  loader: () => listPosts({ data: { limit: 3 } }),
+  head: () => ({
+    meta: [
+      { title: 'FrcGustavo | Desarrollador web' },
+      { name: 'description', content: profileData.description },
+      {
+        name: 'keywords',
+        content: 'FrcGustavo, Desarrollador web, React, Next JS, Javascript, Typescript',
+      },
+    ],
+  }),
+  component: Home,
+});
 
-export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  const { posts } = await PostsService.getAll({ limit: 3 });
-  return { props: { posts } };
-};
+function Home() {
+  const { posts } = Route.useLoaderData();
 
-const Home: NextPage<HomeProps> = ({ posts = [] }) => {
   return (
     <LayoutBlog>
-      <Head>
-        <title>FrcGustavo | Desarrollador web</title>
-        <meta name="description" content={profileData.description} />
-        <meta
-          name="keywords"
-          content="FrcGustavo, Desarrollador web, React, Next JS, Javascript, Typescript"
-        />
-      </Head>
-
       {/* Perfil */}
       <Box
         component="section"
@@ -194,7 +186,7 @@ const Home: NextPage<HomeProps> = ({ posts = [] }) => {
           <Box sx={{ display: 'flex', justifyContent: 'center', mt: 5 }}>
             <Button
               component={Link}
-              href="/blog"
+              to="/blog"
               variant="contained"
               color="secondary"
               sx={{ borderRadius: '7px', padding: '10px 28px', textTransform: 'uppercase' }}
@@ -209,6 +201,4 @@ const Home: NextPage<HomeProps> = ({ posts = [] }) => {
       <Footer />
     </LayoutBlog>
   );
-};
-
-export default Home;
+}
