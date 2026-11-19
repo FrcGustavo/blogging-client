@@ -22,12 +22,14 @@
   },
   "homepage": "https://github.com/FranciscoGustavo/bloging-client#readme",
   "dependencies": {
-    "axios": "^0.26.1",
     "next": "^15.5.4",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-icons": "^4.3.1",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "gray-matter": "^4.0.3",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",

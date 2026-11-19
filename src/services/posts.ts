@@ -1,85 +1,132 @@
-import axios from 'axios';
-import { api, apiKey } from 'root/config';
+import fs from 'fs/promises';
+import path from 'path';
+import matter from 'gray-matter';
+import { remark } from 'remark';
+import html from 'remark-html';
 
-type Post = {
-  cover: string
-  title: string
-  description: string
-  href: string
-}
-type Posts = Post[]
-type GetAll = (props: { limit: number }) => Promise<{ posts: Posts }>
+type MarkdownFrontMatter = {
+  title?: string;
+  description?: string;
+  meta_description?: string;
+  cover?: string;
+  date?: string | Date;
+};
 
-const getAll: GetAll = async ({ limit } = { limit: 9 })  => {
-  const res = await axios.get(`${api}/posts?key=${apiKey}&limit=${limit}`);
-  const posts = res.data.posts.map((post => ({
-    cover: post.feature_image,
-    title: post.title,
-    description: post.meta_description,
-    slug: post.slug,
-  })))
+type PostSummary = {
+  slug: string;
+  title: string;
+  description: string;
+  meta_description: string;
+  cover: string;
+  date?: string;
+};
+
+type PostDetail = PostSummary & {
+  html: string;
+};
+
+type GetAllArgs = {
+  limit?: number;
+};
+
+type GetAll = (props?: GetAllArgs) => Promise<{ posts: PostSummary[] }>;
+
+const POSTS_DIRECTORY = path.join(process.cwd(), 'content', 'posts');
+const MARKDOWN_EXTENSIONS = ['.md', '.mdx'] as const;
+
+const isMarkdownFile = (fileName: string) =>
+  MARKDOWN_EXTENSIONS.some((extension) => fileName.toLowerCase().endsWith(extension));
+
+const toSlug = (fileName: string) => fileName.replace(/\.(mdx?|MDX?)$/, '');
+
+const parseDate = (value?: string | Date): string | undefined => {
+  if (!value) return undefined;
+  const parsed = typeof value === 'string' ? new Date(value) : new Date(value);
+  return Number.isNaN(parsed.getTime()) ? undefined : parsed.toISOString();
+};
+
+const normalizeMetadata = (
+  slug: string,
+  data: MarkdownFrontMatter,
+): PostSummary => {
+  const title = data.title ?? slug;
+  const metaDescription = data.meta_description ?? data.description ?? '';
   return {
-    posts
+    slug,
+    title,
+    description: data.description ?? metaDescription,
+    meta_description: metaDescription,
+    cover:
+      data.cover ??
+      'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1200&q=80',
+    date: parseDate(data.date),
   };
 };
 
-const getOne = async ({slug}: { slug: string }) => {
-  const res = await axios.get(`${api}/posts/slug/${slug}?key=${apiKey}`);
-
-  const data = res.data.posts[0];
-  const post = {
-    cover: data.feature_image,
-    title: data.title,
-    html: data.html
-  }
-
-  return post;
+const readMarkdownFilenames = async () => {
+  const entries = await fs.readdir(POSTS_DIRECTORY, { withFileTypes: true });
+  return entries
+    .filter((entry) => entry.isFile() && isMarkdownFile(entry.name))
+    .map((entry) => entry.name);
 };
 
-// const save = async (data, id, token) => {
-//   if (id) return update(data, id, token);
-//   return create(data, token);
-// };
+const resolveFilenameForSlug = async (slug: string) => {
+  for (const extension of MARKDOWN_EXTENSIONS) {
+    const filename = `${slug}${extension}`;
+    try {
+      await fs.access(path.join(POSTS_DIRECTORY, filename));
+      return filename;
+    } catch {
+      // continue searching
+    }
+  }
+  throw new Error(`No markdown file found for slug "${slug}" in ${POSTS_DIRECTORY}`);
+};
 
-// const create = async (data, token) => {
-//   const res = await axios({
-//     url: `${apiV1}/users/posts`,
-//     method: 'POST',
-//     data,
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//     },
-//   });
-//   return res.data.body._id;
-// };
+const sortByDateDesc = (a: PostSummary, b: PostSummary) => {
+  const timeA = a.date ? new Date(a.date).getTime() : 0;
+  const timeB = b.date ? new Date(b.date).getTime() : 0;
+  return timeB - timeA;
+};
 
-// const update = async (data, slug, token) => {
-//   await axios({
-//     url: `${apiV1}/users/posts/${slug}`,
-//     method: 'PATCH',
-//     data,
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//     },
-//   });
-//   return slug;
-// };
+const getAll: GetAll = async ({ limit } = { limit: 9 }) => {
+  const filenames = await readMarkdownFilenames();
+  const posts = await Promise.all(
+    filenames.map(async (filename) => {
+      const slug = toSlug(filename);
+      const filePath = path.join(POSTS_DIRECTORY, filename);
+      const fileContents = await fs.readFile(filePath, 'utf8');
+      const { data } = matter(fileContents);
+      return normalizeMetadata(slug, data as MarkdownFrontMatter);
+    }),
+  );
 
-// const publish = async (data, slug, token) => {
-//   const res = await axios({
-//     url: `${apiV1}/users/posts/${slug}`,
-//     method: 'PATCH',
-//     data: { ...data, isPublic: !data.isPublic },
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//     },
-//   });
-//   return true;
-// };
+  const sortedPosts = posts.sort(sortByDateDesc);
+  const limitedPosts = typeof limit === 'number' ? sortedPosts.slice(0, limit) : sortedPosts;
 
-export default {
+  return {
+    posts: limitedPosts,
+  };
+};
+
+const getOne = async ({ slug }: { slug: string }): Promise<PostDetail> => {
+  const filename = await resolveFilenameForSlug(slug);
+  const filePath = path.join(POSTS_DIRECTORY, filename);
+  const fileContents = await fs.readFile(filePath, 'utf8');
+  const { data, content } = matter(fileContents);
+  const metadata = normalizeMetadata(slug, data as MarkdownFrontMatter);
+
+  const processedContent = await remark().use(html).process(content);
+
+  return {
+    ...metadata,
+    html: processedContent.toString(),
+  };
+};
+
+const PostsService = {
   getAll,
   getOne,
-  // save,
-  // publish,
 };
+
+export default PostsService;

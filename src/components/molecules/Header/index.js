@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { Container } from 'root/styles';
@@ -10,17 +9,15 @@ const Header = ({ shadow }) => {
   return (
     <CSSHeader shadow={shadow}>
       <Container>
-        <Link href="/" passHref>
-          <CSSLogo>
-            <Image
-              src="/icons/bloging-logo-192.png"
-              layout="fixed"
-              width="40px"
-              height="40px"
-              alt="blogging logo"
-            />
-          </CSSLogo>
-        </Link>
+        <CSSLogo href="/">
+          <Image
+            src="/icons/bloging-logo-192.png"
+            layout="fixed"
+            width="40"
+            height="40"
+            alt="blogging logo"
+          />
+        </CSSLogo>
         <CSSNav>
           {/* <Link
             href={`/${isLocaleEnglish ? 'es' : 'en'}${asPath}`}
@@ -35,12 +32,8 @@ const Header = ({ shadow }) => {
               />
             </a>
           </Link> */}
-          <Link href="/" passHref>
-            <NavItem>Home</NavItem>
-          </Link>
-          <Link href="/blog" passHref>
-            <NavItem>Blog</NavItem>
-          </Link>
+          <NavItem href="/">Home</NavItem>
+          <NavItem href="/blog">Blog</NavItem>
         </CSSNav>
       </Container>
     </CSSHeader>
