@@ -2,7 +2,19 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Chip from '@mui/material/Chip';
 
-const ExperienceItem = ({ company, role, period, description, tech = [] }) => (
+interface ExperienceItemData {
+  company: string;
+  role: string;
+  period: string;
+  description: string;
+  tech?: string[];
+}
+
+interface ExperienceListProps {
+  data?: ExperienceItemData[];
+}
+
+const ExperienceItem = ({ company, role, period, description, tech = [] }: ExperienceItemData) => (
   <Box
     sx={{
       borderLeft: '3px solid',
@@ -49,7 +61,7 @@ const ExperienceItem = ({ company, role, period, description, tech = [] }) => (
   </Box>
 );
 
-const ExperienceList = ({ data = [] }) => (
+const ExperienceList = ({ data = [] }: ExperienceListProps) => (
   <Box>
     {data.map((item, i) => (
       <ExperienceItem key={i} {...item} />

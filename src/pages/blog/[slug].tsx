@@ -1,3 +1,4 @@
+import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import { LayoutBlog } from '@/templates';
 import { Footer } from '@/molecules';
@@ -5,21 +6,30 @@ import { Post } from '@/organisms';
 import { PostsService } from 'root/services';
 import { Container, CSSMain } from 'root/styles';
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const { posts } = await PostsService.getAll();
   const paths = posts.map(({ slug }) => ({ params: { slug } }));
   return { paths, fallback: false };
 };
 
-export const getStaticProps = async ({ params }) => {
-  const { slug } = params;
+interface PostPageProps {
+  post: {
+    title: string;
+    meta_description: string;
+    cover: string;
+    html: string;
+  };
+}
+
+export const getStaticProps: GetStaticProps<PostPageProps> = async ({ params }) => {
+  const slug = params?.slug as string;
   const post = await PostsService.getOne({ slug });
   return {
     props: { post },
   };
 };
 
-const PagePost = ({ post }) => {
+const PagePost: NextPage<PostPageProps> = ({ post }) => {
   return (
     <LayoutBlog>
       <Head>

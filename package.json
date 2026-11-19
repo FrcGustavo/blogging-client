@@ -7,9 +7,9 @@
     "dev": "next",
     "start": "next start",
     "build": "next build",
-    "export": "next export",
-    "format": "prettier --write \"**/*.{js,jsx}\"",
-    "lint": "eslint ."
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\"",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
@@ -44,5 +44,8 @@
     "eslint-config-next": "^15.5.4",
     "prettier": "^2.6.2",
     "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=22.22.0"
   }
 }
