@@ -1,14 +1,19 @@
-import Image from 'next/image';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { githubProfile, linkedinProfile, contactEmail } from 'root/config';
-import { optimizeImage } from 'root/utils';
 import { CSSProfile, CSSSocialMedia } from './styles';
 
-const Profile = ({ cover, name, title, description }) => {
+interface ProfileProps {
+  cover: string;
+  name: string;
+  title: string;
+  description: string;
+}
+
+const Profile = ({ cover, name, title, description }: ProfileProps) => {
   return (
     <CSSProfile>
       <div>
-        <Image src={cover} alt={name} width="150" height="150" />
+        <img src={cover} alt={name} width="150" height="150" />
       </div>
       <div>
         <h1>{name}</h1>

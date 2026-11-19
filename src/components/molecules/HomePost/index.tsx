@@ -1,18 +1,22 @@
-import Image from 'next/image';
 import { Button } from '@/atoms';
-import { optimizeImage } from 'root/utils';
-import { CSSCardContainer, CSSCard } from './styles.js';
+import { CSSCardContainer, CSSCard } from './styles';
 
-const HomePost = ({ cover, title, description, href }) => {
+interface HomePostProps {
+  cover: string;
+  title: string;
+  description: string;
+  href: string;
+}
+
+const HomePost = ({ cover, title, description, href }: HomePostProps) => {
   return (
     <CSSCardContainer>
       <CSSCard>
         <div>
-          <Image
-            // src={optimizeImage(cover, 'w_290,h_190,c_scale')}
+          <img
             src={cover}
             alt={title}
-            width="290"
+            loading="lazy" width="290"
             height="190"
           />
         </div>
