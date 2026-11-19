@@ -7,9 +7,9 @@ interface HeaderProps {
 
 const Header = ({ shadow }: HeaderProps) => {
   return (
-    <CSSHeader shadow={shadow}>
+    <CSSHeader shadow={shadow} elevation={0}>
       <Container>
-        <CSSLogo href="/">
+        <CSSLogo to="/">
           <img
             src="/icons/bloging-logo-192.png"
             width="40"
@@ -18,8 +18,8 @@ const Header = ({ shadow }: HeaderProps) => {
           />
         </CSSLogo>
         <CSSNav>
-          <NavItem href="/">Home</NavItem>
-          <NavItem href="/blog">Blog</NavItem>
+          <NavItem to="/" activeOptions={{ exact: true }}>Home</NavItem>
+          <NavItem to="/blog">Blog</NavItem>
         </CSSNav>
       </Container>
     </CSSHeader>

@@ -23,7 +23,7 @@ const ListPosts = ({ data }: ListPostsProps) => {
             cover={cover}
             title={title}
             description={description}
-            href={slug}
+            slug={slug}
           />
         ))}
       </Container>
