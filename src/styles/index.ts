@@ -44,10 +44,14 @@ export const Container = styled(Box)({
   margin: 'auto',
 });
 
+interface CSSMainProps {
+  degraded?: boolean;
+}
+
 export const CSSMain = styled('main', {
   shouldForwardProp: (prop) => prop !== 'degraded',
-})(({ theme, degraded }) => ({
-  minHeight: 'calc(100vh - 60px)',
+})<CSSMainProps>(({ theme, degraded }) => ({
+  minHeight: 'calc(100vh - 72px)',
   background: degraded
     ? `linear-gradient(90deg, ${theme.palette.primary.dark}, ${theme.palette.primary.main})`
     : 'rgba(75, 90, 138, 0.14)',
