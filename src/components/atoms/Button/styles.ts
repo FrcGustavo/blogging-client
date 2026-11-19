@@ -1,6 +1,5 @@
 import { styled } from '@mui/material/styles';
 import MuiButton from '@mui/material/Button';
-import Link from 'next/link';
 
 export const CSSButton = styled(MuiButton)(({ theme }) => ({
   borderRadius: '7px',
@@ -31,4 +30,4 @@ export const CSSButtonLink = styled(MuiButton)(({ theme }) => ({
     backgroundColor: theme.palette.secondary.dark || theme.palette.secondary.main,
     textDecoration: 'none',
   },
-}));
+})) as unknown as typeof MuiButton;
