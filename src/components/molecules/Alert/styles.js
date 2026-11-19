@@ -1,55 +1,56 @@
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
 
-const handleStatus = (props) => {
-  switch (props.status) {
+const handleStatus = ({ status, theme }) => {
+  switch (status) {
     case 'success':
       return '#42B72A';
     case 'fail':
       return '#FA3E3E';
     default:
-      return props.theme.primaryDark;
+      return theme.palette.primary.dark;
   }
 };
 
-export const CSSAlert = styled.div`
-  position: absolute;
-  top: 70px;
-  right: 30px;
-  width: 250px;
-  border-radius: 7px;
-  padding: 14px;
-  box-shadow: 0 0 7px rgba(0, 0, 0, 0.14);
-  background-color: ${handleStatus}; // 42B72A FA3E3E
-  color: ${(props) =>
-    props.status !== 'success' ? '#FFF' : props.theme.primaryDark};
-  transition: all 0.2s ease-in-out;
+export const CSSAlert = styled(Box, {
+  shouldForwardProp: (prop) => prop !== 'status',
+})(({ theme, status }) => ({
+  position: 'absolute',
+  top: '70px',
+  right: '30px',
+  width: '250px',
+  borderRadius: '7px',
+  padding: '14px',
+  boxShadow: '0 0 7px rgba(0, 0, 0, 0.14)',
+  backgroundColor: handleStatus({ status, theme }),
+  color: status !== 'success' ? '#FFF' : theme.palette.primary.dark,
+  transition: 'all 0.2s ease-in-out',
 
-  svg {
-    color: ${(props) =>
-      props.status !== 'success' ? '#FFF' : props.theme.primaryDark};
-    transition: all 0.2s ease-in-out;
-  }
-`;
+  '& svg': {
+    color: status !== 'success' ? '#FFF' : theme.palette.primary.dark,
+    transition: 'all 0.2s ease-in-out',
+  },
+}));
 
-export const CSSTitle = styled.p`
-  font-size: 16px;
-  font-weight: bold;
-`;
+export const CSSTitle = styled('p')({
+  fontSize: '16px',
+  fontWeight: 'bold',
+});
 
-export const CSSMessage = styled.p``;
+export const CSSMessage = styled('p')({});
 
-export const CSSCloseButton = styled.button`
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-  cursor: pointer;
-  outline: none;
+export const CSSCloseButton = styled('button')({
+  position: 'absolute',
+  top: '14px',
+  right: '14px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: 'transparent',
+  cursor: 'pointer',
+  outline: 'none',
 
-  svg {
-    font-size: 18px;
-  }
-`;
+  '& svg': {
+    fontSize: '18px',
+  },
+});
