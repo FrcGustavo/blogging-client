@@ -17,25 +17,35 @@ const profileData = {
 
 const projects = [
   {
+    name: 'Finances App',
+    description:
+      'Monorepo para la gestión de finanzas personales. Backend con NestJS y PostgreSQL, frontend con React + Vite. Incluye autenticación JWT, almacenamiento en AWS S3 y despliegue con Docker.',
+    tech: ['NestJS', 'React', 'TypeScript', 'Vite', 'PostgreSQL', 'Docker', 'JWT'],
+    github: 'https://github.com/FrcGustavo/finances',
+    demo: null,
+  },
+  {
+    name: 'Netofings',
+    description:
+      'Plataforma para Internet de las Cosas (IoT). Monorepo con backend NestJS, dashboard web en React + Vite, agente de métricas y CLI para monitoreo en terminal.',
+    tech: ['NestJS', 'React', 'TypeScript', 'Vite', 'MQTT', 'TurboRepo'],
+    github: 'https://github.com/FrcGustavo/netofings',
+    demo: null,
+  },
+  {
+    name: 'Polls App',
+    description:
+      'Aplicación de encuestas. Permite crear tus propias encuestas con preguntas abiertas y de opción múltiple, y también responderlas.',
+    tech: ['React', 'TypeScript', 'MUI', 'React Router', 'Axios'],
+    github: 'https://github.com/FrcGustavo/polls-app',
+    demo: 'https://polls-app-demo.netlify.app/',
+  },
+  {
     name: 'Blogging Client',
     description:
-      'Blog personal desarrollado con Next.js y Material UI. Soporte para artículos en Markdown, SSG y diseño responsivo.',
-    tech: ['React', 'Next.js', 'MUI v7', 'Emotion'],
+      'Blog personal con soporte para artículos en Markdown. Generación estática con Next.js, SSG, diseño responsivo y Material UI v7.',
+    tech: ['React', 'Next.js', 'MUI v7', 'TypeScript', 'Emotion'],
     github: 'https://github.com/FrcGustavo/blogging-client',
-    demo: null,
-  },
-  {
-    name: 'Proyecto 2',
-    description: 'Descripción breve del proyecto. Agrega aquí los detalles más relevantes.',
-    tech: ['React', 'Node.js', 'MongoDB'],
-    github: 'https://github.com/FrcGustavo',
-    demo: null,
-  },
-  {
-    name: 'Proyecto 3',
-    description: 'Descripción breve del proyecto. Agrega aquí los detalles más relevantes.',
-    tech: ['TypeScript', 'GraphQL', 'PostgreSQL'],
-    github: 'https://github.com/FrcGustavo',
     demo: null,
   },
 ];
