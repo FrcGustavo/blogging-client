@@ -1,5 +1,4 @@
-export const api = process.env.API;
-export const apiKey = process.env.API_KEY;
-export const githubProfile = process.env.NEXT_PUBLIC_GITHUB_PROFILE;
-export const linkedinProfile = process.env.NEXT_PUBLIC_LINKEDIN_PROFILE;
-export const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
+export const githubProfile = import.meta.env.VITE_GITHUB_PROFILE || 'https://github.com/FrcGustavo';
+export const linkedinProfile =
+  import.meta.env.VITE_LINKEDIN_PROFILE || 'https://www.linkedin.com/in/frcgustavo/';
+export const contactEmail = import.meta.env.VITE_CONTACT_EMAIL || 'gustavo@frcgustavo.com';
