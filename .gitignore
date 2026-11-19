@@ -6,3 +6,8 @@
 .next
 out
 src/oldeditpost.jsx
+/.output/
+/.nitro/
+/.tanstack/
+/dist/
+.DS_Store

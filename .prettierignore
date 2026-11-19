@@ -1,1 +1,8 @@
-.next
+/.next/
+/.output/
+/.nitro/
+/.tanstack/
+/dist/
+/out/
+/coverage/
+/src/routeTree.gen.ts
