@@ -1,13 +1,18 @@
-import Image from 'next/image';
 import { Button } from '@/atoms';
-import { optimizeImage } from 'root/utils';
 import { CSSArticle, CSSImage, CSSInfo } from './styles';
 
-const CardPost = ({ cover, title, description, href }) => {
+interface CardPostProps {
+  cover: string;
+  title: string;
+  description: string;
+  href: string;
+}
+
+const CardPost = ({ cover, title, description, href }: CardPostProps) => {
   return (
     <CSSArticle>
       <CSSImage>
-        <Image src={cover} alt={title} width="290" height="150" />
+        <img src={cover} alt={title} loading="lazy" width="290" height="150" />
       </CSSImage>
       <CSSInfo>
         <h2>{title}</h2>
